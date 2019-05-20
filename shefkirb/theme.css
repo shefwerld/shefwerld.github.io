@@ -16,6 +16,21 @@ margin: auto;
 background-color: #DDDDDD;
 border-radius: 10px;
 }
+#subflex {
+margin: 20px;
+border-radius: 10px;
+display: inline-flex;
+justify-content: space-around;
+flex-wrap: wrap;
+}
+#subflexitem {
+width: 48%;
+margin: auto;
+margin-bottom: 15px;
+padding: 3px;
+background-color: #DDDDDD;
+border-radius: 10px;
+}
 #interv {
 width: 60%;
 margin: auto;
@@ -25,7 +40,7 @@ border-style: dashed;
 .rightimg {
 float: right;
 display: block;
-width: 250px;
+width: 400px;
 }
 .leftimg {
 float: left;
@@ -61,4 +76,8 @@ text-align: center;
 .bold {
 font-weight: bold;
 text-align: center;
+}
+#backshefwerld  {
+  display: block;
+  color: #FF9999;
 }

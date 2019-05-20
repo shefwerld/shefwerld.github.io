@@ -25,6 +25,7 @@ border-style: dashed;
 .rightimg {
 float: right;
 display: block;
+width: 250px;
 }
 .leftimg {
 float: left;

@@ -35,17 +35,20 @@ margin: auto;
 display: block;
 }
 .bigbutton {
-height: 240px;
-width: 140px;
+height: 140px;
+width: 180px;
 font-size: 40px;
 border-radius: 10px;
 background-color: #E7E7E7;
 border: none;
 font-family: "Comic Sans MS", "Comic Sans", cursive;
+-moz-transition: background 1s;
+-webkit-transition: background 1s;
+transition: background 1s;
 }
 .bigbutton:hover {
-background-color: #DFDFDF;
-border: none;
+background-color: #969696;
+border: 1px solid #000;
 }
 .centertext {
 text-align: center;

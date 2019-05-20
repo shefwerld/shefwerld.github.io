@@ -1,0 +1,60 @@
+body {
+background-color: #CCCCCC;
+font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+#main {
+width: 90%;
+margin: auto;
+padding: 5px;
+padding-bottom: 0px;
+background-color: #FFFFFF;
+border-radius: 10px;
+}
+#sub {
+width: 90%;
+margin: auto;
+background-color: #DDDDDD;
+border-radius: 10px;
+}
+#interv {
+width: 60%;
+margin: auto;
+background-color: #BBBBBB;
+border-style: dashed;
+}
+.rightimg {
+float: right;
+display: block;
+}
+.leftimg {
+float: left;
+display: block;
+}
+.centerimg {
+margin: auto;
+display: block;
+}
+.bigbutton {
+height: 240px;
+width: 140px;
+font-size: 40px;
+border-radius: 10px;
+background-color: #E7E7E7;
+border: none;
+font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.bigbutton:hover {
+background-color: #DFDFDF;
+border: none;
+}
+.centertext {
+text-align: center;
+}
+.italic {
+font-style: italic;
+text-align: center;
+}
+.bold {
+font-weight: bold;
+text-align: center;
+}

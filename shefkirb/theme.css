@@ -40,7 +40,7 @@ border-style: dashed;
 .rightimg {
 float: right;
 display: block;
-width: 400px;
+width: 350px;
 }
 .leftimg {
 float: left;
@@ -58,9 +58,9 @@ border-radius: 10px;
 background-color: #E7E7E7;
 border: none;
 font-family: "Comic Sans MS", "Comic Sans", cursive;
--moz-transition: background 1s;
--webkit-transition: background 1s;
-transition: background 1s;
+-moz-transition: background 0.5s;
+-webkit-transition: background 0.5s;
+transition: background 0.5s;
 }
 .bigbutton:hover {
 background-color: #969696;

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="kerb.ico" type="image/x-icon">
+    <title>HOME: Shef Kerbi's Apparel</title>
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400,700&display=swap" rel="stylesheet">
+    <style>
+      #container  {
+        --gutter: 20px;
+        width: 90%;
+        margin: auto;
+        background-color: #EFEFEF;
+        padding: var(--gutter) 0;
+        display: grid;
+        grid-gap: var(--gutter) 0;
+        grid-template-columns: var(--gutter) lfr var(--gutter);
+        align-content: start;
+      }
+      #container > *  {
+        grid-column: 2 / -2;
+      }
+      #container > .full  {
+        grid-column: 1 / -1;
+      }
+      .item-showcase-wrapper  {
+        display: grid;
+        grid-gap: calc(var(--gutter) / 2);
+        grid-template-columns: repeat(6, calc(50% - var(--gutter) * 2));
+        grid-template-rows: minmax(150px, lfr);
+        overflow-x: scroll;
+        scroll-snap-type: x promimity;
+        padding-bottom: calc(.75 * var(--gutter));
+        margin-bottom: calc(-.25 * var(--gutter));
+      }
+      * {
+        text-align: center;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
+      }
+      .logo {
+        font-family: Arvo;
+        color: #CBAB00;
+        font-size: 48px;
+        font-weight: 700;
+      }
+      #separator  {
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="logo">Shef Kerbi's Apparel</h1>
+      <h2>The world's greatest online clothing store™™™</h2>
+      <div id="separator"></div>
+      <div class="item-showcase-wrapper">
+        <div>ITEM 1 esrhsdths hw hh rtdh drhdrh drh drth drh </div>
+        <div>ITEM 2</div>
+        <div>ITEM 3</div>
+        <div>ITEM 4</div>
+        <div>ITEM 5</div>
+      </div>
+    </div>
+  </body>
+</html>

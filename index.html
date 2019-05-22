@@ -60,16 +60,41 @@
       .pointer  {
         cursor: pointer;
       }
+      #recent  {
+        background-color: #DDD;
+        display: flex;
+        padding: 10px;
+      }
+      #colorlink  {
+        color: #FF9999;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.5s;
+      }
+      #colorlink:hover  {
+        color: #0000BB;
+      }
     </style>
   </head>
   <body>
     <div id="container">
     <img src="banner.png" id="bannerimg" alt="Not ethically made, EPICALLY MADE">
-    <div id="newsbanner"><span>Shef Kerbi Season III has launched! Check out all the epic new stuff now available!</span></div>
     <br>
     <a href="shefkirb/index.html" class="pointer"><img src="shefkirb/logo.png" id="linkimg"></a>
     <a href="clothingstore/index.html" class="pointer"><img src="banner2.png" id="linkimg"></a>
-    <h2>The Shef Werld Gang</h2>
+    <h2 style="color: #FFF;">What's Happening</h2>
+
+    <div id="recent" style="background-color: #42f465; border: 3px solid #268e3b;">
+      <p style="margin: auto;"><span style="font-size: 32px; font-weight: 700;">Shef Kerbi Season III is now live!</span><br><br>New website, a merch "store" and new projects being planned!</p>
+    </div>
+    <br>
+    <div id="recent">
+      <a href="https://scratch.mit.edu/projects/310454880/" class="pointer"><img src="springerthumb.png"  style="display: block; width: 50%;"></a>
+      <p><span style="font-size: 32px; font-weight: 700;">Springer</span><br><br>Jerry Springer and Jeremy Kyle visit Shef Kerbi and the boys to have a quiz that goes horribly wrong.<br><a href="https://scratch.mit.edu/projects/310454880/" id="colorlink">Stream Now</a></p>
+    </div>
+
+    <h2 style="color: #FFF;">The Shef Werld Gang</h2>
     <div id="theboys">
       <div class="memberbox">
         <h3>Shef Werld Executives</h3>

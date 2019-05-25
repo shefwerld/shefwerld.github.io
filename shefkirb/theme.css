@@ -36,6 +36,7 @@ width: 60%;
 margin: auto;
 background-color: #BBBBBB;
 border-style: dashed;
+padding: 8px;
 }
 .rightimg {
 float: right;

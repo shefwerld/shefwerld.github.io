@@ -28,7 +28,32 @@
         background-color: #EFEFEF;
       }
       .item-showcase-wrapper  {
-        /* idk */
+        display: flex;
+        overflow-x: auto;
+        background-color: #FFF;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar {
+        width: 1px;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar-thumb {
+        background: #eede99;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #cbab00;
+      }
+      .item-showcase-wrapper div  {
+        margin-right: 20px;
+        width: 200%;
+      }
+      .item-showcase-wrapper div img  {
+        width: 800px;
+      }
+      .item-showcase-wrapper div img:hover  {
+        animation: filter 2.2s infinite;
+      }
+      @keyframes filter {
+        0%, 100% {filter: brightness(100%);}
+        50% {filter: brightness(90%);}
       }
       * {
         text-align: center;
@@ -55,10 +80,10 @@
       }
       .img3 {background-image: url("banner3.png");}
       @keyframes collection1 {
-        0%, 100%  {color: #000000; transform: rotate(0deg);}
-        25%  {color: #880000; transform: rotate(-5deg);}
-        50%  {color: #CC00CC; transform: rotate(0deg);}
-        75%  {color: #000088; transform: rotate(5deg);}
+        0%, 100%  {color: #000000; transform: rotate(0deg) translate(5px);}
+        25%  {color: #880000; transform: rotate(-5deg) translate(0px);}
+        50%  {color: #CC00CC; transform: rotate(0deg) translate(-5px);}
+        75%  {color: #000088; transform: rotate(5deg) translate(0px);}
       }
       #Collection1  {
         font-size: 64px;
@@ -75,22 +100,20 @@
       <div id="separator"></div>
       <h1 class="logo">Shef Kerbi's Apparel</h1>
       <h2>The world's greatest online clothing store™™™™™™™</h2>
-      <div class="banner-image img3"></div>
-      <h1 id="Collection1">Collection 1: <br>Releasing June 1st</h1>
       <p><a href="../index.html" style="color: #FF9999;"><< Back to Shef Werld</a></p>
-      <p style="font-weight: 700;"><span style="color: #FF0000;">DISCLAIMER:</span> This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</p>
+      <h1 id="Collection1">Shef Kerbi's Apparel <br> Collection 1</h1>
       <div id="separator"></div>
-      <div id="separator"></div>
-      <!--
       <div id="separator"></div>
       <div class="item-showcase-wrapper">
-        <div>ITEM 1 esrhsdths hw hh rtdh drhdrh drh drth drh </div>
-        <div>ITEM 2</div>
-        <div>ITEM 3</div>
-        <div>ITEM 4</div>
-        <div>ITEM 5</div>
+        <div><a href="clothes/shirt1.html"><img src="clothes/shirt1.png"></a></div>
+        <div><a href="clothes/shirt2.html"><img src="clothes/shirt2.png"></a></div>
+        <div><a href="clothes/shirt3.html"><img src="clothes/shirt3.png"></a></div>
+        <div><a href="clothes/shirt4.html"><img src="clothes/shirt4.png"></a></div>
+        <div><a href="clothes/shirt5.html"><img src="clothes/shirt5.png"></a></div>
+        <div><a href="clothes/chefhat.html"><img src="clothes/chefhat.png"></a></div>
+        <div><a href="clothes/chair.html"><img src="clothes/chair.png"></a></div>
       </div>
-    -->
+      <p style="font-weight: 700;"><span style="color: #FF0000;">DISCLAIMER:</span> This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</p>
     </div>
   </body>
 </html>

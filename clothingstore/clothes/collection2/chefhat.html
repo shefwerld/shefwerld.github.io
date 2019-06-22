@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../../shefkirb/kerb.ico" type="image/x-icon">
+    <title>HOME: Shef Kerbi's Apparel</title>
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
+    <style>
+    body  {
+      height: 100%;
+      margin: 0px;
+      padding: auto;
+    }
+      #background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -999;
+      }
+      #container  {
+        width: 90%;
+        margin: auto;
+        height: 100%;
+        overflow-y: scroll;
+        background-color: #EFEFEF;
+      }
+      .item-showcase-wrapper  {
+        display: flex;
+        overflow-x: auto;
+        background-color: #FFF;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar {
+        width: 1px;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar-thumb {
+        background: #eede99;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #cbab00;
+      }
+      .item-showcase-wrapper div  {
+        margin-right: 20px;
+        width: 200%;
+      }
+      .item-showcase-wrapper div img  {
+        width: 800px;
+      }
+      .item-showcase-wrapper div img:hover  {
+        animation: filter 2.2s infinite;
+      }
+      @keyframes filter {
+        0%, 100% {filter: brightness(100%);}
+        50% {filter: brightness(90%);}
+      }
+      * {
+        text-align: center;
+        font-family: "Comic Sans MS", 'Comic Sans', sans-serif;
+      }
+      .logo {
+        font-family: "Arvo", serif;
+        color: #CBAB00;
+        font-size: 48px;
+        font-weight: 700;
+        transition: color 1s;
+      }
+      .logo:hover {
+        color: #967600;
+      }
+      #separator  {
+        margin: auto;
+      }
+      .banner-image {
+        height: 580px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .img3 {background-image: url("banner3.png");}
+      @keyframes collection1 {
+        0%, 100%  {color: #000000; transform: rotate(0deg) translate(5px);}
+        25%  {color: #880000; transform: rotate(-5deg) translate(0px);}
+        50%  {color: #CC00CC; transform: rotate(0deg) translate(-5px);}
+        75%  {color: #000088; transform: rotate(5deg) translate(0px);}
+      }
+      #Collection1  {
+        font-size: 64px;
+        animation: collection1 4s infinite;
+      }
+      #anesthetic {
+        color: inherit;
+        transition: color 0.3s;
+      }
+      #anesthetic:hover {
+        color: #6666CC;
+      }
+      .shirt-container  {
+        display: inline-flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+      }
+      #shirt-preview {
+        width: 65%;
+      }
+      #shirt-info  {
+        margin: auto;
+        width: 30%;
+        font-size: 24px;
+      }
+      #pricetag   {
+        font-size: 32px;
+        font-weight: 700;
+        font-style: italic;
+      }
+      form  {
+        border: 1px solid #AAA;
+        padding: 16px 0 16px 0;
+      }
+      button  {
+        height: 32px;
+        border-radius: 10px;
+        background-color: #eede99;
+        color: #000;
+        font-weight: 700;
+        transition: background-color 0.5s;
+      }
+      button:hover  {
+        background-color: #cbab00;
+      }
+      select  {
+        height: 32px;
+      }
+      @keyframes yey {
+        0%, 100% {transform: translateY(25px);}
+        50% {transform: translateY(-25px);}
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <video autoplay muted loop src="../../bg.mp4" id="background"></video>
+      <audio autoplay loop src="../../popstar.mp3"></audio>
+      <div id="separator"></div>
+      <div id="separator"></div>
+      <div id="separator"></div>
+      <h1 class="logo">Shef Kerbi's Apparel</h1>
+      <h2>The world's greatest online clothing store™™™™™™™</h2>
+      <p><a href="../../index.html" style="color: #BBBBBB;"><< Back</a></p>
+      <h2 style="font-size: 54px; color: #FF99AA; animation: yey 1s infinite;">Shef Kerbi's™ Official™ Shef Hat™™™™™™</h2>
+      <h2>Special Item 1</h2>
+      <div id="separator"></div>
+      <div id="separator"></div>
+      <div class="shirt-container">
+        <div id="shirt-preview"><img src="chefhat.png" style="width: 100%"></div>
+        <div id="shirt-info"><span style="font-weight: 700;">Shef Kerbi's™ Official™ Shef Hat™™™™™™ - Special 1</span>
+          <br><br>
+          THE SHEF KERBI HAT IS IMMORTAL - IT WILL EXIST IN EVERY SHEF KERBI APPAREL COLLECTION FOREVER.<br> SHEF KERBI HAS PROBABLY WORN THIS ONCE BEFORE SO YOU KNOW YOUR HEAD IS PROBABLY THREE TIMES THE SIZE OF THE HAT. <br><span style="font-weight: bold; color: #FF0000;">(DISCLAIMER: THIS IS NOT THE SAME SHEF HAT THAT KAWSAKI USES OKAY???!?!?!?!?!)</span>
+          <br><br>
+          <span id="pricetag">$149.90 each</span><br>
+          <span id="pricetag" style="font-size: 16px;">~240 Ghost Dollars each</span>
+          <br><br>
+          <form action="../../purchase.html" method="get">
+            Quantity: <input type="number" placeholder="Qty" name="qty"></input>
+            <br>
+            Size:
+            <select name="size">
+              <option value="SK">Shef Kerbi Size</option>
+            </select>
+            <br>
+            Shipping Method:<br>
+            <input type="radio" name="shipping" value="minute"><span style="font-size: 14px;"> Same Minute Shipping</span><br>
+            <input type="radio" name="shipping" value="second"><span style="font-size: 14px;"> Same Second Shipping</span><br>
+            <input type="radio" name="shipping" value="predict"><span style="font-size: 14px;">Predictive Shipping (experimental)</span><br>
+            <a href="../../shipping.html" style="font-size: 14px; color: #DD9999;">Our Shipping Policy</a><br>
+            Purchasing Currency:
+            <select name="currency">
+              <option value="SD">shef dollars</option>
+              <option value="GD">ghost Dollars</option>
+              <option value="SC">star coins</option>
+            </select>
+            <br><br>
+            <button type="Submit" value="Submit">Purchase</button>
+          </form>
+        </div>
+      </div>
+      <p style="font-weight: 700;"><span style="color: #FF0000;">DISCLAIMER:</span> This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</p>
+    </div>
+  </body>
+</html>

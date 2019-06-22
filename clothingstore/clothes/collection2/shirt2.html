@@ -25,7 +25,7 @@
         margin: auto;
         height: 100%;
         overflow-y: scroll;
-        background-color: #EFEFEF;
+        background-color: #222;
       }
       .item-showcase-wrapper  {
         display: flex;
@@ -58,6 +58,7 @@
       * {
         text-align: center;
         font-family: "Montserrat", sans-serif;
+        color: #DDD;
       }
       .logo {
         font-family: "Arvo", serif;
@@ -89,12 +90,12 @@
         font-size: 64px;
         animation: collection1 4s infinite;
       }
-      #anesthetic {
+      #BREATHTAKING {
         color: inherit;
         transition: color 0.3s;
       }
-      #anesthetic:hover {
-        color: #6666CC;
+      #BREATHTAKING:hover {
+        color: #999999;
       }
       .shirt-container  {
         display: inline-flex;
@@ -117,6 +118,7 @@
       form  {
         border: 1px solid #AAA;
         padding: 16px 0 16px 0;
+        font-size: 20px;
       }
       button  {
         height: 32px;
@@ -129,24 +131,68 @@
       button:hover  {
         background-color: #cbab00;
       }
-      select  {
-        height: 32px;
+      select, input  {
+        height: 24px;
+        color: #000;
+        font-weight: bold;
       }
     </style>
   </head>
   <body>
     <div id="container">
-      <video autoplay muted loop src="../bg.mp4" id="background"></video>
-      <audio autoplay loop src="../otis.mp3"></audio>
+      <video autoplay muted loop src="../../bg.mp4" id="background"></video>
+      <audio autoplay loop src="../../splashing.mp3"></audio>
       <div id="separator"></div>
       <div id="separator"></div>
       <div id="separator"></div>
       <h1 class="logo">Shef Kerbi's Apparel</h1>
       <h2>The world's greatest online clothing store™™™™™™™</h2>
-      <p><a href="../index.html" style="color: #BBBBBB;"><< Back</a></p>
-      <div style="height: 200px;"></div>
-      <h2 style="font-size: 44px; " id="Collection1">Congratulations you bought your item lol. <br>Thanks, very cool</h2>
-      <div style="height: 200px;"></div>
+      <p><a href="../../index.html" style="color: #BBBBBB;"><< Back</a></p>
+      <h2 style="font-size: 54px; font-family:'Calibri', sans-serif;">Reali Stick Figure Shirt</h2>
+      <h2>Shirt 2</h2>
+      <div id="separator"></div>
+      <div id="separator"></div>
+      <div class="shirt-container">
+        <div id="shirt-preview"><img src="shirt2.png" style="width: 100%; background-color: #EEE;"></div>
+        <div id="shirt-info"><span style="font-weight: 700;">Reali Stick Figure Shirt - Shirt 2</span>
+          <br><br>
+          Ever wanted to wear a shirt showing off your admiration to your favorite comic writer? Is your favorite comic writer Reali? Well then this shirt is for you! It features a stick figure on it, one of Reali's most common features in his comics. This beautiful shirt can be yours for only $39.99! (Payment for Shipping/Handling required. Must be 18 or older to order.)
+          <br><br>
+          <span id="pricetag">$39.99! each</span>
+          <p style="font-size: 16px;"><span style="font-weight: bold; color: #FF0000;">Disclaimer:</span> That ! is actually a factorial: The real cost of this shirt is $7.86268621×10<span style="vertical-align: super; font-size: 50%;">47</span> each.</p>
+          <br>
+          <span id="pricetag" style="font-size: 16px;">~1.5725724x10<span style="vertical-align: super; font-size: 50%;">48</span> Ghost Dollars each</span>
+          <br><br>
+          <form action="../../purchase.html" method="get">
+            Quantity: <input type="number" placeholder="Qty" name="qty"></input>
+            <br>
+            Size:
+            <select name="size">
+              <option value="S">Small</option>
+              <option value="M">Medium</option>
+              <option value="XM">Extra Medium</option>
+              <option value="2XM">Extra Extra Medium</option>
+              <option value="3XM">Extra Extra Extra Medium</option>
+              <option value="4XM">Extra Extra Extra Extra Medium</option>
+              <option value="P">Auto (our servers determine the size of your shirt)</option>
+            </select>
+            <br>
+            Shipping Method:<br>
+            <input type="radio" name="shipping" value="minute"><span style="font-size: 14px;"> Same Minute Shipping</span><br>
+            <input type="radio" name="shipping" value="second"><span style="font-size: 14px;"> Same Second Shipping</span><br>
+            <input type="radio" name="shipping" value="predict"><span style="font-size: 14px;">Predictive Shipping (experimental)</span><br>
+            <a href="../../shipping.html" style="font-size: 14px; color: #DD9999;">Our Shipping Policy</a><br>
+            Purchasing Currency:
+            <select name="currency">
+              <option value="SD">shef dollars</option>
+              <option value="GD">ghost Dollars</option>
+              <option value="SC">star coins</option>
+            </select>
+            <br><br>
+            <button type="Submit" value="Submit">Purchase</button>
+          </form>
+        </div>
+      </div>
       <p style="font-weight: 700;"><span style="color: #FF0000;">DISCLAIMER:</span> This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</p>
     </div>
   </body>

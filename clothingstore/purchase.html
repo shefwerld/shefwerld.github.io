@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../shefkirb/kerb.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../shefkirb/kerb.ico" type="image/x-icon">
     <title>HOME: Shef Kerbi's Apparel</title>
     <link href="https://fonts.googleapis.com/css?family=Arvo:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
@@ -11,7 +11,6 @@
       height: 100%;
       margin: 0px;
       padding: auto;
-      background-color: #111;
     }
       #background {
         position: fixed;
@@ -80,44 +79,75 @@
         background-repeat: no-repeat;
         background-size: cover;
       }
-      @keyframes collection2 {
+      .img3 {background-image: url("banner3.png");}
+      @keyframes collection1 {
         0%, 100%  { transform: rotate(0deg) translate(8px) scaleX(1);}
         25%  { transform: rotate(-8deg) translate(0px) scaleX(1.1);}
         50%  { transform: rotate(0deg) translate(-8px) scaleX(1.2);}
         75%  { transform: rotate(8deg) translate(0px) scaleX(1.1);}
       }
-      #Collection2  {
+      #Collection1  {
         font-size: 64px;
-        animation: collection2 4s infinite;
+        animation: collection1 4s infinite;
+      }
+      #anesthetic {
+        color: inherit;
+        transition: color 0.3s;
+      }
+      #anesthetic:hover {
+        color: #6666CC;
+      }
+      .shirt-container  {
+        display: inline-flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+      }
+      #shirt-preview {
+        width: 65%;
+      }
+      #shirt-info  {
+        margin: auto;
+        width: 30%;
+        font-size: 24px;
+      }
+      #pricetag   {
+        font-size: 32px;
+        font-weight: 700;
+        font-style: italic;
+      }
+      form  {
+        border: 1px solid #AAA;
+        padding: 16px 0 16px 0;
+      }
+      button  {
+        height: 32px;
+        border-radius: 10px;
+        background-color: #eede99;
+        color: #000;
+        font-weight: 700;
+        transition: background-color 0.5s;
+      }
+      button:hover  {
+        background-color: #cbab00;
+      }
+      select  {
+        height: 32px;
       }
     </style>
   </head>
   <body>
     <div id="container">
       <video autoplay muted loop src="bg.mp4" id="background"></video>
-      <audio autoplay loop src="splashing.mp3"></audio>
+      <audio autoplay loop src="otis.mp3"></audio>
       <div id="separator"></div>
       <div id="separator"></div>
       <div id="separator"></div>
       <h1 class="logo">Shef Kerbi's Apparel</h1>
-      <img src="indexbanner.png" style="width: 50%;">
-      <p><a href="../index.html" style="color: #FF9999;"><< Back to Shef Werld</a></p>
-      <h2>The world's greatest (and probably only) online clothing store™™™™™™™</h2>
-      <br><br>
-      <p style="font-size: 64px; color: #AA00CC; font-family: 'Times New Roman', 'Times', serif;" id="Collection2">Collection 2</p>
-      <br><br>
-      <p style="font-size: 22px;">Buy our epic shirts<br><span style="font-style: italic;"><a href="shipping.html">"we use amazon prime same second shipping just look at the picture of the shirt and now you got the shirt"</a></span></p>
-      <br><br>
-      <div class="item-showcase-wrapper">
-        <div><a href="clothes/collection2/shirt1.html"><img src="clothes/collection2/shirt.png"></a></div>
-        <div><a href="clothes/collection2/shirt2.html"><img src="clothes/collection2/shirt2.png"></a></div>
-        <div><a href="clothes/collection2/shirt3.html"><img src="clothes/collection2/shirt3.png"></a></div>
-        <div><a href="clothes/collection2/chefhat.html"><img src="clothes/collection2/chefhat.png"></a></div>
-        <div><a href="clothes/collection2/shoe.html"><img src="clothes/collection2/shoe.png"></a></div>
-      </div>
-      <br><br>
-      <p style="font-size: 24px;">Stay tuned for new information, and potentially new merch releasing during the Collection</p>
-      <br><br>
+      <h2>The world's greatest online clothing store™™™™™™™</h2>
+      <p><a href="index.html" style="color: #BBBBBB;"><< Back</a></p>
+      <div style="height: 200px;"></div>
+      <h2 style="font-size: 44px; color: #AA00CC;" id="Collection1">Congratulations you bought your item lol. <br>Thanks, very cool</h2>
+      <div style="height: 200px;"></div>
       <p style="font-weight: 700;"><span style="color: #FF0000;">DISCLAIMER:</span> This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</p>
     </div>
   </body>

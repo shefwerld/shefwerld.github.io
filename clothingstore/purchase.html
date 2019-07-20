@@ -81,14 +81,12 @@
       }
       .img3 {background-image: url("banner3.png");}
       @keyframes collection1 {
-        0%, 100%  { transform: rotate(0deg) translate(8px) scaleX(1);}
-        25%  { transform: rotate(-8deg) translate(0px) scaleX(1.1);}
-        50%  { transform: rotate(0deg) translate(-8px) scaleX(1.2);}
-        75%  { transform: rotate(8deg) translate(0px) scaleX(1.1);}
+        0%  { transform: rotateY(0deg);}
+        100%  { transform: rotateY(180deg);}
       }
       #Collection1  {
         font-size: 64px;
-        animation: collection1 4s infinite;
+        animation: collection1 0.75s linear alternate infinite;
       }
       #anesthetic {
         color: inherit;
@@ -133,6 +131,13 @@
       select  {
         height: 32px;
       }
+      .logo:hover {
+        animation: logospin 0.75s linear alternate infinite;
+      }
+      @keyframes logospin {
+        0%  { transform: rotateY(0deg);}
+        100%  { transform: rotateY(180deg);}
+      }
     </style>
   </head>
   <body>
@@ -143,10 +148,11 @@
       <div id="separator"></div>
       <div id="separator"></div>
       <h1 class="logo">Shef Kerbi's Apparel</h1>
-      <h2>The world's greatest online clothing store™™™™™™™</h2>
+      <h2>The world's greatest (and definetly only) online clothing store™™™™™™™</h2>
       <p><a href="index.html" style="color: #BBBBBB;"><< Back</a></p>
       <div style="height: 200px;"></div>
-      <h2 style="font-size: 44px; color: #AA00CC;" id="Collection1">Congratulations you bought your item lol. <br>Thanks, very cool</h2>
+      <h2 style="font-size: 44px; color: #AA00CC; font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;" id="Collection1">Congratulations you bought your item lol. <br>Thanks, very cool</h2>
+      <h2>Your item should've already arrived at your door now.</h2>
       <div style="height: 200px;"></div>
       <p style="font-weight: 700;"><span style="color: #FF0000;">DISCLAIMER:</span> This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</p>
     </div>

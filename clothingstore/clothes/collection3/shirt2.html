@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../../../shefkirb/kerb.ico" type="image/x-icon">
+    <title>HOME: Shef Kerbi's Apparel</title>
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
+    <style>
+    body  {
+      height: 100%;
+      margin: 0px;
+      padding: auto;
+    }
+      #background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -999;
+      }
+      #container  {
+        width: 90%;
+        margin: auto;
+        height: 100%;
+        overflow-y: scroll;
+        background-color: #222;
+      }
+      .item-showcase-wrapper  {
+        display: flex;
+        overflow-x: auto;
+        background-color: #FFF;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar {
+        width: 1px;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar-thumb {
+        background: #eede99;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #cbab00;
+      }
+      .item-showcase-wrapper div  {
+        margin-right: 20px;
+        width: 200%;
+      }
+      .item-showcase-wrapper div img  {
+        width: 800px;
+      }
+      .item-showcase-wrapper div img:hover  {
+        animation: filter 2.2s infinite;
+      }
+      @keyframes filter {
+        0%, 100% {filter: brightness(100%);}
+        50% {filter: brightness(90%);}
+      }
+      * {
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        color: #DDD;
+      }
+      .logo {
+        font-family: "Arvo", serif;
+        color: #CBAB00;
+        font-size: 48px;
+        font-weight: 700;
+        transition: color 1s;
+      }
+      .logo:hover {
+        color: #967600;
+      }
+      #separator  {
+        margin: auto;
+      }
+      .banner-image {
+        height: 580px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .img3 {background-image: url("banner3.png");}
+      @keyframes collection1 {
+        0%, 100%  {color: #000000; transform: rotate(0deg) translate(5px);}
+        25%  {color: #880000; transform: rotate(-5deg) translate(0px);}
+        50%  {color: #CC00CC; transform: rotate(0deg) translate(-5px);}
+        75%  {color: #000088; transform: rotate(5deg) translate(0px);}
+      }
+      #Collection1  {
+        font-size: 64px;
+        animation: collection1 4s infinite;
+      }
+      .shirt-container  {
+        display: inline-flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+      }
+      #shirt-preview {
+        width: 65%;
+      }
+      #shirt-info  {
+        margin: auto;
+        width: 30%;
+        font-size: 24px;
+      }
+      #pricetag   {
+        font-size: 32px;
+        font-weight: 700;
+        font-style: italic;
+      }
+      form  {
+        border: 1px solid #AAA;
+        padding: 16px 0 16px 0;
+        font-size: 20px;
+      }
+      button  {
+        height: 32px;
+        border-radius: 10px;
+        background-color: #eede99;
+        color: #000;
+        font-weight: 700;
+        transition: background-color 0.5s;
+      }
+      button:hover  {
+        background-color: #cbab00;
+      }
+      select, input  {
+        height: 24px;
+        color: #000;
+        font-weight: bold;
+      }
+      .logo:hover {
+        animation: logospin 1s linear alternate infinite;
+      }
+      @keyframes logospin {
+        0%  { transform: rotateY(0deg);}
+        100%  { transform: rotateY(180deg);}
+      }
+      #globe  {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      textarea  {
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <video autoplay muted loop src="../../bg.mp4" id="background"></video>
+      <audio autoplay loop src="../../crank.wav"></audio>
+      <div id="separator"></div>
+      <div id="separator"></div>
+      <div id="separator"></div>
+      <h1 class="logo">Shef Kerbi's Apparel</h1>
+      <h2>The world's greatest (and definetly only) online clothing store™™™™™™™</h2>
+      <p><a href="../../index.html" style="color: #BBBBBB;"><< Back</a></p>
+      <h2 style="font-size: 54px;">👏ANIMATED SHIRT👏</h2>
+      <h2>Shirt 2</h2>
+      <div id="separator"></div>
+      <div id="separator"></div>
+      <div class="shirt-container">
+        <div id="shirt-preview"><a href="shirt2.gif"><img src="shirt2.gif" style="width: 100%"></a></div>
+        <div id="shirt-info"><span style="font-weight: 700;">ANIMATED SHIRT - Shirt 2</span>
+          <br><br>
+          Shef Werld has once again broken all the laws of reality and invented a way to embed animation into fabric. When asked on how this achievement was possible, Shef Kerbi said:<br>
+          <img src="../../../shefkirb/news/media/u1HbEP0.gif" style="background-color: #FFF;">
+          <br><br>
+          <span id="pricetag">$89.90 each</span>
+          <br>
+          <span id="pricetag" style="font-size: 16px;">~165 Ghost Dollars each</span><br>
+          <span id="pricetag" style="font-size: 16px;">⭐450 each</span>
+          <br><br>
+          <form action="../../purchase.html" method="get">
+            Quantity: <input type="number" placeholder="Qty" name="qty"></input>
+            <br>
+            Size:
+            <select name="size">
+              <option value="P">Auto (our servers determine the size of your shirt)</option>
+              <option value="S">Small</option>
+              <option value="M">Medium</option>
+              <option value="XM">Extra Medium</option>
+              <option value="2XM">Extra Extra Medium</option>
+              <option value="3XM">Extra Extra Extra Medium</option>
+              <option value="4XM">Extra Extra Extra Extra Medium</option>
+            </select>
+            <br>
+            Shipping Method:<br>
+            <input type="radio" name="shipping" value="second"><span style="font-size: 14px;"> Same Second Shipping</span><br>
+            <input type="radio" name="shipping" value="predict"><span style="font-size: 14px;"> Predictive Shipping</span><br>
+            <input type="radio" name="shipping" value="verypredict"><span style="font-size: 14px;"> VERY Predictive Shipping</span><br>
+            <a href="../../shipping.html" style="font-size: 14px; color: #DD9999;">Our Shipping Policy</a><br>
+            Purchasing Currency:
+            <select name="currency">
+              <option value="SD">shef dollars</option>
+              <option value="GD">ghost dollars</option>
+              <option value="SC">star coins</option>
+            </select><br>
+            <input type="checkbox" name="material" value="3dmaterial"><span style="font-size: 14px;"> 3D Print Shirt?</span>
+            <br>
+            <input type="checkbox" name="letter" value="letter"><span style="font-size: 14px;"> Provide a Personalised Letter? (+$10.00)</span><br>
+            Personalised Letter:<br>
+            <textarea rows="3" style="width: 90%; resize: none;"></textarea>
+            <br><br>
+            <button type="Submit" value="Submit">Purchase</button>
+          </form>
+        </div>
+      </div>
+      <p style="font-weight: 700;"><span style="color: #FF0000;">DISCLAIMER:</span> This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</p>
+    </div>
+  </body>
+</html>

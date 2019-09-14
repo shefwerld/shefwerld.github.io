@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Candy Sadness</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<style>
+body {
+	background-color: #DDD;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+#maintab {
+	width: 100%;
+	background-color: #BBB;
+	padding: 5px;
+	border-radius: 10px;
+}
+#invisiblecontainer {
+	width: 1000px;
+	margin: auto;
+}
+h1 {
+	font-weight: normal;
+}
+p {
+	display: inline-block;
+	margin: 0;
+}
+button {
+	border: 1px solid #999;
+	background-color: #DDD;
+	height: 20px;
+	border-radius: 5px;
+}
+button:hover {
+	background-color: #CCC;
+}
+input {
+	width: 75%;
+	border-radius: 5px;
+	border: 1px solid #999;
+}
+#footerflex li {
+  flex-direction: column;
+  text-decoration: none;
+  list-style: none;
+  /* background-color: #FF0000; */ /* testing */
+  margin: 0 25px 5px 25px;
+}
+#footerflex {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+}
+.footer {
+  width: 100%;
+  margin: auto;
+}
+#shefwerldtext  {
+  color: #FF5555; 
+  text-decoration: none;
+  transition: color 0.25s;
+  font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
+}
+#shefwerldtext:hover  {
+  color: #770000;
+}
+</style>
+</head>
+<body>
+
+<div id="invisiblecontainer">
+
+<a href="index.html"><img src="logo.png" width="444px" /></a><br />
+<br /><br />
+
+<div id="maintab">
+
+<button style="width:4%; float:right;" onclick="window.location.replace((window.location.href.split('?')[0]) + '?p=' + document.getElementById('skipcomicnum').value);">Go</button>
+<input type="number" id="skipcomicnum" style="width:10%; float:right;" min="1" />
+
+<div id="comiccontainer" style="display: none;">
+
+<h1 id="comictitledisplay"></h1>
+
+<a id="firstbutton" href="?p=1"><img src="doublearrow.png" style="-webkit-transform: scaleX(-1);transform: scaleX(-1); margin-right:15px;" /></a>
+<a id="backbutton"><img src="arrow.png" style="-webkit-transform: scaleX(-1);transform: scaleX(-1); margin-right:15px;" /></a>
+<a id="randombutton"><img src="random.png" style="margin-right:15px;" /></a>
+<a id="forwardbutton"><img src="arrow.png" style="margin-right:15px;" /></a>
+<a id="latestbutton"><img src="doublearrow.png" /></a><br /><br />
+
+<image id="comicdisplay" title="I wrote rollover text for every strip but then I realized how little I had to add to them."><br /><br />
+
+<p>Link to this page:</p>
+<input id="comicurldisplay" readonly="readonly" /> <button onclick="copyToClipboard(document.getElementById('comicurldisplay').value);">Copy</button><br />
+<p>Link to this image:</p>
+<input id="comicimgurldisplay" readonly="readonly" /> <button>Copy</button><br />
+
+</div>
+
+<div id="404container" style="display: none;">
+
+<h1>404</h1>
+<p>what</p>
+
+</div>
+<div id="main" class="footer"> <!-- footer -->
+	<br>
+	<div id="footerflex">
+	  <li style="font-size: 24px; font-weight: bold; text-align: center; width: 100%;"><a href="../index.html" id="shefwerldtext">Shef Werld</a></li>
+	</div>
+	<br>
+	<div id="footerflex">
+	  <li><a href="../shefkirb/index.html">Shef Kerbi News Network</a></li>
+	  <li><a href="../clothingstore/index.html">Shef Kerbi's Apparel</a></li>
+	  <li><a href="../shefmart/index.html">Shefmart</a></li>
+	  <li><a href="../game/index.html">Shef Kerbi Game Studios</a></li><br>
+	</div>
+	<div id="footerflex">
+	  <li><a href="../about.html">About</a></li>
+	  <li><a href="../join.html">Join</a></li>
+	  <li><a href="../history.html">History</a></li>
+	</div>
+	<p class="centertext">2018 - 2019 Shef Werld & DoubleDenial (Apple the Cat)</p>
+</div>
+
+
+<script src="https://doubledenial.github.io/shefkirb/cscomiclist.js"></script>
+
+<script>
+function getQueryVariable(variable) { // stolen from css-tricks.com
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+			if (pair[0] == variable) {
+				return pair[1];
+			}
+		}
+	   return(false);
+}
+function copyToClipboard(str) { // stolen from techoverflow.net
+	var text = document.createElement('textarea');
+	text.value = str;
+	text.setAttribute('readonly', '');
+	text.style = {position: 'absolute', left: '-9999px'};
+	document.body.appendChild(text);
+	text.select();
+	document.execCommand('copy');
+	document.body.removeChild(text);
+}
+
+var id = getQueryVariable("p");
+document.getElementById("skipcomicnum").max = comicnames.length;
+if(id === false) {
+	window.location.replace(document.URL + "?p=" + comicnames.length);
+} else {
+	if (comicsrcs[id - 1] != null) {
+		document.getElementById("comiccontainer").style.display = "block";
+		document.getElementById("skipcomicnum").value = id;
+		var comicNumber = id;
+	} else {
+		document.getElementById("404container").style.display = "block";
+		document.getElementById("skipcomicnum").value = comicnames.length;
+	}
+}
+
+if (comicNumber == 1) {
+	document.getElementById("backbutton").style.display = "none";
+	document.getElementById("firstbutton").style.display = "none";
+} else if (comicNumber == comicnames.length) {
+	document.getElementById("forwardbutton").style.display = "none";
+	document.getElementById("latestbutton").style.display = "none";
+}
+
+function loadComic(number) {
+	document.getElementById("comicdisplay").src = comicsrcs[number];
+	document.getElementById("comicdisplay").alt = comicnames[number];
+	document.getElementById("comictitledisplay").innerHTML = "#" + (number + 1) + ": " + comicnames[number];
+}
+
+callComic(comicNumber);
+document.getElementById("comicurldisplay").value = document.URL.split("?")[0] + "?p=" + comicNumber;
+document.getElementById("comicimgurldisplay").value = comicsrcs[comicNumber - 1];
+document.getElementById("backbutton").href = "?p=" + (comicNumber - 1);
+document.getElementById("randombutton").href = "?p=" + (Math.floor(Math.random()*comicnames.length) + 1);
+document.getElementById("forwardbutton").href = "?p=" + (Number(comicNumber) + 1);
+document.getElementById("latestbutton").href = "?p=" + comicnames.length;
+</script>
+
+<br />
+</div><br />
+
+</div><br />
+
+</body>
+</html> 

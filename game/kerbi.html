@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <link rel="shortcut icon" href="../shefkirb/kerb.ico" type="image/x-icon">
+        <title>Kerbi - Shef Kerbi Game Studios</title>
+        <style>
+        body    {
+            background-color: #241f29;
+        }
+        .container, .footer  {
+            width: 90%;
+            margin: auto;
+            background-color: #2e0e45;
+            padding: 8px;
+        }
+        *   {
+            font-family: "Comic Sans MS", 'Comic Sans', sans-serif;
+            color: #FFF;
+        }
+        .centertext {
+            text-align: center;
+        }
+        #flex   {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .flexitem   {
+            border: 2px solid #FFFFFF;
+            background-color: #000000;
+            border-radius: 2px;
+            margin: auto;
+            padding: 12px;
+        }
+        #small {
+            flex-shrink: 20;
+        }
+        #large {
+            flex-grow: 2;
+        }
+        img, #inlinetext    {
+            display: inline;
+            align-self: flex-end;
+        }
+        #footerflex li {
+            flex-direction: column;
+            text-decoration: none;
+            list-style: none;
+            /* background-color: #FF0000; */ /* testing */
+            margin: 0 25px 5px 25px;
+        }
+        #footerflex {
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            margin: auto;
+        }
+        #shefwerldtext  {
+            color: #FF9999; 
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+        #shefwerldtext:hover  {
+            color: #770000;
+        }
+        #fakejsgamecontainer    {
+            display: flex;
+        }
+        #fakejsinstructions {
+            margin: 0 0 0 20px;
+            padding: 10px;
+            border: 1px solid #FFF;
+            background-color: #443344;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="centertext"><a href="index.html" style="text-decoration: none;">Shef Kerbi Game Studios</a></h1>
+            <br>
+            <h2 class="centertext">Kerbi (Original)</h2>
+            <br>
+            <div id="fakejsgamecontainer">
+                <div id="fakejsgamestage"><iframe src="https://scratch.mit.edu/projects/245545238/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe></div>
+                <div id="fakejsinstructions"><span style="font-weight: bold; font-size: 16px;">Instructions</span><br>
+                    <span style="font-style: italic;">(Instructions taken from original Kerbi project page from September 11th, 2018.)</span><br><br>
+                    Shef Kerbi and the boys whipping up the best gain of the centruy<br><br>
+
+                        WASD or Arrow Keys to move<br>
+                        Z to suck<br><br>
+                        
+                        Suck up kawsakis (orange bakas)<br>
+                        But not gordon (spiky things)<br>
+                        fite dddd after 20 scores and win</div>
+            </div>
+        </div>
+        <br>
+        <div id="main" class="footer"> <!-- footer -->
+            <br>
+            <div id="footerflex">
+              <li style="font-size: 24px; font-weight: bold; text-align: center; width: 100%;"><a href="../index.html" id="shefwerldtext">Shef Werld</a></li>
+            </div>
+            <br>
+            <div id="footerflex">
+              <li><a href="../shefkirb/index.html">Shef Kerbi News Network</a></li>
+              <li><a href="../clothingstore/index.html">Shef Kerbi's Apparel</a></li>
+              <li><a href="../shefmart/index.html">Shefmart</a></li>
+              <li><a href="../game/index.html">Shef Kerbi Game Studios</a></li><br>
+              <li><a href="../candysadness/index.html">Candy Sadness</a></li><br>
+            </div>
+            <div id="footerflex">
+              <li><a href="../about.html">About</a></li>
+              <li><a href="../history.html">History</a></li>
+              <li><a href="../status.html">Server Status</a></li>
+            </div>
+            <p class="centertext">2018 - 2019 Shef Werld</p>
+          </div>
+    </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <link rel="shortcut icon" href="../shefkirb/kerb.ico" type="image/x-icon">
+        <title>Shef Kerbi Game Studios</title>
+        <style>
+        body    {
+            background-color: #241f29;
+        }
+        .container, .footer  {
+            width: 90%;
+            margin: auto;
+            background-color: #2e0e45;
+            padding: 8px;
+        }
+        *   {
+            font-family: "Comic Sans MS", 'Comic Sans', sans-serif;
+            color: #FFF;
+        }
+        .centertext {
+            text-align: center;
+        }
+        #flex   {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        #flexcenter {
+            margin: auto;
+            width: 80%;
+        }
+        .flexitem   {
+            border: 2px solid #FFFFFF;
+            background-color: #000000;
+            border-radius: 2px;
+            margin: 10px 0 10px 0;
+            padding: 12px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #small {
+            flex-shrink: 20;
+        }
+        #large {
+            flex-grow: 2;
+        }
+        img, #inlinetext    {
+            display: inline;
+            align-self: flex-end;
+        }
+        #footerflex li {
+            flex-direction: column;
+            text-decoration: none;
+            list-style: none;
+            /* background-color: #FF0000; */ /* testing */
+            margin: 0 25px 5px 25px;
+        }
+        #footerflex {
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            margin: auto;
+        }
+        #shefwerldtext  {
+            color: #FF9999; 
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+        #shefwerldtext:hover  {
+            color: #770000;
+        }
+        #inlinetext {
+            width: 50%;
+            margin: 0 0 0 10px;
+            align-self: center;
+        } 
+        #gameplatform   {
+            width: 40%;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="centertext">Shef Kerbi Game Studios</h1>
+            <br>
+            <h2 class="centertext">Work in Progress Games:</h2>
+            <div id="flex">
+                <div id="flexcenter">
+                    <div class="flexitem" id="small">
+                        <img src="src/applehourjs.jpg" style="width: 30%;"><br>
+                        <h2 id="inlinetext">Shef Kerbi in Apple Hour (JS)</h2>
+                        <span id="gameplatform">Platform - real Javascript</span>
+                        <p>A rewrite of Shef Kerbi in Apple Hour to use Javascript instead due to waning support for Adobe Flash by everyone.</p>
+                        <br><span style="font-style: italic">Planned Release Date: ???</span>
+                    </div>
+                    <div class="flexitem" id="small">
+                        <img src="src/applehourwin.jpg" style="width: 30%;"><br>
+                        <h2 id="inlinetext">Shef Kerbi in Apple Hour (exe)</h2>
+                        <span id="gameplatform">Platform - Windows application</span>
+                        <p>The original Shef Kerbi in Apple Hour compiled into a Windows application so you can enjoy Apple Hour even without an internet connection!</p>
+                        <br><span style="font-style: italic">Planned Release Date: September 2019</span>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h2 class="centertext">Released Games</h2>
+            <br>
+            <div id="flex">
+                <div id="flexcenter">
+                    <div class="flexitem">
+                        <img src="src/applehour.png" style="width: 30%;"><br>
+                        <h2 id="inlinetext"><a href="applehour.html">Shef Kerbi in Apple Hour (Original)</a></h2>
+                        <span id="gameplatform">Platform - Flash</span><br>
+                        <p>It's Apple Hour for Shef Kerbi and he needs to consume some sweet, nutritious apples. However, he is being blocked by the ｄｉｒｔｙ ｃｌｏｃｋ that will pull twister on his lungs</p>
+                    </div>
+                    <div class="flexitem">
+                        <img src="src/kerbi1.png" style="width: 30%;"><br>
+                        <h2 id="inlinetext"><a href="kerbi.html">Kerbi (Original)</a></h2>
+                        <span id="gameplatform">Platform - "JS"</span>
+                        <p>The game that started it all! This classic introduced the world to Shef Kerbi and marked the beginning of a new age for an old account on a children's programming website.</p>
+                    </div>
+                    <div class="flexitem">
+                        <img src="src/tomnook1.png" style="width: 30%;"><br>
+                        <h2 id="inlinetext"><a href="tomnook.html">Tom Nook Simulator 2019</a></h2>
+                        <span id="gameplatform">Platform - "JS"</span><br>
+                        <p>Shef Kerbi Game Studios' April Fools joke of 2019, Tom Nook Simulator is foreshadowing for Shef Kerbi's Apparel, which released around a month later.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="main" class="footer"> <!-- footer -->
+            <br>
+            <div id="footerflex">
+              <li style="font-size: 24px; font-weight: bold; text-align: center; width: 100%;"><a href="../index.html" id="shefwerldtext">Shef Werld</a></li>
+            </div>
+            <br>
+            <div id="footerflex">
+              <li><a href="../shefkirb/index.html">Shef Kerbi News Network</a></li>
+              <li><a href="../clothingstore/index.html">Shef Kerbi's Apparel</a></li>
+              <li><a href="../shefmart/index.html">Shefmart</a></li>
+              <li><a href="../game/index.html">Shef Kerbi Game Studios</a></li><br>
+              <li><a href="../candysadness/index.html">Candy Sadness</a></li><br>
+            </div>
+            <div id="footerflex">
+              <li><a href="../about.html">About</a></li>
+              <li><a href="../history.html">History</a></li>
+              <li><a href="../status.html">Server Status</a></li>
+            </div>
+            <p class="centertext">2018 - 2019 Shef Werld</p>
+          </div>
+    </body>
+</html>

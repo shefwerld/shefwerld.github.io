@@ -30,7 +30,7 @@
 /* 27 |  28  | The SKA Hypebeast | */
 /* 28 |  29  | Metar Nite | */
 
-var characternames = ["Shef Kerbi", "Mr MemeoftheWeek", "Tom Nook", "Kawsaki", "Blayyd Nite", "Jerry Springer", "Mexican Ghost Dad", "Cynthia", "TSM_Liquid_FaZe_Ninja", "Snivy", "Apple the Cat", "Reali", "Bon Starbuckle", "John Gameman", "Carmes", "Bon's Cat", "Gernfald", "Keynsun DDDO", "CrazeePi's Disembodied Voice", "Zeke Teddy", "Tom Nook's Kids", "Wingull", "Ryk", "Diet Water Retailer", "Scratch Cat", "Isabelle", "Gardevoir", "The SKA Hypebeast", "Metar Nite", ""];
+var characternames = ["Shef Kerbi", "Mr MemeoftheWeek", "Tom Nook", "Kawsaki", "Blayyd Nite", "Jerry Springer", "MGD Taco Head Guy", "Cynthia", "TSM_Liquid_FaZe_Ninja", "Snivy", "Apple the Cat", "Reali", "Bon Starbuckle", "John Gameman", "Carmes", "Bon's Cat", "Gernfald", "Keynsun DDDO", "CrazeePi's Disembodied Voice", "Zeke Teddy", "Tom Nook's Kids", "Wingull", "Ryk", "Diet Water Retailer", "Scratch Cat", "Isabelle", "Gardevoir", "The SKA Hypebeast", "Metar Nite", ""];
 var characterexecutive = [];
 var characterdescription = ["The CEO of Shef Werld and owner of the CatsUnited account since September 2018. Is doing very epicly and keeps Shef Werld running. The servers for this website actually live in Shef Kerbi's basement and definetly not from Github",
 "CEO of Meme of the Week, as part of Shef Werld's Media Department. Meme of the Week was the first video series on the internet to review subreddits - any Reddit channel you see on Youtube copied from Meme of the Week.",

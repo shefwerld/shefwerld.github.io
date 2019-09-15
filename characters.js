@@ -56,7 +56,7 @@ var characterdescription = ["The CEO of Shef Werld and owner of the CatsUnited a
 "Brings the goods. Helped develop methods of delivering goods to SKA easier and worked with The Shef Chop before TSC was abandoned.",
 "Joined Meme of the Week after a meeting in February 2019 which was leaked into the public and uploaded onto the official Meme of the Week channel.",
 "ＢＵＹ ＤＩＥＴ ＷＡＴＥＲ",
-"The mascot of MIT Media Lab's Scratch, who our team ~~ kidnapped ~~ borrowed for use in Meme of the Week.",
+"The mascot of MIT Media Lab's Scratch, who our team <span style='text-decoration: line-through'>kidnapped</span> borrowed for use in Meme of the Week.",
 "Former employee of Shef Kerbi's Apparel, however retired after creating Collection 3 to work on other projects and to help on Shefmart",
 "Currently working for Shefmart after leaving Shef Kerbi Apparel after Season 3. 'Quality Control'",
 "Current President of Shef Kerbi's Apparel. It was created around August 2019 when some dude threw a Supreme brick into a DNA printer. Convinced Tom Nook that it would bring SKA into the right direction and honestly I don't know",

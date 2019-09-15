@@ -6,15 +6,20 @@
         permalink: /404.html
         ---
         -->
-        <title>Shef Werld Server Status</title>
+        <title>Shef Werld - 404</title>
         <link href="fontawesome/css/all.css" rel="stylesheet">
+        <link rel="shortcut icon" href="shefkirb/kerb.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&amp;display=swap" rel="stylesheet">
         <style>
             body    {
-                background-color: #FCFCFC;
-                color: #1A1A1A;
+                background-color: #1A1A1A;
+                color: #FCFCFC;
             }
-            h1,h2  {
+            h1,a  {
                 font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
+            }
+            *       {
+                font-family: 'Lato', 'Arial', sans-serif;
             }
             #container  {
                 width: 80%;
@@ -36,26 +41,31 @@
             #shefwerldlogo:hover    {
                 color: #8800cc;
             }
+            button  {
+                border-radius: 0px;
+                outline: none;
+                border: 1px solid #FCFCFC;
+                color: #FCFCFC;
+                background-color: #1A1A1A;
+                height: 24px;
+                width: 80px;
+                font-size: 16px;
+            }
+            button:focus    {
+                background-color: #FCFCFC;
+                color: #1A1A1A;
+            }
         </style>
     </head>
     <body>
         <div id="container">
             <h1><a id="shefwerldlogo">Shef Werld</a> </li></h1>
-            <span>Website currently down to prepare for conversion from Season 3 to Season 4 of Shef Werld.<br>Due to various issues with the current Shefmart site along with a lack of completion of the site, we are unable to launch Season 4 of Shef Werld at the original planned time.</span><br>
-            <span id="daterelease">Season 4 ETA:</span><br>
-            <a href="shefkirb/index.html">Shef Kerbi News Network link</a><br>
-            <a href="candysadness/index.html">Candy Sadness link</a><br>
-            <a href="game/index.html">Shef Kerbi Game Studios link</a>
-            <h2><i class="fas fa-server"></i> Server Status - <span style="color: #B6AD05;"><i class="fas fa-wrench"></i> UNDER MAINTENANCE</span></h2>
-            <li id="site">Shef Kerbi News Network - <span style="color: #00AA00;"><i class="fas fa-check"></i> OPERATING</span></li>
-            <li id="site">Shef Kerbi's Apparel - <span style="color: #B6AD05;"><i class="fas fa-wrench"></i> UNDER MAINTENANCE</span></li>
-            <li id="site">Shef Kerbi Game Studios - <span style="color: #00AA00;"><i class="fas fa-check"></i> OPERATING</span></li>
-            <li id="site">Shefmart - <span style="color: #CC0000;"><i class="fas fa-times"></i> NOT OPERATING</span></li>
-            <li id="site">Candy Sadness - <span style="color: #00AA00;"><i class="fas fa-check"></i> OPERATING</span></li>
-            <script>
-            var dateETA = new Date("September 15, 2019 06:00:00 UTC-4:00");
-            document.getElementById('daterelease').innerHTML += " " + dateETA;
-            </script>
+            <h2>HTTP - 404</h2>
+            <span>Yeah, if you've seen this, something's gone wrong.</span><br>
+            <span>Either the URL accessed was due to you typing it in wrong or because there's a mistake in the website somewhere.</span><br>
+            <span>If it is the latter, tell me. Or not, your choice. I'm going to probably make a better 404 page anyway.</span><br><br>
+            <button onclick="back();">Go Back</button><br><br>
+            <script>function back(){window.history.back();}</script>
         </div>
     </body>
 </html>

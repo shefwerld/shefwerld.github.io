@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <link rel="shortcut icon" href="../../shefkirb/kerb.ico" type="image/x-icon">
+        <title>Shefmart - Home</title>
+        <link rel="stylesheet" href="../shoptheme.css">
+        <link href="../../fontawesome/css/all.css" rel="stylesheet">
+        
+    </head>
+    <body>
+        <div id="nav">
+            <li><a href="../index.html"><img src="../shefmartlogo.png" style="height: 100px;"></a></li>
+            <li><a href="../products/index.html">Products</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="../locations.html">Locations</a></li>
+            <li onClick="showAmount();"><a><i class="fas fa-shopping-cart"></i></a> <span id="shoppingCartNumberGoods">0</span> items</li>
+        </div>
+        <div id="maincontainer">
+          <h1 style="font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; color: #e067f0; font-style: italic; font-size: 40px;">Shefmart</h1>
+          <h2>Services Page</h2>
+          <br>
+          <span>View services as currency:</span><br>
+          <button onClick="setCurrency(0);">Shef Dollars</button>
+          <button onClick="setCurrency(1);">Ghost Dollars</button>
+          <button onClick="setCurrency(2);">Star Coins</button><br>
+          <h1>List of Services</h1>
+          <div class="productitem" id="pigsoop_product">
+            <div id="productitem_title">Keynsun DDDO's Clock Cleaning Service</div>
+            <img id="productitem_displayimage" src="src/clock1.jpg">
+            <div id="productitem_description">Keynsun DDDO's clock cleaning service is the best and only clock cleaning service in Dreem Lend, operating since 2018. You can get a clock cleaned for $19.99 per clock cleaned or if you order now you get your clock cleaned for +$5! (Keynsun DDDO also cleans future clocks)<br><br>
+            <a href="gallery/clock.html">View image gallery</a></div>
+            <div id="productitem_purchase">
+              <span class="productitem_pricetag" id="productitem_price1">$19.99 per clock cleaned (+$5 if you order now)</span><br>
+              Number of Clocks: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty1"><br>
+              <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(0);">Add to Cart</button>
+            </div>
+          </div>
+          <br>
+          <div class="productitem" id="pigsoop_product">
+              <div id="productitem_title">Carmes' Web Design and Hosting</div>
+              <img id="productitem_displayimage" src="src/web1.jpg">
+              <div id="productitem_description">Need help with making a nice professional website like Shefmart™™? You can host and design a website using Carmes' Web Design and Hosting. The websites are hosted on Shef Werld's powerful and reliable servers!<sup><a href="https://xkcd.com/285/">[citation needed]<i class="fas fa-external-link-alt"></i></a></sup><br><br>
+              </div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price2">$4.99 per website hosted ($3.99 after every month)</span><br>
+                Number of Websites: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty2"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(1);">Add to Cart</button>
+              </div>
+          </div>
+          <br>
+          <div class="productitem" id="pigsoop_product">
+              <div id="productitem_title">CARDBOARD TOADSWORTH!!!</div>
+              <img id="productitem_displayimage" src="src/toad1.jpg">
+              <div id="productitem_description">Are you in trouble? Need someone to say something to defend your liberty and reputation? Cardboard Toadsworth is the thing for you!! Cardboard Toadsworth will protect you from all those annoying court cases and when people say your website sucks because you can't remove items from the shopping cart.<br><br>
+              </div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price3">$500 per Cardboard Toadsworth</span><br>
+                Number of Cardboard Toadsworths: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty3"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(2);">Add to Cart</button>
+              </div>
+          </div>
+          <br>
+          <div class="productitem" id="pigsoop_product">
+              <div id="productitem_title">Satte Farm NOT State Farm</div>
+              <img id="productitem_displayimage" src="src/satte1.jpg">
+              <div id="productitem_description">Are you in need of insurance? Well Shefmart can provide a connection for you to Satte Farm NOT State Farm. This insurance is specially designed to resist snapping, as it is run by Thanos Jr himself. For pricing on various insurance, apply for a quote to talk to a Satte Farm NOT State Farm representative.<br><br>
+              </div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price4">Apply for a Quote</span><br>
+                Number of Quotes: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty4"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(3);">Add to Cart</button>
+              </div>
+          </div>
+        </div>
+        <br>
+        <div class="footer"> <!-- footer -->
+            <br>
+            <div id="footerflex">
+              <li style="font-size: 24px; font-weight: bold; text-align: center; width: 100%;"><a href="../../index.html" id="shefwerldtext" style="font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;">Shef Werld</a></li>
+            </div>
+            <br>
+            <div id="footerflex">
+              <li><a href="../../shefkirb/index.html">Shef Kerbi News Network</a></li>
+              <li><a href="../../clothingstore/index.html">Shef Kerbi's Apparel</a></li>
+              <li><a href="../../shefmart/index.html">Shefmart</a></li>
+              <li><a href="../../game/index.html">Shef Kerbi Game Studios</a></li><br>
+              <li><a href="../../candysadness/index.html">Candy Sadness</a></li><br>
+            </div>
+            <div id="footerflex">
+              <li><a href="../../about.html">About</a></li>
+              <li><a href="../../history.html">History</a></li>
+              <li><a href="../../status.html">Server Status</a></li>
+            </div>
+            <div id="footerflex"><li>2018 - 2019 Shef Werld<br>2019 Shefmart</div>
+        </div>
+        <script>
+        var purchaseAmount = 0; 
+        var productsBought = [];
+        var currencyMultiplier = [1, 1.6, 5];
+        var currency = 0;
+        var shefDollarPrices = ["$19.99 per clock cleaned (+$5 if you order now)", "$4.99 per website hosted ($3.99 after every month)", "$500 per Cardboard Toadsworth", "Apply for a Quote"];
+        var ghostDollarPrices = ["~$31.99 per clock cleaned (+~$8 if you order now)", "~$7.99 per website hosted (~$6.40 after every month)", "~$800 per Cardboard Toadsworth", "Apply for a Quote"];
+        var starCoinPrices = ["☆99.99 per clock cleaned (+☆25 if you order now)", "☆24.99 per website hosted (☆19.99 after every month)", "☆2500 per Cardboard Toadsworth" , "Apply for a Quote"];
+        var itemToPossiblyRemove = 0;
+        var nameOfProduct = 0;
+        var showShopCart = 0;
+        function setCurrency(cash)  {
+          var currency = cash;
+          if (currency == 0)  {
+            for (i = 0; i < shefDollarPrices.length; i++){
+            document.getElementById('productitem_price' + String(i + 1)).innerHTML = shefDollarPrices[i];
+            }
+          } else if (currency == 1) {
+            for (i = 0; i < shefDollarPrices.length; i++){
+            document.getElementById('productitem_price' + String(i + 1)).innerHTML = ghostDollarPrices[i];
+            }
+          } else if (currency == 2) {
+            for (i = 0; i < shefDollarPrices.length; i++){
+            document.getElementById('productitem_price' + String(i + 1)).innerHTML = starCoinPrices[i];
+            }
+          } else  {
+            alert('what');
+          }
+        }
+          function addToCart (item) {
+            function feedStufftoMoneyMachienIGuess(countyThing, costOfTheThing, productName)  {
+            if (document.getElementById('productqty' + String(countyThing + 1)).value > 0 ) {
+                var purchaseAmountIncrease = costOfTheThing * currencyMultiplier[currency] * document.getElementById('productqty' + String(countyThing + 1)).value;
+                purchaseAmount = purchaseAmount + purchaseAmountIncrease;
+                for (i = 0; i < document.getElementById('productqty' + String(countyThing + 1)).value; i++)  {
+                  productsBought.push(productName);
+                }
+                var newContent = "<li>" + document.getElementById('productqty' + String(countyThing + 1)).value + " x " + productName + " - $" + purchaseAmountIncrease + "</li>";
+                var newDiv = document.getElementById('shoppingCartItems');
+                newDiv.insertAdjacentHTML('beforeend', newContent);
+                document.getElementById('shoppingCartNumberGoods').innerHTML = " " + productsBought.length;
+                if (Math.round(purchaseAmount) != purchaseAmount) {
+                  document.getElementById('shoppingCartTotal').innerHTML = "<span style='font-weight: bold;'>Total:</span> $" + purchaseAmount + "0 (" + productsBought.length + " items)";
+                } else  {
+                  document.getElementById('shoppingCartTotal').innerHTML = "<span style='font-weight: bold;'>Total:</span> $" + purchaseAmount + " (" + productsBought.length + " items)";
+                }
+              } else  {
+                alert("ok buddy lol");
+              }
+          }
+            if (item == 0) {
+              feedStufftoMoneyMachienIGuess(0, 25, "Keynsun DDDO Clock Cleaning Service");
+            } else if (item == 1) {
+              feedStufftoMoneyMachienIGuess(1, 5, "Carmes' Web Design and Hosting");
+            } else if (item == 2) {
+              feedStufftoMoneyMachienIGuess(2, 500, "CARDBOARD TOADSWORTH!!!");
+            } else if (item == 3) {
+              feedStufftoMoneyMachienIGuess(3, 0, "Satte Farm NOT State Farm");
+          }
+        }
+          function showAmount(){
+            if (showShopCart == 0)  {
+              showShopCart = 1;
+              document.getElementById('shoppingCart').style.display = 'block';
+            } else if (showShopCart == 1) {
+              showShopCart = 0;
+              document.getElementById('shoppingCart').style.display = 'none';
+            } else  {
+              alert('what');
+            }
+          }
+        </script>
+        <div id="shoppingCart">
+          <div id="shoppingCartWindowTitle">
+            <span style="font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; font-style: italic; color: #E067F0; font-weight: bold; font-size: 24px; margin-right: 30px;">Shefmart Shopping Cart</span>
+            <button onClick="showAmount();" style="float: right; height: 32px; font-size: 16px;">Hide</button>
+          </div>
+          <div id="shoppingCartItems">
+              Your shopping cart contains <span style="font-style: italic;">(prices in Shef Dollars)</span>: 
+            </div>
+            <div id="shoppingCartTotal">
+                <span style='font-weight: bold;'>Total:</span>
+            </div>
+            <div id="shoppingCartDeliveryMethod">
+              Purchase Method:
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartPaymentMethod1"></input><label for="shoppingCartPaymentMethod1">  Shefcard™</label></div>
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartPaymentMethod2"></input><label for="shoppingCartPaymentMethod2">  Cheque</label></div>
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartPaymentMethod3"></input><label for="shoppingCartPaymentMethod3">  Cryptocurrency</label>
+                <select id="shoppingCartCryptocurrencySelection">
+                  <option value="bitcoin">Bitcoin</option>
+                  <option value="bitcoin">Ethereum</option>
+                  <option value="bitcoin">XRP</option>
+                  <option value="bitcoin">Bitcoin SV</option>
+                  <option value="bitcoin">Dogecoin</option>
+                  <option value="bitcoin">Beenz</option>
+                  <option value="bitcoin">Schlattcoin</option>
+                </select>
+              </div>
+              Delivery Method:
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartDeliveryMethod1"></input><label for="shoppingCartDeliveryMethod1">  Same Second Shipping</label></div>
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartDeliveryMethod2"></input><label for="shoppingCartDeliveryMethod2">  Predictive Shipping</label></div>
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartDeliveryMethod3"></input><label for="shoppingCartDeliveryMethod3">  Very Predictive Shipping</label></div>
+            </div>
+            <div id="shoppingCartPurchase">
+              <button onClick="window.location.href = '../purchase.html'" id="largebutton">Purchase</button>
+            </div>
+        </div>
+        
+    </body>
+</html>

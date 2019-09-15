@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Shef Werld Server Status</title>
+        <link href="fontawesome/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&display=swap" rel="stylesheet">
+        <style>
+            body    {
+                background-color: #1A1A1A;
+                color: #E4E4E4;
+            }
+            h1,h2  {
+                font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
+            }
+            #container  {
+                width: 90%;
+                margin: auto;
+                text-align: center;
+            }
+            li, div, p  {
+                list-style: none;
+                font-family: 'Lato', 'Arial', sans-serif;
+                margin: 0 0 0 10px;
+            }
+            #site   {
+                font-weight: bold;
+                margin: 15px 0 0 10px;
+            }
+            #maintenance    {
+                font-style: italic;
+            }
+            #shefwerldlogo  {
+                color: #FF9999; text-decoration: none; transition: 0.25s color;
+            }
+            #shefwerldlogo:hover    {
+                color: #8800cc;
+            }
+            a  {
+                color: #9999DD;
+                cursor: pointer;
+                text-decoration: none;
+                font-weight: 700;
+                transition: color 0.25s;
+            }
+            a:hover  {
+                color: #8800cc;
+            }
+            #timeline   {
+                background-color: #2A2A2A;
+                width: 100%;
+                margin: auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            #timeline_event {
+                width: 40%;
+                background-color: #393939;
+                border: 5px solid #2A2A2A;
+                padding: 2px;
+            }
+            #timeline_event_date    {
+                font-weight: bold;
+                margin: 10px 0 10px 0;
+            }
+            
+            #timeline_season1line   {
+                width: 6%;
+                background-color: #FF5555;
+            }
+            #timeline_season2line   {
+                width: 6%;
+                background-color: #B09A51;
+            }
+            #timeline_season3line   {
+                width: 6%;
+                background-color: #00AA00;
+            }
+            #timeline_season4line   {
+                width: 6%;
+                background-color: #8800cc;
+            }
+            #timeline_seasonstart   {
+                width: 100%;
+                height: 100px;
+            }
+            #timeline_seasonstartline1   {
+                width: 35%;
+                background-color: #FF5555;
+                height: 100px;
+                margin: auto;
+                font-size: 26px;
+                font-weight: bold;
+            }
+            #timeline_seasonstartline2   {
+                width: 35%;
+                background-color: #B09A51;
+                height: 100px;
+                margin: auto;
+                font-size: 26px;
+                font-weight: bold;
+            }
+            #timeline_seasonstartline3   {
+                width: 35%;
+                background-color: #00AA00;
+                height: 100px;
+                margin: auto;
+                font-size: 26px;
+                font-weight: bold;
+            }
+            #timeline_seasonstartline4   {
+                width: 35%;
+                background-color: #8800cc;
+                height: 100px;
+                margin: auto;
+                font-size: 26px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1><a href="index.html" id="shefwerldlogo">Shef Werld</a> </li></h1>
+            <h2>History</h2>
+            <!--Apologies for the spaghetti code - it kinda just happened-->
+            <div id="timeline">
+                <div id="timeline_seasonstart"><div id="timeline_seasonstartline1">Season 1<br><span style="font-weight: normal; font-style: italic; font-size: 14px;">Shef Origins<br>9/11/18 - 1/2/19</span></div></div>
+                <div id="timeline_event" class="season1" style="margin-bottom: 175px;">
+                    <div id="timeline_event_date">September 11, 2018</div>
+                    <div id="timeline_event_description"><a href="https://scratch.mit.edu/projects/245545238/">Kerbi</a> is released to the public - Season 1 of Shef Werld begins, though Shef Werld didn't exist at the time.</div>
+                </div>
+                <div id="timeline_season1line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 165px;">
+                    <div id="timeline_event_date">September 22, 2018</div>
+                    <div id="timeline_event_description"><a href="shefkirb/index.html">Shef Kerbi News Network</a> established in Dreem Lend.</div>
+                </div>
+                <div id="timeline_event" class="season1" style="margin-top: -25px; margin-bottom: 225px;">
+                    <div id="timeline_event_date">September 25, 2018</div>
+                    <div id="timeline_event_description"><a href="shefkirb/news/1.html">First Shef Kerbi News Network Article published.</a></div>
+                </div>
+                <div id="timeline_season1line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 200px;">
+                    <div id="timeline_event_date">October 21, 2018</div>
+                    <div id="timeline_event_description">The Shef Kerbi News Network website, first hosted by Apple the Cat goes live.</div>
+                </div>
+                <div id="timeline_event" class="season1" style="margin-top: 160px; margin-bottom: 130px;">
+                    <div id="timeline_event_date">November 18, 2018</div>
+                    <div id="timeline_event_description">"Thing 1" sneaks out of Shef Kerbi's basement and tries to hack the universe or something idk</div>
+                </div>
+                <div id="timeline_season1line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 290px;">
+                    <div id="timeline_event_date">January 1, 2019</div>
+                    <div id="timeline_event_description">Meme of the Week releases first video, called <a href="https://scratch.mit.edu/projects/276313106/">"r/boneappletea - Reddit Review #1"</a>.</div>
+                </div>
+                <div id="timeline_seasonstart"><div id="timeline_seasonstartline2">Season 2<br><span style="font-weight: normal; font-style: italic; font-size: 14px;">Meme of the "Week"<br>1/2/19 - 5/24/19</span></div></div>
+                <div id="timeline_event" class="season1" style="margin-top: 50px; margin-bottom: 300px;">
+                   <div id="timeline_event_date">January 7, 2019</div>
+                   <div id="timeline_event_description"><a href="https://scratch.mit.edu/projects/277564578/">First Meme of the Week video</a> published, which focused on the Mafia City meme.</div>
+                </div>
+                <div id="timeline_season2line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 150px; margin-bottom: 200px;">
+                    <div id="timeline_event_date">January 31, 2019</div>
+                    <div id="timeline_event_description"><a href="https://scratch.mit.edu/projects/283401475/">Ryk joins Meme of the Week</a> in a conference call that was "accidentally" leaked.</div>
+                </div>
+                <div id="timeline_event" class="season1" style="margin-top: 0px; margin-bottom: 350px;">
+                    <div id="timeline_event_date">February 20, 2019</div>
+                    <div id="timeline_event_description">Shef Werld formally established, as companies Shef Kerbi News Network, Shef Kerbi Game Studios and Meme of the Week combine forces.</div>
+                </div>
+                <div id="timeline_season2line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 150px; margin-bottom: 200px;">
+                   <div id="timeline_event_date">March 26, 2019</div>
+                   <div id="timeline_event_description">THAT DARN BIRB DINERBLADE found entering Dreem Lend territory.</div>
+                </div>
+                
+                <div id="timeline_event" class="season1" style="margin-top: 0px; margin-bottom: 290px;">
+                    <div id="timeline_event_date">April 1, 2019</div>
+                    <div id="timeline_event_description"><a href="https://scratch.mit.edu/projects/298668492/">Tom Nook Simulator 2019</a> released</div>
+                </div>
+                <div id="timeline_season2line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 100px; margin-bottom: 240px; background-color: #2A2A2A;">
+                </div>
+                <div id="timeline_seasonstart"><div id="timeline_seasonstartline3">Season 3<br><span style="font-weight: normal; font-style: italic; font-size: 14px;">Shef Werld and some Apparel<br>5/24/19 - 9/14/19</span></div></div>
+                <div id="timeline_event" class="season1" style="margin-top: 20px;">
+                    <div id="timeline_event_date">May 24, 2019</div>
+                    <div id="timeline_event_description"><a href="https://scratch.mit.edu/projects/310454880/">Springer</a> released</div>
+                </div>
+                <div id="timeline_season3line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 20px;">
+                    <div id="timeline_event_date">May 25, 2019</div>
+                    <div id="timeline_event_description">Shef Werld website created and run under Shef Kerbi rather than Apple the Cat</div>
+                </div>
+                <div id="timeline_event" class="season1" style="margin-top: 40px; margin-bottom: 40px;">
+                    <div id="timeline_event_date">June 1, 2019</div>
+                    <div id="timeline_event_description">Shef Kerbi Apparel Collection 1 Releases</div>
+                </div>
+                <div id="timeline_season3line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 100px;">
+                    <div id="timeline_event_date">June 22, 2019</div>
+                    <div id="timeline_event_description">Shef Kerbi Apparel Collection 2 Releases</div>
+                </div>
+                <div id="timeline_event" class="season1" style="margin-top: 100px; margin-bottom: 100px;">
+                    <div id="timeline_event_date">July 5, 2019</div>
+                    <div id="timeline_event_description">The Shef Chop launches, whose assets were later dissolved into Shefmart due to a lack of success.</div>
+                </div>
+                <div id="timeline_season3line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 250px; margin-bottom: 0px;">
+                    <div id="timeline_event_date">July 20, 2019</div>
+                    <div id="timeline_event_description">Shef Kerbi Apparel Collection 3</div>
+                </div>
+                <div id="timeline_event" class="season1" style="margin-top: 0px; margin-bottom: 300px;">
+                    <div id="timeline_event_date">July 30, 2019</div>
+                    <div id="timeline_event_description">Opposum Box man sued by PETA</div>
+                </div>
+                <div id="timeline_season3line"></div>
+                <div id="timeline_event" class="season1" style="margin-top: 100px; margin-bottom: 240px; background-color: #2A2A2A;"></div>
+                <div id="timeline_seasonstart"><div id="timeline_seasonstartline4">Season 4<br><span style="font-weight: normal; font-style: italic; font-size: 14px;">Shef Werld Deluxe<br>9/14/19 - ??</span></div></div>
+                <div id="timeline_event" class="season1" style="margin-top: 0px; margin-bottom: 0px;">
+                    <div id="timeline_event_date">September 14, 2019</div>
+                    <div id="timeline_event_description">Shefmart opens - Candy Sadness and Shef Kerbi Game Studios get separate websites.</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

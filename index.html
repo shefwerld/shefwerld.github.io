@@ -1,56 +1,301 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Shef Werld Server Status</title>
-        <link href="fontawesome/css/all.css" rel="stylesheet">
-        <style>
-            body    {
-                background-color: #FCFCFC;
-                color: #1A1A1A;
+  <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="shefkirb/kerb.ico" type="image/x-icon">
+    <link href="fontawesome/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&display=swap" rel="stylesheet">
+    <title>Welcome to Shef Werld (Home to Shef Kerbi)</title>
+    <style>
+      body {
+      background-color: #1A1A1A;
+      font-family: "Lato", 'Arial', sans-serif;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      }
+      .comicsans, #shefwerldlogo {
+        font-family: "Comic Sans MS", 'Comic Sans', sans-serif;
+      }
+      h1, h2, h3, h4, h5, h6, p, span, li {
+        color: #E4E4E4;
+      }
+      #container  {
+        width: 90%;
+        display: block;
+        margin: auto;
+        text-align: center;
+      }
+      #bannerimg  {
+        width: 85%;
+      }
+      #newsbanner {
+        width: 85%;
+        background-color: #111;
+        margin: auto;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      #newsbanner span  {
+        color: #FFF;
+      }
+      #newsbanner:hover {
+        background-color: #444;
+        cursor: pointer;
+      }
+      #linkimg  {
+        width: 33%;
+        display: inline;
+      }
+      #theboys  {
+        display: flex;
+        flex-wrap: wrap;
+        flex-flow: row;
+        justify-content: space-around;
+        align-items: stretch;
+      }
+      .memberbox  {
+        width: 100%;
+        background-color: #EEE;
+        border: 5px solid #646464;
+        padding: 3px;
+      }
+      .role {
+        font-style: italic;
+        display: inline;
+      }
+      .member {
+        font-weight: bold;
+        display: inline;
+      }
+      .pointer  {
+        cursor: pointer;
+      }
+      #recent  {
+        background-color: #DDD;
+        display: flex;
+        padding: 10px;
+      }
+      #colorlink  {
+        color: #9999DD;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.25s;
+      }
+      #colorlink:hover  {
+        color: #8800cc;
+      }
+      li  {
+        display: inline-block;
+        margin: 0 15px 0 15px;
+      }
+      #nav  {
+        background-color: #444;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+      }
+      #mural {
+        background-color: #FFF;
+      }
+      #shefwerldlogo  {
+        color: #FF9999; 
+        text-decoration: none;
+        transition: color 0.25s;
+        font-weight: bold;
+      }
+      #shefwerldlogo:hover  {
+        color: #8800cc;
+      }
+      #information  {
+        width: 100%;
+        background-color: #252525;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+      }
+      #character_name {
+        margin: 20px 20px 0 20px;
+        font-size: 32px;
+        font-weight: bold;
+        font-style: italic;
+      }
+      #debug_mouseposition_x, #debug_mouseposition_y  {
+        margin: 10px;
+      }
+      #character_description  {
+        flex-basis: 75%;
+        margin: 20px 20px 0 20px;
+        font-size: 20px;
+      }
+      #shefwerldnews  {
+        font-style: italic; 
+        margin: auto; 
+        width: 100%; 
+        color: #E4E4E4; 
+        text-align: center;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div id="nav">
+        <li><span id="shefwerldlogo">Shef Werld</span></li>
+        <li><a title="Shef Kerbi News Network" href="shefkirb/index.html" id="colorlink" class="comicsans">Shef Kerbi News Network</a></li>
+        <li><a title="Shef Kerbi's Apparel" href="clothingstore/index.html" id="colorlink" class="comicsans">Shef Kerbi Apparel (SKA)</a></li>
+        <li><a title="Shef Kerbi Game Studios" href="game/index.html" id="colorlink" class="comicsans">Shef Kerbi Game Studios</a></li>
+        <li><a title="Shefmart" href="shefmart/index.html" id="colorlink" class="comicsans">Shefmart</a></li>
+        <li><a title="Shefmart" href="candysadness/index.html" id="colorlink" class="comicsans">Candy Sadness</a></li>
+    </div>
+    <br>
+    <div id="shefwerldnews"></div>
+    <br>
+    <div id="mural">
+      <img src="shefwerldmural.png" style="width: 100%;" id="muralimage" onmousemove="ye()">
+      <script>
+        
+          function ye() {
+            document.onmousemove = handleMouseMove;
+            function handleMouseMove(event) {
+              var eventDoc, doc, body;
+              event = event || window.event;
+              mousePos = {
+                x: event.x,
+                y: event.y - document.getElementById('muralimage').offsetTop
+              };
             }
-            h1,h2  {
-                font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
+            function getMousePosition() {
+              var pos = mousePos;
+              
+              var PerPosX = pos.x / window.innerWidth * 100;
+              var PerPosY = pos.y / document.getElementById('muralimage').clientHeight * 100 + 5;
+              if (!pos) {
+
+              } else {
+                // Enter capture boxes for character readings
+                if (PerPosX > 37 && PerPosX < 45 && PerPosY > 89 && PerPosY < 100)  {
+                  var character = 0; // Kerbi
+                } else if (PerPosX > 51 && PerPosX < 60 && PerPosY > 70 && PerPosY < 92) {
+                  var character = 1; // Mr MemeoftheWeek
+                } else if (PerPosX > 42 && PerPosX < 50 && PerPosY > 75 && PerPosY < 95) {
+                  var character = 2; // Tom Nook
+                } else if (PerPosX > 31 && PerPosX < 37 && PerPosY > 75 && PerPosY < 95) {
+                  var character = 3; // Kawsaki
+                } else if (PerPosX > 37 && PerPosX < 42 && PerPosY > 78 && PerPosY < 89) {
+                  var character = 4; // Blayyd Nite
+                } else if (PerPosX > 60 && PerPosX < 64 && PerPosY > 59 && PerPosY < 68) {
+                  var character = 5; // Jerry Springer
+                } else if (PerPosX > 41 && PerPosX < 45 && PerPosY > 60 && PerPosY < 72) {
+                  var character = 6; // Mexican Ghost Dad
+                } else if (PerPosX > 48 && PerPosX < 53 && PerPosY > 58 && PerPosY < 70) {
+                  var character = 7; // Cynthia
+                } else if (PerPosX > 54 && PerPosX < 58 && PerPosY > 60 && PerPosY < 68) {
+                  var character = 8; // TSM_Liquid_FaZe_Ninja
+                } else if (PerPosX > 29 && PerPosX < 37 && PerPosY > 95 && PerPosY < 105) {
+                  var character = 9; // Snivy
+                } else if (PerPosX > 27 && PerPosX < 31 && PerPosY > 75 && PerPosY < 90) {
+                  var character = 10; // Apple the Cat
+                } else if (PerPosX > 9 && PerPosX < 16 && PerPosY > 90 && PerPosY < 105) {
+                  var character = 11; // Reali
+                } else if (PerPosX > 19 && PerPosX < 23 && PerPosY > 70 && PerPosY < 94) {
+                  var character = 12; // Bon Starbuckle
+                } else if (PerPosX > 10 && PerPosX < 19 && PerPosY > 76 && PerPosY < 94) {
+                  var character = 13; // John Gameman
+                } else if (PerPosX > 23  && PerPosX < 29 && PerPosY > 68 && PerPosY < 78) {
+                  var character = 14; // Carmes
+                } else if (PerPosX > 24  && PerPosX < 28 && PerPosY > 84 && PerPosY < 92) {
+                  var character = 15; // Bon's Cat
+                } else if (PerPosX > 17  && PerPosX < 24 && PerPosY > 94 && PerPosY < 103) {
+                  var character = 16; // Gernfald
+                } else if (PerPosX > 35  && PerPosX < 42 && PerPosY > 61 && PerPosY < 81) {
+                  var character = 17; // Keynsun DDDO
+                } else if (PerPosX > 4  && PerPosX < 20 && PerPosY > 55 && PerPosY < 70) {
+                  var character = 18; // CrazeePi's Disembodied Voice
+                } else if (PerPosX > 28  && PerPosX < 33 && PerPosY > 61 && PerPosY < 71) {
+                  var character = 19; // Zeke Teddy
+                } else if (PerPosX > 47  && PerPosX < 53 && PerPosY > 86 && PerPosY < 102) {
+                  var character = 20; // Tom Nook Kids
+                } else if (PerPosX > 21  && PerPosX < 31 && PerPosY > 44 && PerPosY < 55) {
+                  var character = 21; // Wingull
+                } else if (PerPosX > 57  && PerPosX < 62 && PerPosY > 67 && PerPosY < 80) {
+                  var character = 22; // Ryk
+                } else if (PerPosX > 58 && PerPosX < 68 && PerPosY > 71 && PerPosY < 81) {
+                  var character = 23; // Diet Bathwater 
+                } else if (PerPosX > 58  && PerPosX < 63 && PerPosY > 82 && PerPosY < 102) {
+                  var character = 24; // Scratch Cat
+                } else if (PerPosX > 63  && PerPosX < 68 && PerPosY > 80 && PerPosY < 95) {
+                  var character = 25; // Isabelle
+                } else if (PerPosX > 71  && PerPosX < 75 && PerPosY > 76 && PerPosY < 89) {
+                  var character = 26; // Gardevoir 
+                } else if (PerPosX > 67  && PerPosX < 80 && PerPosY > 87 && PerPosY < 105) {
+                  var character = 27; // The SKA Hypebeast
+                } else if (PerPosX > 76  && PerPosX < 86 && PerPosY > 33 && PerPosY < 43) {
+                  var character = 28; // Metar Nite 
+                } else  {
+                  var character = 29; // blank
+                }
+                document.getElementById('character_icon_image').src = "usericon/" + character + ".jpg";
+                document.getElementById('character_name').innerHTML = characternames[character]
+                document.getElementById('character_description').innerHTML = characterdescription[character];
+                // document.getElementById('debug_mouseposition_x').innerHTML =  PerPosX;
+                // document.getElementById('debug_mouseposition_y').innerHTML =  PerPosY;
+              }
             }
-            #container  {
-                width: 80%;
-                margin: auto;
-            }
-            li  {
-                list-style: none;
-                margin: 0 0 0 10px;
-            }
-            #site   {
-                margin: 5px 0 0 0;
-            }
-            #maintenance    {
-                font-style: italic;
-            }
-            #shefwerldlogo  {
-                color: #FF9999; text-decoration: none; transition: 0.25s color;
-            }
-            #shefwerldlogo:hover    {
-                color: #8800cc;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="container">
-            <h1><a id="shefwerldlogo">Shef Werld</a> </li></h1>
-            <span>Website currently down to prepare for conversion from Season 3 to Season 4 of Shef Werld.<br>Due to various issues with the current Shefmart site along with a lack of completion of the site, we are unable to launch Season 4 of Shef Werld at the original planned time.</span><br>
-            <span id="daterelease">Season 4 ETA:</span><br>
-            <a href="shefkirb/index.html">Shef Kerbi News Network link</a><br>
-            <a href="candysadness/index.html">Candy Sadness link</a><br>
-            <a href="game/index.html">Shef Kerbi Game Studios link</a>
-            <h2><i class="fas fa-server"></i> Server Status - <span style="color: #B6AD05;"><i class="fas fa-wrench"></i> UNDER MAINTENANCE</span></h2>
-            <li id="site">Shef Kerbi News Network - <span style="color: #00AA00;"><i class="fas fa-check"></i> OPERATING</span></li>
-            <li id="site">Shef Kerbi's Apparel - <span style="color: #B6AD05;"><i class="fas fa-wrench"></i> UNDER MAINTENANCE</span></li>
-            <li id="site">Shef Kerbi Game Studios - <span style="color: #00AA00;"><i class="fas fa-check"></i> OPERATING</span></li>
-            <li id="site">Shefmart - <span style="color: #CC0000;"><i class="fas fa-times"></i> NOT OPERATING</span></li>
-            <li id="site">Candy Sadness - <span style="color: #00AA00;"><i class="fas fa-check"></i> OPERATING</span></li>
-            <script>
-            var dateETA = new Date("September 15, 2019 06:00:00 UTC-4:00");
-            document.getElementById('daterelease').innerHTML += " " + dateETA;
-            </script>
+            handleMouseMove();
+            getMousePosition();
+          }
+          // that top message board thing
+          date = new Date();
+          properMonth = date.getMonth() + 1;
+          if (date.getTimezoneOffset() / -60 > 0) {
+            timezoneThing = "+" + date.getTimezoneOffset() / -60 + " ";
+          } else  {
+            timezoneThing = date.getTimezoneOffset() / -60 + " ";
+          }
+          if (date.getMinutes().length == 1) {
+            newsDate = date.getHours() + ":0" + date.getMinutes() + ", " + properMonth + "/" + date.getDate() + "/" + date.getFullYear() + " (" + timezoneThing + " UTC )";
+          } else {
+            newsDate = date.getHours() + ":" + date.getMinutes() + ", " + properMonth + "/" + date.getDate() + "/" + date.getFullYear() + " (" + timezoneThing + "UTC )";
+          }
+          document.getElementById('shefwerldnews').innerHTML = "Welcome to Shef Werld! (This text changes every 10 seconds). Date and Time is currently " + newsDate;            
+          setInterval(function(){
+          newsNumber = Math.floor(Math.random() * 3) + 1;
+          newsArticles = ["Season 4 of Shef Werld has officially launched! Check out the new deisgn for the main website, along with the new company pages!",
+          "Blayyd Nite and Co Mart has been relaunced as Shefmart, bringing quality consumer goods to everyone across Dreem Lend. You can start shopping by clicking the Shefmart link.",
+          "Shef Kerbi News Network #31 is ready to view now! You can read this issue by <a href=	&quot;shefkirb/news/31.html	&quot;>clicking here</a> or visiting the SKNN website."]
+          document.getElementById('shefwerldnews').innerHTML = newsArticles[newsNumber - 1];
+          }, 10000)
+        </script>
+        <script src="characters.js"></script>
+    </div>
+    <br>
+    <div id="information">
+      <div id="character_icon" style="color: #FFF;">
+        <img src="usericon/29.jpg" id="character_icon_image" style="width: 300px;">
+      </div>
+      <div id="character_information">
+        <div id="character_name" style="color: #FFF;">
+          
         </div>
-    </body>
+        <div id="character_description" style="color: #FFF;">
+          Hover over an employee to view information on them
+        </div>
+      </div>
+    </div>
+    <!--
+    <div id="debug_mouseposition_x" style="color: #FFF;">
+      mouse x
+    </div>
+    <div id="debug_mouseposition_y" style="color: #FFF;">
+      mouse y
+    </div>
+    -->
+    <br>
+    <div id="nav">
+        <li><a href="about.html" title="about" id="colorlink" class="comicsans">About</a></li>
+        <li><a href="history.html" title="history" id="colorlink" class="comicsans">History</a></li>
+        <li><a href="status.html" title="history" id="colorlink" class="comicsans">Server Status</a></li>
+    </div>
+    <br>
+  </body>
 </html>

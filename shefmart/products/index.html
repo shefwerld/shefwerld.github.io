@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <link rel="shortcut icon" href="../../shefkirb/kerb.ico" type="image/x-icon">
+        <title>Shefmart - Home</title>
+        <link rel="stylesheet" href="../shoptheme.css">
+        <link href="../../fontawesome/css/all.css" rel="stylesheet">
+        
+    </head>
+    <body>
+        <div id="nav">
+            <li><a href="../index.html"><img src="../shefmartlogo.png" style="height: 100px;"></a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="../services/index.html">Services</a></li>
+            <li><a href="../locations.html">Locations</a></li>
+            <li onClick="showAmount();"><a><i class="fas fa-shopping-cart"></i></a> <span id="shoppingCartNumberGoods">0</span> items</li>
+        </div>
+        <div id="maincontainer">
+          <h1 style="font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; color: #e067f0; font-style: italic; font-size: 40px;">Shefmart</h1>
+          <h2>Product Page</h2>
+          <span>Go to:</span><br><br>
+          <div id="productcategories">
+            <button id="largebutton" onClick="window.location.href = '#foodproductslink'">Food Products</button>
+            <button id="largebutton" onClick="window.location.href = '#lifeproductslink'">Lifestyle Products</button>
+            <button id="largebutton" onClick="window.location.href = '#electricproductslink'">Electronics</button>
+          </div>
+          <br>
+          <span>View items as currency:</span><br>
+          <button onClick="setCurrency(0);">Shef Dollars</button>
+          <button onClick="setCurrency(1);">Ghost Dollars</button>
+          <button onClick="setCurrency(2);">Star Coins</button><br>
+          <h1>List of Products</h1>
+          <h2 id="foodproductslink">Food Products</h2>
+          <div class="productitem" id="pigsoop_product">
+            <div id="productitem_title">Pig Soop (250 mL)</div>
+            <img id="productitem_displayimage" src="src/pigsoop2.jpg">
+            <div id="productitem_description">Pig Soop is one of the famous beverage of Dreem Lend, consisting of a nice pork texture and a smooth but thicc soop. The composition of Pig Soop has been perfected over years, and is now available for all to enjoy. Heavily promoted by Carmes of the Shef Kerbi News Network.<br><br>
+            <a href="gallery/pigsoop.html">View image gallery</a></div>
+            <div id="productitem_purchase">
+              <span class="productitem_pricetag" id="productitem_price1">$1.00 each</span><br>
+              <span style="font-style: italic;">($0.40 per 100 mL)</span><br>
+              Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty1"><br>
+              <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(0);">Add to Cart</button>
+            </div>
+          </div>
+          <br>
+            <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">Diet Water (650 mL)</div>
+              <img id="productitem_displayimage" src="src/dietwater1.jpg" style="border: 1px solid #646464;">
+              <div id="productitem_description">Diet Water is the superior alternative to standard water. With 50% less hydrogen than standard water, this water will make you healthier and more refreshed than standard water!<br><br>
+              <a href="gallery/dietwater.html">View image gallery</a></div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price3">$5.00 each</span><br>
+                <span style="font-style: italic;">($0.77 per 100 mL)</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty3"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(2);">Add to Cart</button>
+              </div>
+            </div>
+          <br>
+            <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">Kerbpops (8 pack - 300 g)</div>
+              <img id="productitem_displayimage" src="src/kerbpop1.jpg">
+              <div id="productitem_description">Kerbpops are the classic Kerbi popsicle treat that has sweeped the nation [Dreem Lend] for the last few months! Since the initial release and advertising campaign of Kerbpops, we've learnt how to make it so you can lick the screen and taste it.<br><br>
+              <a href="gallery/kerbpop.html">View image gallery</a></div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price5">$2.20 each</span><br>
+                <span style="font-style: italic;">($0.73 per 100 g)</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty5"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(4);">Add to Cart</button>
+              </div>
+            </div>
+            <br>
+            <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">Chicken Pam's CHILDREN (with child cage - 12 pack)</div>
+              <img id="productitem_displayimage" src="src/egg1.jpg">
+              <div id="productitem_description">Chicken Pam is willing to provide sustenance to the entirely of Dreem Land is letting you eat her children. At Shefmart™™, Chicken Pam's CHILDREN are sold in boxes of 12, meaning any purchase of Chicken Pam's CHILDREN guarantees you a free child cage.<br><br>
+              <a href="gallery/egg.html">View image gallery</a></div>
+              <div id="productitem_purchase" id="productitem_price9">
+                <span class="productitem_pricetag" class="productitem_price9">$3.60 each</span><br>
+                <span style="font-style: italic;">($0.30 per child)</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty9"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(8);">Add to Cart</button>
+              </div>
+            </div>
+            <br>
+            <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">An Apple (~150 g)</div>
+              <img id="productitem_displayimage" src="src/apple1.jpg">
+              <div id="productitem_description">Apples, as featured in Shef Kerbi in Apple Hour. If you consume an apple, you will gain an extra point.<br><br>
+              <a href="gallery/apple.html">View image gallery</a></div>
+              <div id="productitem_purchase" id="productitem_price10">
+                <span class="productitem_pricetag" class="productitem_price10">$1.60 each</span><br>
+                <span style="font-style: italic;">($1.07 per 100 g)</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty10"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(9);">Add to Cart</button>
+              </div>
+            </div>
+            <br>
+            <h2 id="lifeproductslink">Lifestyle Products</h2>
+          <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">Toothpaste (200 g)</div>
+              <img id="productitem_displayimage" src="src/toothpaste.jpg">
+              <div id="productitem_description"><span style="color:#09DCA0;">"Toothpaste"</span> is the product of choice for people across Dreem Lend, along with your neighborhood anime character, who puts it in their hair to get wierd [sic] hair! 9 out of 10 dentists recommend using <span style="color:#09DCA0;">Toothpaste</span> as part of your daily hygeine routine.<br><br>
+              <a href="gallery/toothpaste.html">View image gallery</a></div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price2">$6.00 each</span><br>
+                <span style="font-style: italic;">($3.00 per 100 g)</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty2"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(1);">Add to Cart</button>
+              </div>
+            </div>
+            <br>
+            <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">Vomboig Super Deluxe Ultra Omega Vacyum 5000</div>
+              <img id="productitem_displayimage" src="src/vacyum1.jpg">
+              <div id="productitem_description">As was demonstrated by SKNN employee Keynsun DDDO, the Vomboig Super Deluxe Ultra Omega Vacyum 5000 is the most powerful vacyum that has ever been invented since it can suck up a ghost dog and a ghost twister mat.<br><br>
+              <a href="gallery/vacyum.html">View image gallery</a></div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price7">$450.00 each</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty7"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(6);">Add to Cart</button>
+              </div>
+            </div>
+            <br>
+            <h2 id="electricproductslink">Electronics</h2>
+            <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">Ghost Fone (1st Generation)</div>
+              <img id="productitem_displayimage" src="src/ghostfone1.jpg">
+              <div id="productitem_description">The Ghost Fone is a revolutionary new device that allows the ghosts of the world to communicate to others using a phone! Shefmart™ is glad to be one of the stores that receive Ghost Fones.<br><br>
+              <a href="gallery/ghostfone.html">View image gallery</a></div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price4">$156.30 each</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty4"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(3);">Add to Cart</button>
+              </div>
+            </div>
+            
+            <br>
+            <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">Ghost Fone (2nd Generation)</div>
+              <img id="productitem_displayimage" src="src/ghostfone3.jpg">
+              <div id="productitem_description">The current generation of Ghost Fone, it features a remarkable color screen with support for 6 colors, a home button at the bottom and a screen that takes up most of the front of the device!<br><br>
+              <a href="gallery/ghostfone2.html">View image gallery</a></div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price6">$312.60 each</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty6"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(5);">Add to Cart</button>
+              </div>
+            </div>
+            <br>
+            <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">Shef Kerbi Ammibo™™</div>
+              <img id="productitem_displayimage" src="src/ammibo1.jpg">
+              <div id="productitem_description">The Shef Kerbi Ammibo™™ is an Ammibo™™ designed for use on Smash SKNN (which is not in fact cancelled - there was never anything to cancel in the first place). The Kerbi Ammibo™™ is only capable of doing Up-B.<br><br>
+              <a href="gallery/ammibo.html">View image gallery</a></div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price8">$39.00 each</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty8"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(7);">Add to Cart</button>
+              </div>
+            </div>
+        </div>
+        <br>
+        <div class="footer"> <!-- footer -->
+            <br>
+            <div id="footerflex">
+              <li style="font-size: 24px; font-weight: bold; text-align: center; width: 100%;"><a href="../../index.html" id="shefwerldtext" style="font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;">Shef Werld</a></li>
+            </div>
+            <br>
+            <div id="footerflex">
+              <li><a href="../../shefkirb/index.html">Shef Kerbi News Network</a></li>
+              <li><a href="../../clothingstore/index.html">Shef Kerbi's Apparel</a></li>
+              <li><a href="../../shefmart/index.html">Shefmart</a></li>
+              <li><a href="../../game/index.html">Shef Kerbi Game Studios</a></li><br>
+              <li><a href="../../candysadness/index.html">Candy Sadness</a></li><br>
+            </div>
+            <div id="footerflex">
+              <li><a href="../../about.html">About</a></li>
+              <li><a href="../../history.html">History</a></li>
+              <li><a href="../../status.html">Server Status</a></li>
+            </div>
+            <div id="footerflex"><li>2018 - 2019 Shef Werld<br>2019 Shefmart</div>
+        </div>
+        <script>
+        var purchaseAmount = 0; 
+        var productsBought = [];
+        var currencyMultiplier = [1, 1.6, 5];
+        var currency = 0;
+        var shefDollarPrices = ["$1.00", "$6.00", "$5.00", "$156.30", "$2.20", "$312.60", "$450.00", "$39.00", "$1.60"];
+        var ghostDollarPrices = ["~$1.60", "~$9.60", "~$8.00", "~$250.00", "~$3.50", "~$500.00", "~$720.00", "~$62.40", "~$2.40"];
+        var starCoinPrices = ["☆5.00", "☆30.00", "☆25.00", "☆781.50", "☆11.00", "☆1563.00", "☆2250.00", "☆195.00", "☆8.00"];
+        var itemToPossiblyRemove = 0;
+        var nameOfProduct = 0;
+        var showShopCart = 0;
+        function setCurrency(cash)  {
+          var currency = cash;
+          if (currency == 0)  {
+            for (i = 0; i < shefDollarPrices.length; i++){
+            document.getElementById('productitem_price' + String(i + 1)).innerHTML = shefDollarPrices[i] + " each";
+            }
+          } else if (currency == 1) {
+            for (i = 0; i < shefDollarPrices.length; i++){
+            document.getElementById('productitem_price' + String(i + 1)).innerHTML = ghostDollarPrices[i] + " each";
+            }
+          } else if (currency == 2) {
+            for (i = 0; i < shefDollarPrices.length; i++){
+            document.getElementById('productitem_price' + String(i + 1)).innerHTML = starCoinPrices[i] + " each";
+            }
+          } else  {
+            alert('what');
+          }
+        }
+          function addToCart (item) {
+            function feedStufftoMoneyMachienIGuess(countyThing, costOfTheThing, productName, productActualSize, measurementSystemThing)  {
+            if (document.getElementById('productqty' + String(countyThing + 1)).value > 0 ) {
+                var purchaseAmountIncrease = costOfTheThing * currencyMultiplier[currency] * document.getElementById('productqty' + String(countyThing + 1)).value;
+                purchaseAmount = purchaseAmount + purchaseAmountIncrease;
+                for (i = 0; i < document.getElementById('productqty' + String(countyThing + 1)).value; i++)  {
+                  productsBought.push(productName);
+                }
+                var newContent = "<li>" + document.getElementById('productqty' + String(countyThing + 1)).value + " x " + productName + " (" + productActualSize + " " + measurementSystemThing + ") - $" + purchaseAmountIncrease + "</li>";
+                var newDiv = document.getElementById('shoppingCartItems');
+                newDiv.insertAdjacentHTML('beforeend', newContent);
+                document.getElementById('shoppingCartNumberGoods').innerHTML = " " + productsBought.length;
+                if (Math.round(purchaseAmount) != purchaseAmount) {
+                  document.getElementById('shoppingCartTotal').innerHTML = "<span style='font-weight: bold;'>Total:</span> $" + purchaseAmount + "0 (" + productsBought.length + " items)";
+                } else  {
+                  document.getElementById('shoppingCartTotal').innerHTML = "<span style='font-weight: bold;'>Total:</span> $" + purchaseAmount + " (" + productsBought.length + " items)";
+                }
+              } else  {
+                alert("ok buddy lol");
+              }
+          }
+            if (item == 0) {
+              feedStufftoMoneyMachienIGuess(0, 1.0, "Pig Soop", 250, "mL");
+            } else if (item == 1) {
+              feedStufftoMoneyMachienIGuess(1, 6.0, "Toothpaste", 200, "g");
+            } else if (item == 2) {
+              feedStufftoMoneyMachienIGuess(2, 5.0, "Diet Water", 650, "mL");
+            } else if (item == 3) {
+              feedStufftoMoneyMachienIGuess(3, 156.3, "Ghost Fone", 1, "st Gen");
+            } else if (item == 4) {
+              feedStufftoMoneyMachienIGuess(4, 2.2, "Kerbpops", 300, "g - 8 pack");
+            } else if (item == 5) {
+              feedStufftoMoneyMachienIGuess(5, 312.6, "Ghost Fone", 2, "nd Gen");
+            } else if (item == 6) {
+              feedStufftoMoneyMachienIGuess(6, 450, "Vomboig Super Deluxe Ultra Omega Vacyum", 5000, "");
+            } else if (item == 7) {
+              feedStufftoMoneyMachienIGuess(7, 39, "Shef Kerbi Ammibo™™", 1, "ammibo");
+            } else if (item == 8) {
+              feedStufftoMoneyMachienIGuess(8, 3.6, "Chicken Pam's CHILDREN", 12, "pack");
+            } else if (item == 9) {
+              feedStufftoMoneyMachienIGuess(9, 1.6, "An Apple", 150, "g");
+            }
+            
+          }
+          function showAmount(){
+            if (showShopCart == 0)  {
+              showShopCart = 1;
+              document.getElementById('shoppingCart').style.display = 'block';
+            } else if (showShopCart == 1) {
+              showShopCart = 0;
+              document.getElementById('shoppingCart').style.display = 'none';
+            } else  {
+              alert('what');
+            }
+          }
+        </script>
+        <div id="shoppingCart">
+          <div id="shoppingCartWindowTitle">
+            <span style="font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; font-style: italic; color: #E067F0; font-weight: bold; font-size: 24px; margin-right: 30px;">Shefmart Shopping Cart</span>
+            <button onClick="showAmount();" style="float: right; height: 32px; font-size: 16px;">Hide</button>
+          </div>
+          <div id="shoppingCartItems">
+              Your shopping cart contains <span style="font-style: italic;">(prices in Shef Dollars)</span>: 
+            </div>
+            <div id="shoppingCartTotal">
+                <span style='font-weight: bold;'>Total:</span>
+            </div>
+            <div id="shoppingCartDeliveryMethod">
+              Purchase Method:
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartPaymentMethod1"></input><label for="shoppingCartPaymentMethod1">  Shefcard™</label></div>
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartPaymentMethod2"></input><label for="shoppingCartPaymentMethod2">  Cheque</label></div>
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartPaymentMethod3"></input><label for="shoppingCartPaymentMethod3">  Cryptocurrency</label>
+                <select id="shoppingCartCryptocurrencySelection">
+                  <option value="bitcoin">Bitcoin</option>
+                  <option value="bitcoin">Ethereum</option>
+                  <option value="bitcoin">XRP</option>
+                  <option value="bitcoin">Bitcoin SV</option>
+                  <option value="bitcoin">Dogecoin</option>
+                  <option value="bitcoin">Beenz</option>
+                  <option value="bitcoin">Schlattcoin</option>
+                </select>
+              </div>
+              Delivery Method:
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartDeliveryMethod1"></input><label for="shoppingCartDeliveryMethod1">  Same Second Shipping</label></div>
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartDeliveryMethod2"></input><label for="shoppingCartDeliveryMethod2">  Predictive Shipping</label></div>
+              <div id="shoppingCartDeliveryMethodCheckbox"><input type="checkbox" id="shoppingCartDeliveryMethod3"></input><label for="shoppingCartDeliveryMethod3">  Very Predictive Shipping</label></div>
+            </div>
+            <div id="shoppingCartPurchase">
+              <button onClick="window.location.href = '../purchase.html'" id="largebutton">Purchase</button>
+            </div>
+        </div>
+        
+    </body>
+</html>

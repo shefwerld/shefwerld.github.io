@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../shefkirb/kerb.ico" type="image/x-icon">
+    <title>Shef Kerbi's Apparel</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,400,500,700&display=swap&subset=cyrillic" rel="stylesheet">
+    <style>
+    body  {
+      height: 100%;
+      margin: 0px;
+      padding: auto;
+      background-color: #111;
+    }
+    * {
+      font-family:'Roboto Mono', Courier, monospace;
+      color: #EEE;
+    }
+    #container  {
+      width: 95%;
+      margin: auto;
+    }
+    #dialog {
+      width: 40%;
+      margin: auto;
+      text-align: center;
+    }
+    #blinkingcursor {
+      font-weight: bold;
+      animation-name: blinking-cursor;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
+    @keyframes blinking-cursor  {
+      0% {opacity: 1;}
+      50% {opacity: 1;}
+      51% {opacity: 0;}
+      100% {opacity: 0;}
+    }
+    </style>
+  </head>
+  <body onload=textType()>
+    <div id="container">
+      <h2>SKA</h2>
+      <div id="gap" style="height: 12em;"></div>
+      <div id="dialog">
+      <h1>SKA</h1>
+      <span>(A.K.A Shef Kerbi's Apparel)</span><br>
+      <span id="comingsoon"></span><span id="blinkingcursor">|</span><br>
+      <span id="back"><a href="../index.html">Back to Shef Werld</a></span>
+      </div>
+      <script>
+          var comingSoon = "Drop 4 / September 18. Under new (and better) management";
+          var i = 0;
+          var linkback = 0;
+          function textType() {
+            if (i < comingSoon.length)  {
+              document.getElementById('comingsoon').innerHTML += comingSoon.charAt(i);
+              i++;
+              setTimeout(textType, 100);
+            }
+            var linkback = 1;
+          }
+      </script>
+    </div>
+  </body>
+</html>

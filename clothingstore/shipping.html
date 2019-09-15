@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../shefkirb/kerb.ico" type="image/x-icon">
+    <title>HOME: Shef Kerbi's Apparel</title>
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
+    <style>
+    body  {
+      height: 100%;
+      margin: 0px;
+      padding: auto;
+      background-color: #111;
+    }
+      #background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -999;
+      }
+      #container  {
+        width: 90%;
+        margin: auto;
+        height: 100%;
+        overflow-y: scroll;
+        background-color: #222;
+      }
+      .item-showcase-wrapper  {
+        display: flex;
+        overflow-x: auto;
+        background-color: #FFF;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar {
+        width: 1px;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar-thumb {
+        background: #eede99;
+      }
+      .item-showcase-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #cbab00;
+      }
+      .item-showcase-wrapper div  {
+        margin-right: 20px;
+        width: 200%;
+      }
+      .item-showcase-wrapper div img  {
+        width: 800px;
+      }
+      .item-showcase-wrapper div img:hover  {
+        animation: filter 2.2s infinite;
+      }
+      @keyframes filter {
+        0%, 100% {filter: brightness(100%);}
+        50% {filter: brightness(90%);}
+      }
+      * {
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        color: #FFF;
+      }
+      .logo {
+        font-family: "Arvo", serif;
+        color: #CBAB00;
+        font-size: 48px;
+        font-weight: 700;
+        transition: color 1s;
+      }
+      .logo:hover {
+        color: #967600;
+      }
+      #separator  {
+        margin: auto;
+      }
+      .banner-image {
+        height: 580px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .img3 {background-image: url("banner3.png");}
+      @keyframes collection1 {
+        0%, 100%  {color: #000000; transform: rotate(0deg) translate(5px);}
+        25%  {color: #880000; transform: rotate(-5deg) translate(0px);}
+        50%  {color: #CC00CC; transform: rotate(0deg) translate(-5px);}
+        75%  {color: #000088; transform: rotate(5deg) translate(0px);}
+      }
+      #Collection1  {
+        font-size: 64px;
+        animation: collection1 4s infinite;
+      }
+      .logo:hover {
+        animation: logospin 0.75s linear alternate infinite;
+      }
+      @keyframes logospin {
+        0%  { transform: rotateY(0deg);}
+        100%  { transform: rotateY(180deg);}
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <video autoplay muted loop src="bg.mp4" id="background"></video>
+      <div id="separator"></div>
+      <div id="separator"></div>
+      <div id="separator"></div>
+      <h1 class="logo">Shef Kerbi's Apparel</h1>
+      <p><a href="index.html" style="color: #BBBBBB;"><< Back</a></p>
+      <h2>The world's greatest (and definetly only) online clothing store™™™™™™™</h2>
+      <br><br>
+      <h2> Our Shipping Policy </h2>
+      <br><br>
+      <p>Shef Kerbi's Apparel, as the world's greatest and one of the only online clothing stores out there is determined to make the customer purchase experience better and faster than your standard retail store. That's why we have introduced three methods of how you can have your goods delivered:</p>
+      <h2>Same Second Shipping</h2>
+      <p>Same Second Shipping was introduced since we've determined that the average attention span of a person is lower than one minute, so we created this service for some amount of instant gratification. For this merch, just wait a second, and then look at the picture and now you've got the merch.</p>
+      <h2>Predictive Shipping</h2>
+      <p>We use a combination of browser cookies, mind reading appartuses and telekinesis to predict what you'll buy, and we'll being delivering it before you've clicked on Submit. You may receive your merch a fraction of a second before you click on the Purchase button, so you have to do no waiting at all to get your merch.</p>
+      <h2>Very Predictive Shipping</h2>
+      <p>Very Predicitve Shipping is a more advanced version of Predictive Shipping. On Monday morning, we'll use the 600 000 trackers we have on you to determine what you're going to buy for the week, and if you lack funds, we'll secretly ship you the required amount of money through stealthy methods. Once you decide to buy a Shef Kerbi Apparel item, we'll throw that item into your house immediately.</p>
+      <h2>Issues/Complaints</h2>
+      <p>Shef Kerbi's Apparel is perfect, meaning that you shouldn't have to complain about something, but if something does go wrong, you can contact Shef Kerbi's Apparel <a href="https://scratch.mit.edu/users/CatsUnited">here.</a></p>
+      <br>
+      <p style="font-weight: 700;"><span style="color: #FF0000;">DISCLAIMER:</span> This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</p>
+    </div>
+  </body>
+</html>

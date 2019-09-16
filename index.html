@@ -97,6 +97,8 @@
       }
       #mural {
         background-color: #FFF;
+        width: 80%;
+        margin: auto;
       }
       #shefwerldlogo  {
         color: #FF9999; 
@@ -116,7 +118,7 @@
       }
       #character_name {
         margin: 20px 20px 0 20px;
-        font-size: 32px;
+        font-size: 26px;
         font-weight: bold;
         font-style: italic;
       }
@@ -126,7 +128,7 @@
       #character_description  {
         flex-basis: 75%;
         margin: 20px 20px 0 20px;
-        font-size: 20px;
+        font-size: 18px;
       }
       #shefwerldnews  {
         font-style: italic; 
@@ -149,6 +151,7 @@
     </div>
     <br>
     <div id="shefwerldnews"></div>
+    <div id="disclaimer" style="margin: auto; display: flex; justify-content: center;"><span style=" font-size: 12px;">DISCLAIMER: This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</span></div>
     <br>
     <div id="mural">
       <img src="shefwerldmural.png" style="width: 100%;" id="muralimage" onmousemove="ye()">
@@ -167,7 +170,7 @@
             function getMousePosition() {
               var pos = mousePos;
               
-              var PerPosX = pos.x / window.innerWidth * 100;
+              var PerPosX = pos.x / document.getElementById('muralimage').clientWidth * 100 - 13;
               var PerPosY = pos.y / document.getElementById('muralimage').clientHeight * 100 + 5;
               if (!pos) {
 
@@ -271,7 +274,7 @@
     <br>
     <div id="information">
       <div id="character_icon" style="color: #FFF;">
-        <img src="usericon/29.jpg" id="character_icon_image" style="width: 300px;">
+        <img src="usericon/29.jpg" id="character_icon_image" style="width: 200px;">
       </div>
       <div id="character_information">
         <div id="character_name" style="color: #FFF;">

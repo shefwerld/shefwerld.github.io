@@ -103,7 +103,7 @@
   #shoppingCart {
     position: fixed;
     display: none;
-    top: 50%;
+    top: 25%;
     left: 40%;
     background-color: #D9D9D9;
     border: 2px solid #E067F0;

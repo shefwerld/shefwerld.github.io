@@ -5,63 +5,413 @@
     <link rel="shortcut icon" href="../shefkirb/kerb.ico" type="image/x-icon">
     <title>Shef Kerbi's Apparel</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,400,500,700&display=swap&subset=cyrillic" rel="stylesheet">
-    <style>
-    body  {
-      height: 100%;
-      margin: 0px;
-      padding: auto;
-      background-color: #111;
-    }
-    * {
-      font-family:'Roboto Mono', Courier, monospace;
-      color: #EEE;
-    }
-    #container  {
-      width: 95%;
-      margin: auto;
-    }
-    #dialog {
-      width: 40%;
-      margin: auto;
-      text-align: center;
-    }
-    #blinkingcursor {
-      font-weight: bold;
-      animation-name: blinking-cursor;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
-    }
-    @keyframes blinking-cursor  {
-      0% {opacity: 1;}
-      50% {opacity: 1;}
-      51% {opacity: 0;}
-      100% {opacity: 0;}
-    }
-    </style>
+    <link href="skatheme.css" rel="stylesheet">
+    <link href="../fontawesome/css/all.css" rel="stylesheet">
   </head>
-  <body onload=textType()>
+  <body>
     <div id="container">
       <h2>SKA</h2>
-      <div id="gap" style="height: 12em;"></div>
-      <div id="dialog">
-      <h1>SKA</h1>
-      <span>(A.K.A Shef Kerbi's Apparel)</span><br>
-      <span id="comingsoon"></span><span id="blinkingcursor">|</span><br>
-      <span id="back"><a href="../index.html">Back to Shef Werld</a></span>
+      <span>(Shef Kerbi's Apparel)</span>
+      <button style="float: right;" onclick="showAboutDialog();">?</button>
+      <div id="gap" style="height: 4em;"></div>
+        <div id="centercontainer">
+        <h1>Product List</h1>
+        <div id="containerflex">
+          <div class="itemshowcase" id="item1">
+            <div class="itemshowcase_itempreview">
+              <img src="clothes/ska/shirt1.jpg" onClick="openDialogBox(0);">
+            </div>
+            <div class="itemshowcase_itemname">
+              Authentic Pig Soop Provider
+            </div> <!--End Item Name-->
+          </div><!-- End Item Showcase-->
+          <div class="itemshowcase" id="item2">
+              <div class="itemshowcase_itempreview">
+                <img src="clothes/ska/shirt2.jpg" onClick="openDialogBox(1);">
+              </div>
+              <div class="itemshowcase_itemname">
+                Ghost Hobo Beanie
+              </div> <!--End Item Name-->
+            </div> <!-- End Item Showcase--> 
+            <div class="itemshowcase" id="item3">
+              <div class="itemshowcase_itempreview">
+                <img src="clothes/ska/shirt3.jpg" onClick="openDialogBox(2);">
+              </div>
+              <div class="itemshowcase_itemname">
+                Shef Kerbi Hat
+              </div> <!--End Item Name-->
+            </div> <!-- End Item Showcase--> 
+            <div class="itemshowcase" id="item4">
+              <div class="itemshowcase_itempreview">
+                <img src="clothes/ska/shirt4.jpg" onClick="openDialogBox(3);">
+              </div>
+              <div class="itemshowcase_itemname">
+                Your Local Russian Trashdonalds
+              </div> <!--End Item Name-->
+            </div> <!-- End Item Showcase--> 
+        </div> <!-- End Container Flex-->
+        <br><br><span>More products coming soon...</span>
+      </div> <!-- End Centering Container-->
+    </div> <!-- End Content Container-->
+    <div id="main" class="footer"> <!-- footer -->
+      <br>
+      <div id="footerflex">
+        <li style="font-size: 24px; font-weight: bold; text-align: center; width: 100%;"><a href="../index.html" id="shefwerldtext">Shef Werld</a></li>
       </div>
-      <script>
-          var comingSoon = "Drop 4 / September 22. Under new (and better) management";
-          var i = 0;
-          var linkback = 0;
-          function textType() {
-            if (i < comingSoon.length)  {
-              document.getElementById('comingsoon').innerHTML += comingSoon.charAt(i);
-              i++;
-              setTimeout(textType, 100);
-            }
-            var linkback = 1;
-          }
-      </script>
+      <br>
+      <div id="footerflex">
+        <li><a href="../shefkirb/index.html">Shef Kerbi News Network</a></li>
+        <li><a href="../clothingstore/index.html">Shef Kerbi's Apparel</a></li>
+        <li><a href="../shefmart/index.html">Shefmart</a></li>
+        <li><a href="../game/index.html">Shef Kerbi Game Studios</a></li><br>
+        <li><a href="../candysadness/index.html">Candy Sadness</a></li><br>
+      </div>
+      <div id="footerflex">
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../history.html">History</a></li>
+        <li><a href="../updates.html">Updates</a></li>
+        <li><a href="../status.html">Server Status</a></li>
+      </div>
+      <div id="footerflex">
+          <li>2018 - 2019 Shef Werld</li>
+      </div>
+      <div id="footerflex">
+          <li style="text-align: center; font-size: 8px;">DISCLAIMER: This website and everything in it is fictional. No one related to Shef Werld is affiliated with Nintendo in any way. All products shown here are designed for parody purposes.</li>
+      </div>
     </div>
+    <!--BEGIN PRODUCT DIALOG 1-->
+    <div class="productdialog" id="productdialog">
+        <div class="productdialog_itemname">
+          <div class="productdialog_itemnamecreator" id="productdialog_itemnamecreator">
+            
+          </div>
+          <div id="productdialog_itemnameactualname" class="productdialog_itemnameactualname">
+            
+          </div>
+          <div class="productdialog_itemnameactualname">
+              <button onClick="hideDialogBox(item)">X</button>
+          </div>
+          <div class="productdialog_purchasearea">
+            <div id="productdialog_genericseparator">
+              <input type="number" min="1" id="itemquantity" placeholder="QTY">
+              <button onClick="purchaseItem(item);">Purchase</button>
+            </div>
+            <div id="productdialog_genericseparator">
+              <button onClick="setCurrency(0);">S$</button>
+              <button onClick="setCurrency(1);">G$</button>
+              <button onClick="setCurrency(2);">☆</button>
+            </div>
+            <div id="productdialog_genericseparator">
+                <button onClick="setShipping(0);" title="Same Second Shipping">3S</button>
+                <button onClick="setShipping(1);" title="Predictive Shipping">PS</button>
+                <button onClick="setShipping(2);" title="Very Predictive Shipping">VPS</button>
+                <button onClick="showHelpDialog();">?</button>
+            </div>
+            <span id="productprice">$79.99</span>
+          </div>
+          <div class="productdialog_purchaseinformation">
+            <div id="productdialog_genericseparator">
+              <span id="shipping_option">No Shipping Selected</span>
+            </div>
+            <div id="productdialog_genericseparator">
+              <span id="currency_option">Shef Dollars</span>
+            </div>
+          </div>
+        </div>
+      <div class="productdialog_itempreview"><a href="" id="productdialog_itempreviewlink"><img src="" id="productdialog_itempreviewimage"></a></div>
+      <div class="productdialog_itemdescription" id="productdialog_itemdescription"></div>
+    </div>
+    <!--END PRODUCT DIALOG 1-->
+    <!--BEGIN HELP DIALOG -->
+    <div id="helpdialog">
+      <div class="helpdialog_titlebar">
+        Information
+        <button onClick="hideHelpDialog();">X</button>
+      </div>
+      <div id="helpdialog_informationdisplay">
+      </div>
+      <div class="helpdialog_information">
+        <div class="helpdialog_section">
+          <span style="font-weight: bold;">Shipping:</span>
+          <button onClick="displayHelp(0);">3S</button>
+          <button onClick="displayHelp(1);">PS</button>
+          <button onClick="displayHelp(2);">VPS</button>
+        </div>
+        <div class="helpdialog_section">
+          <span style="font-weight: bold;">General:</span>
+          <button onClick="displayHelp(3);">SHP</button>
+          <button onClick="displayHelp(4);">COM</button>
+          <button onClick="displayHelp(5);">MAT</button>
+          <button onClick="displayHelp(6);">SZE</button>
+        </div>
+      </div>
+    </div>
+    <!--END HELP DIALOG-->
+    <!-- BEGIN PURCHASE DIALOG-->
+    <div id="purchasedialog">
+      <div class="purchasedialog_titlebar">
+        <div id="genericgroupingelement">Purchased <span id="itempurchaseditembar"></span></div>
+        <button onClick="hidePurchaseDialog();">X</button>
+      </div>
+      <div class="purchasedialog_content">
+        Thanks for purchasing some nice clothing from SKA. Your selected item should be here now once you've finished reading this:<br>
+        <div id="purchasedialog_center"><img src="" id="purchasedialog_previewimage"></div><br>
+        Receipt:<br>
+      </div>
+      <div id="purchasedialog_purchaseinformation">
+      </div>
+      <div id="purchasedialog_purchaseinformation2">
+      </div>
+      <div id="purchasedialog_copytoclipboard">
+        <button onclick="copyToClipboard(receiptInformation);" style="justify-self: right;">Copy to Clipboard</button>
+      </div>
+    </div>
+    <!-- END PURCHASE DIALOG-->
+    <!-- BEGIN ERROR DIALOG-->
+    <div id="errordialog">
+      <div class="errordialog_titlebar">
+        Error
+        <button onClick="hideErrorDialog();">X</button>
+      </div>
+      <div class="errordialog_message">
+        Missing Parameters: <span id="errordialog_missingparameters"></span>
+      </div>
+    </div>
+    <!-- END ERROR DIALOG-->
+    <!-- BEGIN COPIED TO CLIPBOARD DIALOG -->
+    <div id="copied_dialogbox">
+      Copied to Clipboard
+      <button onClick="hideCopiedDialog();">X</button>
+    </div>
+    <!-- END COPIED TO CLIPBOARD DIALOG-->
+    <!-- BEGIN ABOUT DIALOG-->
+    <div id="aboutdialog">
+      <div class="aboutdialog_titlebar">
+        About
+        <button onClick="hideAboutDialog();">X</button>
+      </div>
+      <div class="aboutdialog_image">
+        <img src="ska.jpg" style="width: 250px;">
+        <span style="font-weight: bold; font-style: italic;">"Hi" - SKA, 2019</span>
+      </div>
+      <div class="aboutdialog_content">
+        <h2>About Shef Kerbi's Apparel</h2>
+        <span>Created in May 2019 as a merchandise/clothing outlet for Shef Werld. Originally operated by Tom Nook and now run by SKA, we provide various clothing items designed by our professional clothing design team. Items will be added/removed periodically.</span>
+      </div>
+      <div class="aboutdialog_employees">
+        <h2>Employees</h2>
+        <li><span style="font-weight: bold;">SKA</span> - CEO</li>
+        <li><span style="font-weight: bold;">Tom Nook</span> - Finance</li>
+        <li><span style="font-weight: bold;">Tom Nook Kids</span> - Employees</li>
+        <li><span style="font-weight: bold;">Wingull</span> - Logistics</li>
+      </div>
+    </div>
+    <!-- END ABOUT DIALOG: BEGIN JAVASCRIPT -->
+    <script>
+    var item = 0;
+    var currency = 0;
+    var extraCost = 0;
+    var costTotal = 0;
+    var costDiff = 0;
+    var shippingMethod = 0;
+    var receiptInformation = 0;
+    var TitleDB = ["Authentic Pig Soop Provider<span id='blinkingcursor'>|</span>","Ghost Hobo Beanie<span id='blinkingcursor'>|</span>","Shef Kerbi Hat<span id='blinkingcursor'>|</span>","Your Local Russian Trashdonalds<span id='blinkingcursor'>|</span>"];
+    var NameDB = ["Authentic Pig Soop Provider", "Ghost Hobo Beanie", "Shef Kerbi Hat", "Your Local Russian Trashdonalds"];
+    var CatchDB = ["for Carmes", "Mexican Ghost Dad - Ghost Hobo", "Shef Kerbi", "Чармес"]
+    var DescriptionDB = ["Would you like to show your loyalty, dedication and commitment to Pig Soop? You can use this shirt to prove to everyone that you are the TRUE Pig Soop champion of the group and will go out and give Pig Soop to others who are unable or who don't often get the enjoy the nice refreshing taste of Pig Soop!<br>",
+    "A replica of the hat worn by Mexican Ghost Dad™'s Ghost Dog, the Ghost Hobo Beanie is the perfect tool to keep your big brain warm and to show people that you are a fan of Mexican Ghost Dad. This beanie is also in celebration of the resurrection of Mexican Ghost Dad due to huge fan support.",
+    "Despite a change in management and a complete website redesign, we are still keeping by our promise. The Shef Kerbi hat is available and will be available indefinetly. Note that the hat may not be designed to fit on your head though, as this is a 1:1 scale copy of Shef Kerbi's own Shef Hat.",
+    "Trashdonalds, the fast food chain that serves up the best trash from Dreem Lend is an international brand spanning many countries. Trashdonalds Russia had this to say: &ldquo;[Trashdonalds is] disgusting. Our food can make hygeine inspectors say 'Yuck!', yet they always seem to come back for more [Trashdonalds].&rdquo;"];
+    var currencyConversion = [1, 1.6, 5];
+    var shefDollarPrices = [79.99, 69.99, 149.99, 94.99];
+    var ghostDollarPrices = [127.99, 111.99, 239.99, 151.99];
+    var starCoinPrices = [399.99, 349.99, 749.99, 474.99];
+      function setCurrency(cash)  {
+        currency = cash;
+        if (currency == 0)  {
+          for (i = 0; i < item + 1; i++){
+            costDiff = extraCost * currencyConversion[currency];
+            costTotal = shefDollarPrices[i] + costDiff;
+            document.getElementById('productprice').innerHTML = "$" + costTotal;
+            document.getElementById('currency_option').innerHTML = "Shef Dollars";
+            if (shippingMethod == 2)  {
+              document.getElementById('shipping_option').innerHTML = "Predictve Shipping (+$" + costDiff + ")";
+            } else if (shippingMethod == 3) {
+              document.getElementById('shipping_option').innerHTML = "VERY Predictve Shipping (+$" + costDiff + ")";
+            }
+          }
+        } else if (currency == 1) {
+          for (i = 0; i < item + 1; i++){
+            costDiff = extraCost * currencyConversion[currency];
+            costTotal = ghostDollarPrices[i] + costDiff;
+            document.getElementById('productprice').innerHTML = "~$" + costTotal;
+            document.getElementById('currency_option').innerHTML = "Ghost Dollars";
+            if (shippingMethod == 2)  {
+              document.getElementById('shipping_option').innerHTML = "Predictve Shipping (+~$" + costDiff + ")";
+            } else if (shippingMethod == 3) {
+              document.getElementById('shipping_option').innerHTML = "VERY Predictve Shipping (+~$" + costDiff + ")";
+            }
+          }
+        } else if (currency == 2) {
+          for (i = 0; i < item + 1; i++){
+            costDiff = extraCost * currencyConversion[currency];
+            costTotal = starCoinPrices[i] + costDiff;
+            document.getElementById('productprice').innerHTML = "☆" + costTotal;
+            document.getElementById('currency_option').innerHTML = "Star Coins";
+            if (shippingMethod == 2)  {
+              document.getElementById('shipping_option').innerHTML = "Predictve Shipping (+☆" + costDiff + ")";
+            } else if (shippingMethod == 3) {
+              document.getElementById('shipping_option').innerHTML = "VERY Predictve Shipping (+☆" + costDiff + ")";
+            }
+          }
+        } else  {
+          alert('what');
+        }
+      }
+      function setShipping(number)  {
+        shippingMethod = number + 1;
+        if (number == 0)  {
+          extraCost = 0;
+          setCurrency(currency);
+          document.getElementById('shipping_option').innerHTML = "Same Second Shipping";
+        } else if (number == 1)  {
+          extraCost = 5;
+          setCurrency(currency);
+          if (currency == 0)  {
+            document.getElementById('shipping_option').innerHTML = "Predictve Shipping (+$" + costDiff + ")";
+          } else if (currency == 1) {
+            document.getElementById('shipping_option').innerHTML = "Predictve Shipping (+~$" + costDiff + ")";
+          } else if (currency == 2) {
+            document.getElementById('shipping_option').innerHTML = "Predictve Shipping (+☆" + costDiff + ")";   
+          }
+        } else if (number == 2)  {
+          extraCost = 10;
+          setCurrency(currency);
+          if (currency == 0)  {
+            document.getElementById('shipping_option').innerHTML = "VERY Predictve Shipping (+$" + costDiff + ")";
+          } else if (currency == 1) {
+            document.getElementById('shipping_option').innerHTML = "VERY Predictve Shipping (+~$" + costDiff + ")";
+          } else if (currency == 2) {
+            document.getElementById('shipping_option').innerHTML = "VERY Predictve Shipping (+☆" + costDiff + ")";
+          }
+        }
+      }
+      function hideDialogBox(number)  {
+          document.getElementById('productdialog').style.display = "none";
+      }
+      function openDialogBox(number) {
+          item = number;
+          document.getElementById('productdialog').style.display = "flex";
+          document.getElementById('productdialog_itempreviewlink').href = "clothes/ska/shirt" + Number(item + 1) + ".jpg";
+          document.getElementById('productdialog_itempreviewimage').src = "clothes/ska/shirt" + Number(item + 1) + ".jpg";
+          document.getElementById('productdialog_itemnameactualname').innerHTML = TitleDB[item];
+          document.getElementById('productdialog_itemdescription').innerHTML = DescriptionDB[item];
+          document.getElementById('productdialog_itemnamecreator').innerHTML = CatchDB[item];
+          document.getElementById('productprice').innerHTML = "$" + shefDollarPrices[item];
+      }
+      function showHelpDialog() {
+        document.getElementById('helpdialog').style.display = "inline";
+      }
+      function hideHelpDialog() {
+        document.getElementById('helpdialog').style.display = "none";
+      }
+      function displayHelp(number)  {
+        if (number == 0)  {
+          document.getElementById('helpdialog_informationdisplay').innerHTML = "Same Second Shipping. First trialed earlier this year to provide people with the instant gratification that they would receive when buying something digital online.";
+        } else if (number == 1) {
+          document.getElementById('helpdialog_informationdisplay').innerHTML = "Predictive Shipping. Created by Wingull to the specifications of SKA. Uses neural networks and browser tracking to determine if someone is planning to buy something.";
+        } else if (number == 2) {
+          document.getElementById('helpdialog_informationdisplay').innerHTML = "VERY Predictive Shipping. Predictive Shipping but you receive the item before you buy it, while not giving the person enough time to react to it and to not click the purchase button.";
+        } else if (number == 3) {
+          document.getElementById('helpdialog_informationdisplay').innerHTML = "SKA uses three methods of shipping. We have three methods of shipping due to the extra cost that Predictive and VERY Predictive Shipping have.";
+        } else if (number == 4) {
+          document.getElementById('helpdialog_informationdisplay').innerHTML = "Nothing will go wrong since our shipping and clothing fabrication methods are perfect, but you can contact us by going <a href='https://scratch.mit.edu/users/CatsUnited'>here. <i class='fas fa-external-link-alt'></i></a>";
+        } else if (number == 5) {
+          document.getElementById('helpdialog_informationdisplay').innerHTML = "Our clothes are made using the highest quality materials, which are but not limited to cotton, latex, silk, star material, carbon fibre and graphene.";
+        } else if (number == 6) {
+          document.getElementById('helpdialog_informationdisplay').innerHTML = "The size of our clothing is now fully determined by our servers, since we now have code that is capable of automatically detecting someone's size.";
+        }
+      }  
+      function purchaseItem(number) {
+        if (costTotal < 50 || document.getElementById('shipping_option').innerHTML == "No Shipping Selected" || document.getElementById('itemquantity').value < 1) {
+          showErrorDialog();
+        } else  {
+          receiptInformation = item;
+          document.getElementById('productdialog').style.display = "none";
+          document.getElementById('purchasedialog').style.display = "inline";
+            document.getElementById('itempurchaseditembar').innerHTML = "<span style='font-weight: bold;'>Authentic Pig Soop Provider</span>";
+            if (currency == 0)  {
+            document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>" + document.getElementById('itemquantity').value + "x " + NameDB[item] + "</span></div><div id='genericseparator'>" + document.getElementById('itemquantity').value + "x $" + costTotal + "</div>";
+            document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>Total:</span></div> <div id='purchasedialog_genericseparator'>$" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01) + "</div>";
+            receiptInformation = document.getElementById('itemquantity').value + "x " + NameDB[item] + " " + document.getElementById('itemquantity').value + "x $" + costTotal + ". Total: $" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01);
+            } else if (currency == 1) {
+              document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>" + document.getElementById('itemquantity').value + "x " + NameDB[item] + "</span></div><div id='genericseparator'>" + document.getElementById('itemquantity').value + "x ~$" + costTotal + "</div>"; 
+              document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>Total:</span></div> <div id='purchasedialog_genericseparator'>~$" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01) + "</div>";
+              receiptInformation = document.getElementById('itemquantity').value + "x " + NameDB[item] + " " + document.getElementById('itemquantity').value + "x ~$" + costTotal + ". Total: ~$" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01);
+            } else if (currency == 2) {
+              document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>" + document.getElementById('itemquantity').value + "x " + NameDB[item] + "</span></div><div id='genericseparator'>" + document.getElementById('itemquantity').value + "x ☆" + costTotal + "</div>"; 
+              document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>Total:</span></div> <div id='purchasedialog_genericseparator'>☆" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01) + "</div>";
+              receiptInformation = document.getElementById('itemquantity').value + "x " + NameDB[item] + " " + document.getElementById('itemquantity').value + "x ☆" + costTotal + ". Total: ☆" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01);
+            }
+          document.getElementById('purchasedialog_previewimage').src = "clothes/ska/shirt" + String(number + 1) + ".jpg"
+        } 
+        }
+        function hidePurchaseDialog() {
+          document.getElementById('purchasedialog').style.display = "none";
+        }
+        function showErrorDialog()  {
+          document.getElementById('errordialog').style.display = "inline";
+          document.getElementById('errordialog_missingparameters').innerHTML = "";
+          if (document.getElementById('shipping_option').innerHTML == "No Shipping Selected") {
+            document.getElementById('errordialog_missingparameters').innerHTML = "No Shipping Method Selected. ";
+          }
+          if (document.getElementById('itemquantity').value < 1)  {
+              document.getElementById('errordialog_missingparameters').innerHTML += "No Quantity Selected. ";
+          }
+        }
+        function hideErrorDialog()  {
+          document.getElementById('errordialog').style.display = "none"; 
+        }
+        function round_to_precision(x, precision) { // stolen from Mozilla Development Network
+          var y = +x + (precision === undefined ? 0.5 : precision/2);
+          return y - (y % (precision === undefined ? 1 : +precision));
+        }
+        function copyToClipboard(str) { // stolen from Apple the Cat who stole it from techoverflow.net
+          var text = document.createElement('textarea');
+          text.value = str;
+          text.setAttribute('readonly', '');
+          text.style = {position: 'absolute', left: '-9999px'};
+          document.body.appendChild(text);
+          text.select();
+          document.execCommand('copy');
+          document.body.removeChild(text);
+          
+          document.getElementById("copied_dialogbox").style.display = "flex";
+          setTimeout(function(){ document.getElementById("copied_dialogbox").style.display = "none"; }, 3000);
+        }
+        function hideCopiedDialog() {
+          document.getElementById("copied_dialogbox").style.display = "none";
+        }
+        function showAboutDialog()  {
+          document.getElementById('aboutdialog').style.display = "flex";
+        }
+        function hideAboutDialog()  {
+          document.getElementById('aboutdialog').style.display = "none";
+        }
+        document.addEventListener('keyup', function()  {
+          if (event.defaultPrevented)  {
+            return;
+          }
+          var key = event.key;
+          if (key === 'Escape' || key === 'Esc')  {
+            hideCopiedDialog();
+            hideErrorDialog();
+            hideAboutDialog();
+            hidePurchaseDialog();
+            hideDialogBox();
+            hideHelpDialog();
+          }
+        })
+    </script>
   </body>
 </html>

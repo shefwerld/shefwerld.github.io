@@ -1,0 +1,254 @@
+body  {
+    height: 100%;
+    margin: 0px;
+    padding: auto;
+    background-color: #111;
+  }
+  * {
+    font-family:'Roboto Mono', Courier, monospace;
+    color: #EEE;
+  }
+  #container  {
+    width: 95%;
+    margin: auto;
+  }
+  #centercontainer  {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+  #containerflex  {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  #dialog {
+    width: 40%;
+    margin: auto;
+    text-align: center;
+  }
+  #blinkingcursor {
+    font-weight: bold;
+    animation-name: blinking-cursor;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes blinking-cursor  {
+    0% {opacity: 1;}
+    50% {opacity: 1;}
+    51% {opacity: 0;}
+    100% {opacity: 0;}
+  }
+  @keyframes blinking-border  {
+    0% {border: 2px solid #EEE;}
+    50% {border: 2px solid #EEE;}
+    51% {border: 2px solid #111;}
+    100% {border: 2px solid #111;}
+  }
+  img   {
+    border: 2px solid #FFF;
+  }
+  .itemshowcase_itempreview img {
+    width: 75%;
+  }
+  .itemshowcase_itemname, .productdialog_itemname  {
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  .itemshowcase  {
+    width: 50%;
+  }
+  .productdialog, #helpdialog, #purchasedialog, #errordialog, #copied_dialogbox, #aboutdialog   {
+    position: fixed;
+    left: 12%;
+    border: 2px solid #EEE;
+    background-color: #111;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 12px;
+    margin: auto;
+  }
+  .productdialog    {
+    width: 75%;
+    height: 50%;
+    top: 5%;
+  }
+  #helpdialog  {
+    width: 75%;
+    height: 20%;
+    top: 15%;
+  }
+  #purchasedialog   {
+    width: 75%;
+    height: 60%;
+    top: 10%;
+  }
+  #errordialog  {
+    width: 75%;
+    height: 10%;
+    top: 15%;
+    animation-name: blinking-border;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  #aboutdialog  {
+    width: 75%;
+    height: 40%;
+    top: 15%;
+    flex-wrap: wrap;
+  }
+  #copied_dialogbox {
+      width: 75%;
+      height: 20px;
+      top: 15%;
+      display: none;
+      animation-name: blinking-border;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  .productdialog_itemnameactualname {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .productdialog_itemname   {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .productdialog_itemnamecreator    {
+    font-size: 14px;
+    font-style: italic;
+  }
+  .productdialog_purchasearea, .productdialog_purchaseinformation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+  }
+  .productdialog_itempreview    {
+    width: 42%;
+    margin-right: 15px;
+    margin: auto;
+  }
+  .productdialog_itempreview img    {
+    width: 250px;
+  }
+  .productdialog_itemdescription    {
+    width: 50%;
+    margin-left: 15px;
+    align-self: center;
+  }
+  #productdialog_genericseparator   {
+      width: 75%;
+  }
+  /* Shef Werld Footer */
+  #footerflex li {
+    flex-direction: column;
+    text-decoration: none;
+    list-style: none;
+    /* background-color: #FF0000; */ /* testing */
+    margin: 0 15px 0 15px;
+    font-size: 10px;
+  }
+  #footerflex {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+  }
+  .footer {
+    width: 100%;
+    margin: auto;
+  }
+  #shefwerldtext  {
+    color: #EEE; 
+    text-decoration: none;
+    transition: color 0s;
+    font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
+    font-size: 14px;
+  }
+  #shefwerldtext:hover  {
+    color: #CCC;
+  }
+  input  {
+    background-color: #111;
+    border: 2px solid #EEE;
+    font-size: 14px;
+    width: 60px;
+  }
+  input:focus   {
+    outline: none;
+    animation-name: blinking-border;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  input:hover, button:hover, img:hover   {
+    color: #CCC;
+    border: 2px solid #CCC;   
+  }
+  button    {
+    background-color: #111;
+    border: 2px solid #EEE;
+    font-size: 14px;
+  }
+  button:focus  {
+    outline: none;
+    animation-name: blinking-border;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  .helpdialog_titlebar, .purchasedialog_titlebar, .aboutdialog_titlebar, .errordialog_titlebar  {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 4px;
+  }
+  .helpdialog_section *   {
+      margin-left: 4px;
+      margin-right: 4px;
+  }
+  .helpdialog_informationdisplay    {
+      margin-top: 4px;
+      margin-bottom: 4px;
+  }
+  #purchasedialog_previewimage  {
+      width: 300px;
+      margin: auto;
+  }
+  #purchasedialog_center    {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+  }
+  #purchasedialog_purchaseinformation, #purchasedialog_purchaseinformation2   {
+      border: 2px solid #FFF;
+      display: flex;
+      justify-content: space-between;
+  }
+  #purchasedialog_genericseparator  {
+      display: flex;
+      justify-content: space-between;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+.aboutdialog_employees  {
+    list-style: none;
+    margin-left: 6px;
+    margin-top: 8px;
+    width: 20%;
+}
+.aboutdialog_image  {
+    width: 20%;
+}
+.aboutdialog_content  {
+    width: 40%;
+}
+.aboutdialog_titlebar   {
+    height: 28px;
+}

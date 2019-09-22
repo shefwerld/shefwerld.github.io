@@ -22,6 +22,7 @@ border-radius: 5px;
 display: inline-flex;
 justify-content: space-around;
 flex-wrap: wrap;
+align-items: stretch;
 }
 #subflexitem {
 width: 48%;
@@ -30,6 +31,7 @@ margin-bottom: 15px;
 padding: 3px;
 background-color: #DDDDDD;
 border-radius: 5px;
+align-items: stretch;
 }
 #interv {
 width: 70%;
@@ -97,6 +99,7 @@ a  {
   cursor: pointer;
   font-weight: 700;
   transition: color 0.25s;
+  text-decoration: none;
 }
 a:hover  {
   color: #9900CC;
@@ -136,6 +139,11 @@ a:hover  {
 #newsarticle_fineprint {
   font-style: italic; color: #BBB; font-size: 12px;
 }
+#newsarticle_shefkerbiedit  {
+  color: #FF9999;
+  font-style: italic;
+  font-size: 14px;
+}
 #list_items {
   width: 60%;
   background-color: #F0F0F0;
@@ -143,4 +151,63 @@ a:hover  {
   border-radius: 4px;
   margin: auto;
   padding: 8px;
+}
+#errortext  {
+  color: #FF0000;
+  font-weight: bold;
+  animation: 1s blinktext step-start infinite;
+}
+@keyframes blinktext {
+  50%  {opacity: 0;}
+}
+#hoveroof  {
+  opacity: 0;
+}
+#hoveroof:hover  {
+  opacity: 1;
+  color: #FF0000;
+  font-weight: bold;
+}
+#johngameman  {
+  color: #660000;
+}
+#opionion_comment {
+  width: 100%;
+  margin: auto;
+  background-color: #F0F0F0;
+  border: 2px solid #FF9900;
+  border-radius: 4px;
+  padding: 8px;
+}
+#opionion_comment a, #opionion_comment_reply a {
+  color: #FF9900;
+  transition: color 0.25s;
+}
+#opionion_comment a:hover, #opionion_comment_reply a:hover {
+  color: #9900CC;
+}
+#opionion_comment_reply {
+  width: 85%;
+  margin-left: auto;
+  background-color: #F0F0F0;
+  border: 2px solid #FF9900;
+  border-radius: 4px;
+  padding: 8px;
+  border-top: 0px;
+}
+#commentcontainer {
+  width: 70%;
+  margin: auto;
+  display: block;
+}
+.opionion_comment_reply_container {
+  display: none;
+}
+#scrappedcontent  {
+  background-color: #8C8C8C;
+  border-radius: 5px;
+  padding: 8px;
+}
+#scrappedcontent #newsarticle_author  {
+  color: #DDD;
 }

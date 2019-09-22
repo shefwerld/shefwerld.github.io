@@ -48,7 +48,7 @@ var characterdescription = ["The CEO of Shef Werld and owner of the CatsUnited a
 "this is john gameman porfessonal game and man man and john gamean is sport man and porfessonal sport game man and write good article about game and how good game is game man but no scarys pls ah or dreem lend game team will not play good man",
 "Shef Kerbi News Network Reporter, Comic Writer and Advertiser. Creator of the famous Pig Soop™® (Patent Pending)",
 "Bon Starbuckle's Cat. A very philoshopical figure in the Shef Werld community.",
-"bon's cat if it was gray",
+"bon's cat if it was gray. Recently exploded in a pizza restaurant.",
 "One of the most (in)famous figures in the Shef Werld community, SKNN News Reporter, Comic Writer and *Advertiser* has brought to the world an incredible invention known as 'Dirty Clock Cleaning', which can be done for $19.99 plus $5 if you call right now. Also invented ghosts.",
 "SKNN News Reporter. Most well known for bringing the unholy invention known as 'The New News Generation Machien' into the world",
 "Weather man. Provides very good weather definetly doesn't say (0 < x < 15). Also we use signed integers.",

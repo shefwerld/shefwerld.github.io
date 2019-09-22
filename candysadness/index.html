@@ -41,6 +41,16 @@ input {
 	border-radius: 5px;
 	border: 1px solid #999;
 }
+#copied  {
+	position: fixed;
+	right: 2.5%;
+	border-radius: 10px;
+	width: 170px;
+	height: 20px;
+	bottom: 1%;
+	background-color: rgba(0, 0, 0, 0.75);
+	color: #FFF;
+}
 #footerflex li {
   flex-direction: column;
   text-decoration: none;
@@ -73,6 +83,8 @@ input {
 
 <div id="invisiblecontainer">
 
+<button id="copied" style="display: none;" onclick="document.getElementById('copied').style.display = 'none';"><p>copied to clipboard</p></button>
+
 <a href="index.html"><img src="logo.png" width="444px" /></a><br />
 <br /><br />
 
@@ -96,7 +108,7 @@ input {
 <p>Link to this page:</p>
 <input id="comicurldisplay" readonly="readonly" /> <button onclick="copyToClipboard(document.getElementById('comicurldisplay').value);">Copy</button><br />
 <p>Link to this image:</p>
-<input id="comicimgurldisplay" readonly="readonly" /> <button>Copy</button><br />
+<input id="comicimgurldisplay" readonly="readonly" /> <button  onclick="copyToClipboard(document.getElementById('comicimgurldisplay').value);">Copy</button><br />
 
 </div>
 
@@ -123,10 +135,12 @@ input {
 	<div id="footerflex">
 	  <li><a href="../about.html">About</a></li>
 	  <li><a href="../history.html">History</a></li>
+	  <li><a href="../updates.html">Updates</a></li>
       <li><a href="../status.html">Server Status</a></li>
 	</div>
 	<p class="centertext">2018 - 2019 Shef Werld & DoubleDenial (Apple the Cat)</p>
 </div>
+
 
 
 <script src="https://doubledenial.github.io/shefkirb/cscomiclist.js"></script>
@@ -152,6 +166,9 @@ function copyToClipboard(str) { // stolen from techoverflow.net
 	text.select();
 	document.execCommand('copy');
 	document.body.removeChild(text);
+	
+	document.getElementById("copied").style.display = "inline-block";
+	setTimeout(function(){ document.getElementById("copied").style.display = "none"; }, 3000);
 }
 
 var id = getQueryVariable("p");

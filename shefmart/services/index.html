@@ -62,9 +62,9 @@
           </div>
           <br>
           <div class="productitem" id="pigsoop_product">
-              <div id="productitem_title">Satte Farm NOT State Farm</div>
+              <div id="productitem_title">Satte Fram NOT State Farm</div>
               <img id="productitem_displayimage" src="src/satte1.jpg">
-              <div id="productitem_description">Are you in need of insurance? Well Shefmart can provide a connection for you to Satte Farm NOT State Farm. This insurance is specially designed to resist snapping, as it is run by Thanos Jr himself. For pricing on various insurance, apply for a quote to talk to a Satte Farm NOT State Farm representative.<br><br>
+              <div id="productitem_description">Are you in need of insurance? Well Shefmart can provide a connection for you to Satte Fram NOT State Farm. This insurance is specially designed to resist snapping, as it is run by Thanos Jr himself. For pricing on various insurance, apply for a quote to talk to a Satte Fram NOT State Farm representative.<br><br>
               </div>
               <div id="productitem_purchase">
                 <span class="productitem_pricetag" id="productitem_price4">Apply for a Quote</span><br>
@@ -90,6 +90,7 @@
             <div id="footerflex">
               <li><a href="../../about.html">About</a></li>
               <li><a href="../../history.html">History</a></li>
+              <li><a href="../../updates.html">Updates</a></li>
               <li><a href="../../status.html">Server Status</a></li>
             </div>
             <div id="footerflex"><li>2018 - 2019 Shef Werld<br>2019 Shefmart</div>
@@ -131,15 +132,11 @@
                 for (i = 0; i < document.getElementById('productqty' + String(countyThing + 1)).value; i++)  {
                   productsBought.push(productName);
                 }
-                var newContent = "<li>" + document.getElementById('productqty' + String(countyThing + 1)).value + " x " + productName + " - $" + purchaseAmountIncrease + "</li>";
+                var newContent = "<li>" + document.getElementById('productqty' + String(countyThing + 1)).value + " x " + productName + " - $" + purchaseAmountIncrease.toFixed(2) + "</li>";
                 var newDiv = document.getElementById('shoppingCartItems');
                 newDiv.insertAdjacentHTML('beforeend', newContent);
                 document.getElementById('shoppingCartNumberGoods').innerHTML = " " + productsBought.length;
-                if (Math.round(purchaseAmount) != purchaseAmount) {
-                  document.getElementById('shoppingCartTotal').innerHTML = "<span style='font-weight: bold;'>Total:</span> $" + purchaseAmount + "0 (" + productsBought.length + " items)";
-                } else  {
-                  document.getElementById('shoppingCartTotal').innerHTML = "<span style='font-weight: bold;'>Total:</span> $" + purchaseAmount + " (" + productsBought.length + " items)";
-                }
+                document.getElementById('shoppingCartTotal').innerHTML = "<span style='font-weight: bold;'>Total:</span> $" + purchaseAmount.toFixed(2) + " (" + productsBought.length + " items)";
               } else  {
                 alert("ok buddy lol");
               }
@@ -151,7 +148,7 @@
             } else if (item == 2) {
               feedStufftoMoneyMachienIGuess(2, 500, "CARDBOARD TOADSWORTH!!!");
             } else if (item == 3) {
-              feedStufftoMoneyMachienIGuess(3, 0, "Satte Farm NOT State Farm");
+              feedStufftoMoneyMachienIGuess(3, 0, "Satte Fram NOT State Farm");
           }
         }
           function showAmount(){

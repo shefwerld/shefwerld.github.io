@@ -11,7 +11,7 @@
       background-color: #1A1A1A;
       font-family: "Lato", 'Arial', sans-serif;
       overflow-x: hidden;
-      overflow-y: hidden;
+      /*overflow-y: hidden;*/
       }
       .comicsans, #shefwerldlogo {
         font-family: "Comic Sans MS", 'Comic Sans', sans-serif;
@@ -164,7 +164,7 @@
               event = event || window.event;
               mousePos = {
                 x: event.x,
-                y: event.y - document.getElementById('muralimage').offsetTop
+                y: event.y - document.getElementById('muralimage').offsetTop + window.scrollY
               };
             }
             function getMousePosition() {
@@ -240,8 +240,8 @@
                 document.getElementById('character_icon_image').src = "usericon/" + character + ".jpg";
                 document.getElementById('character_name').innerHTML = characternames[character]
                 document.getElementById('character_description').innerHTML = characterdescription[character];
-                // document.getElementById('debug_mouseposition_x').innerHTML =  PerPosX;
-                // document.getElementById('debug_mouseposition_y').innerHTML =  PerPosY;
+                /*document.getElementById('debug_mouseposition_x').innerHTML =  pos.y;
+                document.getElementById('debug_mouseposition_y').innerHTML =  event.y;*/
               }
             }
             handleMouseMove();

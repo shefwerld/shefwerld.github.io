@@ -211,3 +211,18 @@ a:hover  {
 #scrappedcontent #newsarticle_author  {
   color: #DDD;
 }
+#buttoncontainer  {
+  margin: auto;
+  width: 70%;
+  display: flex;
+  padding: 4px;
+  justify-content: center;
+}
+button  {
+  border-radius: 9px;
+  height: 30px;
+  font-size: 16px;
+}
+button:hover  {
+  background-color: #999;
+}

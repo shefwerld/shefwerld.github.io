@@ -49,6 +49,14 @@
                 Your Local Russian Trashdonalds
               </div> <!--End Item Name-->
             </div> <!-- End Item Showcase--> 
+            <div class="itemshowcase" id="item5">
+              <div class="itemshowcase_itempreview">
+                <img src="clothes/ska/shirt5.jpg" onClick="openDialogBox(4);">
+              </div>
+              <div class="itemshowcase_itemname">
+                Soulja Boi (No Loop)
+              </div> <!--End Item Name-->
+            </div> <!-- End Item Showcase--> 
         </div> <!-- End Container Flex-->
         <br><br><span>More products coming soon...</span>
       </div> <!-- End Centering Container-->
@@ -215,17 +223,18 @@
     var costDiff = 0;
     var shippingMethod = 0;
     var receiptInformation = 0;
-    var TitleDB = ["Authentic Pig Soop Provider<span id='blinkingcursor'>|</span>","Ghost Hobo Beanie<span id='blinkingcursor'>|</span>","Shef Kerbi Hat<span id='blinkingcursor'>|</span>","Your Local Russian Trashdonalds<span id='blinkingcursor'>|</span>"];
-    var NameDB = ["Authentic Pig Soop Provider", "Ghost Hobo Beanie", "Shef Kerbi Hat", "Your Local Russian Trashdonalds"];
-    var CatchDB = ["for Carmes", "Mexican Ghost Dad - Ghost Hobo", "Shef Kerbi", "Чармес"]
+    var TitleDB = ["Authentic Pig Soop Provider<span id='blinkingcursor'>|</span>","Ghost Hobo Beanie<span id='blinkingcursor'>|</span>","Shef Kerbi Hat<span id='blinkingcursor'>|</span>","Your Local Russian Trashdonalds<span id='blinkingcursor'>|</span>", "Soulja Boi (no loop)<span id='blinkingcursor'>|</span>"];
+    var NameDB = ["Authentic Pig Soop Provider", "Ghost Hobo Beanie", "Shef Kerbi Hat", "Your Local Russian Trashdonalds", "Soulja Boi (no loop)"];
+    var CatchDB = ["for Carmes", "Mexican Ghost Dad - Ghost Hobo", "Shef Kerbi", "Чармес", "Old School Shef Kerbi's Apparel"];
     var DescriptionDB = ["Would you like to show your loyalty, dedication and commitment to Pig Soop? You can use this shirt to prove to everyone that you are the TRUE Pig Soop champion of the group and will go out and give Pig Soop to others who are unable or who don't often get the enjoy the nice refreshing taste of Pig Soop!<br>",
     "A replica of the hat worn by Mexican Ghost Dad™'s Ghost Dog, the Ghost Hobo Beanie is the perfect tool to keep your big brain warm and to show people that you are a fan of Mexican Ghost Dad. This beanie is also in celebration of the resurrection of Mexican Ghost Dad due to huge fan support.",
     "Despite a change in management and a complete website redesign, we are still keeping by our promise. The Shef Kerbi hat is available and will be available indefinetly. Note that the hat may not be designed to fit on your head though, as this is a 1:1 scale copy of Shef Kerbi's own Shef Hat.",
-    "Trashdonalds, the fast food chain that serves up the best trash from Dreem Lend is an international brand spanning many countries. Trashdonalds Russia had this to say: &ldquo;[Trashdonalds is] disgusting. Our food can make hygeine inspectors say 'Yuck!', yet they always seem to come back for more [Trashdonalds].&rdquo;"];
+    "Trashdonalds, the fast food chain that serves up the best trash from Dreem Lend is an international brand spanning many countries. Trashdonalds Russia had this to say: &ldquo;[Trashdonalds is] disgusting. Our food can make hygeine inspectors say 'Yuck!', yet they always seem to come back for more [Trashdonalds].&rdquo;",
+    "An remixed track of Soulja Boy's 'Crank That' which was designed for Shef Kerbi's Apparel Collection 4 before our company decided to change direction with our approach to our website.<br>Click purchase to get a download link for this remix (note that the quantity and shipping selection means nothing here)."];
     var currencyConversion = [1, 1.6, 5];
-    var shefDollarPrices = [79.99, 69.99, 149.99, 94.99];
-    var ghostDollarPrices = [127.99, 111.99, 239.99, 151.99];
-    var starCoinPrices = [399.99, 349.99, 749.99, 474.99];
+    var shefDollarPrices = [79.99, 69.99, 149.99, 94.99, 0.01];
+    var ghostDollarPrices = [127.99, 111.99, 239.99, 151.99, 0.01];
+    var starCoinPrices = [399.99, 349.99, 749.99, 474.99, 0.01];
       function setCurrency(cash)  {
         currency = cash;
         if (currency == 0)  {
@@ -341,16 +350,31 @@
           document.getElementById('purchasedialog').style.display = "inline";
             document.getElementById('itempurchaseditembar').innerHTML = "<span style='font-weight: bold;'>Authentic Pig Soop Provider</span>";
             if (currency == 0)  {
-            document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>" + document.getElementById('itemquantity').value + "x " + NameDB[item] + "</span></div><div id='genericseparator'>" + document.getElementById('itemquantity').value + "x $" + costTotal + "</div>";
-            document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>Total:</span></div> <div id='purchasedialog_genericseparator'>$" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01).toFixed(2) + "</div>";
+            if (item == 4)  {
+              document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<a href='SouljaBoiNotLoop.mp3'>Link to Song</a>";
+              document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "";
+            } else  {
+              document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>" + document.getElementById('itemquantity').value + "x " + NameDB[item] + "</span></div><div id='genericseparator'>" + document.getElementById('itemquantity').value + "x $" + costTotal + "</div>";
+              document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>Total:</span></div> <div id='purchasedialog_genericseparator'>$" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01).toFixed(2) + "</div>";
+            }
             receiptInformation = document.getElementById('itemquantity').value + "x " + NameDB[item] + " " + document.getElementById('itemquantity').value + "x $" + costTotal + ". Total: $" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01).toFixed(2);
             } else if (currency == 1) {
-              document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>" + document.getElementById('itemquantity').value + "x " + NameDB[item] + "</span></div><div id='genericseparator'>" + document.getElementById('itemquantity').value + "x ~$" + costTotal + "</div>"; 
-              document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>Total:</span></div> <div id='purchasedialog_genericseparator'>~$" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01) + "</div>";
+              if (item == 4)  {
+              document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<a href='SouljaBoiNotLoop.mp3'>Link to Song</a>";
+              document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "";
+              } else  {
+                document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>" + document.getElementById('itemquantity').value + "x " + NameDB[item] + "</span></div><div id='genericseparator'>" + document.getElementById('itemquantity').value + "x ~$" + costTotal + "</div>"; 
+                document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>Total:</span></div> <div id='purchasedialog_genericseparator'>~$" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01) + "</div>";
+              }
               receiptInformation = document.getElementById('itemquantity').value + "x " + NameDB[item] + " " + document.getElementById('itemquantity').value + "x ~$" + costTotal + ". Total: ~$" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01).toFixed(2);
             } else if (currency == 2) {
-              document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>" + document.getElementById('itemquantity').value + "x " + NameDB[item] + "</span></div><div id='genericseparator'>" + document.getElementById('itemquantity').value + "x ☆" + costTotal + "</div>"; 
+              if (item == 4)  {
+              document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<a href='SouljaBoiNotLoop.mp3'>Link to Song</a>";
+              document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "";
+              } else  {
+                document.getElementById('purchasedialog_purchaseinformation').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>" + document.getElementById('itemquantity').value + "x " + NameDB[item] + "</span></div><div id='genericseparator'>" + document.getElementById('itemquantity').value + "x ☆" + costTotal + "</div>"; 
               document.getElementById('purchasedialog_purchaseinformation2').innerHTML = "<div id='purchasedialog_genericseparator'><span style='font-weight: bold;'>Total:</span></div> <div id='purchasedialog_genericseparator'>☆" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01) + "</div>";
+              }
               receiptInformation = document.getElementById('itemquantity').value + "x " + NameDB[item] + " " + document.getElementById('itemquantity').value + "x ☆" + costTotal + ". Total: ☆" + round_to_precision(document.getElementById('itemquantity').value * costTotal, 0.01).toFixed(2);
             }
           document.getElementById('purchasedialog_previewimage').src = "clothes/ska/shirt" + String(number + 1) + ".jpg"

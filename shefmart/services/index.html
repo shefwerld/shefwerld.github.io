@@ -72,6 +72,18 @@
                 <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(3);">Add to Cart</button>
               </div>
           </div>
+          <br>
+          <div class="productitem" id="pigsoop_product">
+              <div id="productitem_title">Help Sue!</div>
+              <img id="productitem_displayimage" src="src/sue1.jpg">
+              <div id="productitem_description">Is some other company stealing your ideas? Are you worried about competition? Well, worry no longer, because we have a plan! Pay us, and we'll help you sue the other company!<br><br>
+              </div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price5">$4050 per sue</span><br>
+                Number of Quotes: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty5"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(4);">Add to Cart</button>
+              </div>
+          </div>
         </div>
         <br>
         <div class="footer"> <!-- footer -->
@@ -100,9 +112,9 @@
         var productsBought = [];
         var currencyMultiplier = [1, 1.6, 5];
         var currency = 0;
-        var shefDollarPrices = ["$19.99 per clock cleaned (+$5 if you order now)", "$4.99 per website hosted ($3.99 after every month)", "$500 per Cardboard Toadsworth", "Apply for a Quote"];
-        var ghostDollarPrices = ["~$31.99 per clock cleaned (+~$8 if you order now)", "~$7.99 per website hosted (~$6.40 after every month)", "~$800 per Cardboard Toadsworth", "Apply for a Quote"];
-        var starCoinPrices = ["☆99.99 per clock cleaned (+☆25 if you order now)", "☆24.99 per website hosted (☆19.99 after every month)", "☆2500 per Cardboard Toadsworth" , "Apply for a Quote"];
+        var shefDollarPrices = ["$19.99 per clock cleaned (+$5 if you order now)", "$4.99 per website hosted ($3.99 after every month)", "$500 per Cardboard Toadsworth", "Apply for a Quote", "$4050 per sue"];
+        var ghostDollarPrices = ["~$31.99 per clock cleaned (+~$8 if you order now)", "~$7.99 per website hosted (~$6.40 after every month)", "~$800 per Cardboard Toadsworth", "Apply for a Quote", "~$6480 per sue"];
+        var starCoinPrices = ["☆99.99 per clock cleaned (+☆25 if you order now)", "☆24.99 per website hosted (☆19.99 after every month)", "☆2500 per Cardboard Toadsworth" , "Apply for a Quote", "☆20250 per sue"];
         var itemToPossiblyRemove = 0;
         var nameOfProduct = 0;
         var showShopCart = 0;
@@ -149,7 +161,9 @@
               feedStufftoMoneyMachienIGuess(2, 500, "CARDBOARD TOADSWORTH!!!");
             } else if (item == 3) {
               feedStufftoMoneyMachienIGuess(3, 0, "Satte Fram NOT State Farm");
-          }
+            } else if (item == 4) {
+              feedStufftoMoneyMachienIGuess(4, 4050, "Help Sue!");
+            }
         }
           function showAmount(){
             if (showShopCart == 0)  {

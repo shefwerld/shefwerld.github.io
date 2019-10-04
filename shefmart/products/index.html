@@ -136,6 +136,19 @@
                 </div>
               </div>
             <br>
+            <div class="productitem" id="pigsoop_product">
+                <div id="productitem_title">Orange Man's Oranges (12 pack - 960g)</div>
+                <img id="productitem_displayimage" src="src/orange1.jpg">
+                <div id="productitem_description">Orange Man™ would like to offer people oranges. He used to be "the bad" but then he decided to no longer be "the bad"<br><br>
+                <a href="gallery/orange.html">View image gallery</a></div>
+                <div id="productitem_purchase">
+                  <span class="productitem_pricetag" id="productitem_price15">$4.97 each</span><br>
+                  <span style="font-style: italic;">($0.52 per 100 g)</span><br>
+                  Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty16"><br>
+                  <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(15);">Add to Cart</button>
+                </div>
+              </div>
+            <!--LIFESTYLE PRODUCTS-->
             <h2 id="lifeproductslink">Lifestyle Products</h2>
           <div class="productitem" id="toothpaste_product">
               <div id="productitem_title">Toothpaste (200 g)</div>
@@ -174,6 +187,18 @@
               </div>
             </div>
             <br>
+            <div class="productitem" id="toothpaste_product">
+              <div id="productitem_title">Flex Tape</div>
+              <img id="productitem_displayimage" src="src/flextape1.jpg">
+              <div id="productitem_description"><span style="color: #FF0000;">WANING: No we don't sell flex tape because we don't have the legal requirements to do so and it would probably break the Github TOS and I don't even own any Flex Tape I'm just saying this so I don't get sued thanks.</span><br><br>
+              </div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price12">$12.90 each</span><br>
+                Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty17"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(16);">Add to Cart</button>
+              </div>
+            </div>
+            <!--ELECRTONICS-->
             <h2 id="electricproductslink">Electronics</h2>
             <div class="productitem" id="toothpaste_product">
               <div id="productitem_title">Ghost Fone (1st Generation)</div>
@@ -322,6 +347,10 @@
               feedStufftoMoneyMachienIGuess(13, 1337, "DreemTronix SuperPhone", 2, "nd Gen");
             } else if (item == 14) {
               feedStufftoMoneyMachienIGuess(14, 3.3, "Kerbpops: Anniversary Eddytion", 300, "g - 8 pack");
+            } else if (item == 15) {
+              feedStufftoMoneyMachienIGuess(15, 4.97, "Orange Man's Oranges", 12, "pack");
+            } else if (item == 16) {
+              feedStufftoMoneyMachienIGuess(16, 12.9, "Flex Tape", 1, "flex");
             }
             
           }

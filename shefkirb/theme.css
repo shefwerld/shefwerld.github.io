@@ -1,6 +1,6 @@
 body {
 background-color: #CCCCCC;
-font-family: "Comic Sans MS", "Comic Sans", cursive;
+font-family: "Comic Sans MS", "Comic Sans", sans-serif;
 }
 #main {
 width: 90%;
@@ -61,7 +61,7 @@ font-size: 26px;
 border-radius: 5px;
 background-color: #E7E7E7;
 border: none;
-font-family: "Comic Sans MS", "Comic Sans", cursive;
+font-family: "Comic Sans MS", "Comic Sans", sans-serif;
 -moz-transition: background 0.25s;
 -webkit-transition: background 0.25s;
 transition: background 0.25s;

@@ -84,6 +84,30 @@
                 <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(4);">Add to Cart</button>
               </div>
           </div>
+          <br>
+          <div class="productitem" id="pigsoop_product">
+              <div id="productitem_title">Toda's Plastic Surgery</div>
+              <img id="productitem_displayimage" src="../../shefkirb/news/media/Toda.png">
+              <div id="productitem_description">Is your face just wrong? Then call Toda's, available 28 hours a day, six days a week! Our professional service will fix your face! We use the newest and most efficient techniques to successfully fix your face! No face will go unfixed! Our service also extends to the back of your head, in case that's ugly too. Toda's is the best plastic surgery place in town!<br><br>
+              </div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price6">$28 per plastic per face</span><br>
+                Number of Faces: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty6"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(5);">Add to Cart</button>
+              </div>
+          </div>
+          <br>
+          <div class="productitem" id="pigsoop_product">
+              <div id="productitem_title">Mr Spookers's Big Spooks</div>
+              <img id="productitem_displayimage" src="../../shefkirb/news/media/Q3COjQf.gif">
+              <div id="productitem_description">Big Spooks<br><br>
+              </div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price7">$2.16 (value of your soul)</span><br>
+                Number of Souls: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty7"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(6);">Add to Cart</button>
+              </div>
+          </div>
         </div>
         <br>
         <div class="footer"> <!-- footer -->
@@ -112,9 +136,9 @@
         var productsBought = [];
         var currencyMultiplier = [1, 1.6, 5];
         var currency = 0;
-        var shefDollarPrices = ["$19.99 per clock cleaned (+$5 if you order now)", "$4.99 per website hosted ($3.99 after every month)", "$500 per Cardboard Toadsworth", "Apply for a Quote", "$4050 per sue"];
-        var ghostDollarPrices = ["~$31.99 per clock cleaned (+~$8 if you order now)", "~$7.99 per website hosted (~$6.40 after every month)", "~$800 per Cardboard Toadsworth", "Apply for a Quote", "~$6480 per sue"];
-        var starCoinPrices = ["☆99.99 per clock cleaned (+☆25 if you order now)", "☆24.99 per website hosted (☆19.99 after every month)", "☆2500 per Cardboard Toadsworth" , "Apply for a Quote", "☆20250 per sue"];
+        var shefDollarPrices = ["$19.99 per clock cleaned (+$5 if you order now)", "$4.99 per website hosted ($3.99 after every month)", "$500 per Cardboard Toadsworth", "Apply for a Quote", "$4050 per sue", "$28 per plastic per face", "$2.16 (value of your soul)"];
+        var ghostDollarPrices = ["~$31.99 per clock cleaned (+~$8 if you order now)", "~$7.99 per website hosted (~$6.40 after every month)", "~$800 per Cardboard Toadsworth", "Apply for a Quote", "~$6480 per sue", "~$44.80 per plastic per face", "~$3.46 (value of your soul)"];
+        var starCoinPrices = ["☆99.99 per clock cleaned (+☆25 if you order now)", "☆24.99 per website hosted (☆19.99 after every month)", "☆2500 per Cardboard Toadsworth" , "Apply for a Quote", "☆20250 per sue", "☆140 per plastic per face", "☆10.80 (value of your soul)"];
         var itemToPossiblyRemove = 0;
         var nameOfProduct = 0;
         var showShopCart = 0;
@@ -163,6 +187,10 @@
               feedStufftoMoneyMachienIGuess(3, 0, "Satte Fram NOT State Farm");
             } else if (item == 4) {
               feedStufftoMoneyMachienIGuess(4, 4050, "Help Sue!");
+            } else if (item == 5) {
+              feedStufftoMoneyMachienIGuess(5, 28, "Toda's Plastic Surgery");
+            } else if (item == 6) {
+              feedStufftoMoneyMachienIGuess(6, 2.16, "Big Spookers's Big Spooks");
             }
         }
           function showAmount(){

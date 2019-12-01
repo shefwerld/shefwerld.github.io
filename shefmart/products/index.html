@@ -198,6 +198,44 @@
                 <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(16);">Add to Cart</button>
               </div>
             </div>
+            <br>
+            <div class="productitem" id="toothpaste_product">
+                <div id="productitem_title">Shampoo</div>
+                <img id="productitem_displayimage" src="../../shefkirb/news/media/shampoo.png">
+                <div id="productitem_description">Toothpaste? Obviously that's for your hair. Shampoo is the best thing to put on your teeth!!!<br><br>
+                </div>
+                <div id="productitem_purchase">
+                  <span class="productitem_pricetag" id="productitem_price12">$12.90 each</span><br>
+                  Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty18"><br>
+                  <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(17);">Add to Cart</button>
+                </div>
+            </div>
+            <br>
+            <div class="productitem" id="pigsoop_product">
+              <div id="productitem_title">Mr Spookers's Big Spooks</div>
+              <img id="productitem_displayimage" src="../../shefkirb/news/media/Q3COjQf.gif">
+              <div id="productitem_description">Big Spooks<br><br>
+              </div>
+              <div id="productitem_purchase">
+                <span class="productitem_pricetag" id="productitem_price7">$2.16 (value of your soul)</span><br>
+                Number of Souls: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty19"><br>
+                <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(18);">Add to Cart</button>
+              </div>
+            </div>
+              <br>
+              <div class="productitem" id="toothpaste_product">
+                  <div id="productitem_title">Berry Cram</div>
+                  <img id="productitem_displayimage" src="src/cram1.png">
+                  <div id="productitem_description">Releasing on December 2nd, 2019<br><br>
+                  </div>
+                  <!--
+                  <div id="productitem_purchase">
+                    <span class="productitem_pricetag" id="productitem_price12">20 gold coins each</span><br>
+                    Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty19"><br>
+                    <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(19);">Add to Cart</button>
+                  </div>
+                  -->
+          </div>
             <!--ELECRTONICS-->
             <h2 id="electricproductslink">Electronics</h2>
             <div class="productitem" id="toothpaste_product">
@@ -276,9 +314,9 @@
         var productsBought = [];
         var currencyMultiplier = [1, 1.6, 5];
         var currency = 0;
-        var shefDollarPrices = ["$1.00", "$6.00", "$5.00", "$156.30", "$2.20", "$312.60", "$450.00", "$39.00", "$3.60", "$1.60", "$0.50", "$120.00", "$0.10", "$1337.00", "$3.30"];
-        var ghostDollarPrices = ["~$1.60", "~$9.60", "~$8.00", "~$250.00", "~$3.50", "~$500.00", "~$720.00", "~$62.40", "~$5.80", "~2.40", "~$0.80", "~$192.00", "~$0.20", "~$2139.00", "~$5.30"];
-        var starCoinPrices = ["☆5.00", "☆30.00", "☆25.00", "☆781.50", "☆11.00", "☆1563.00", "☆2250.00", "☆195.00", "☆18.00", "☆8.00", "☆4.00", "☆600.00", "☆0.50", "☆6685.00", "☆16.50"];
+        var shefDollarPrices = ["$1.00", "$6.00", "$5.00", "$156.30", "$2.20", "$312.60", "$450.00", "$39.00", "$3.60", "$1.60", "$0.50", "$120.00", "$0.10", "$1337.00", "$3.30", "$12.90", "$4.00", "$2.16"];
+        var ghostDollarPrices = ["~$1.60", "~$9.60", "~$8.00", "~$250.00", "~$3.50", "~$500.00", "~$720.00", "~$62.40", "~$5.80", "~2.40", "~$0.80", "~$192.00", "~$0.20", "~$2139.00", "~$20.60", "~$5.30", "~$3.46"];
+        var starCoinPrices = ["☆5.00", "☆30.00", "☆25.00", "☆781.50", "☆11.00", "☆1563.00", "☆2250.00", "☆195.00", "☆18.00", "☆8.00", "☆4.00", "☆600.00", "☆0.50", "☆6685.00", "☆16.50", "☆64.50", "☆20.00", "☆10.80"];
         var itemToPossiblyRemove = 0;
         var nameOfProduct = 0;
         var showShopCart = 0;
@@ -351,6 +389,12 @@
               feedStufftoMoneyMachienIGuess(15, 4.97, "Orange Man's Oranges", 12, "pack");
             } else if (item == 16) {
               feedStufftoMoneyMachienIGuess(16, 12.9, "Flex Tape", 1, "flex");
+            } else if (item == 17) {
+              feedStufftoMoneyMachienIGuess(17, 4.97, "Shampoo", 12, "pack");
+            } else if (item == 18) {
+              feedStufftoMoneyMachienIGuess(18, 12.9, "Mr Spookers's Big Spooks", 1, "spook");
+            } else if (item == 19) {
+              feedStufftoMoneyMachienIGuess(19, 20, "Berry Cram", 1, "bucket");
             }
             
           }

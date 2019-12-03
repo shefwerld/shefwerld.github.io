@@ -143,9 +143,8 @@
                 <a href="gallery/orange.html">View image gallery</a></div>
                 <div id="productitem_purchase">
                   <span class="productitem_pricetag" id="productitem_price15">$4.97 each</span><br>
-                  <span style="font-style: italic;">($0.52 per 100 g)</span><br>
-                  Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty16"><br>
-                  <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(15);">Add to Cart</button>
+                  Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="100" class="ProductQuantitySelection" id="productqty15"><br>
+                  <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(14);">Add to Cart</button>
                 </div>
               </div>
             <!--LIFESTYLE PRODUCTS-->
@@ -193,7 +192,7 @@
               <div id="productitem_description"><span style="color: #FF0000;">WANING: No we don't sell flex tape because we don't have the legal requirements to do so and it would probably break the Github TOS and I don't even own any Flex Tape I'm just saying this so I don't get sued thanks.</span><br><br>
               </div>
               <div id="productitem_purchase">
-                <span class="productitem_pricetag" id="productitem_price12">$12.90 each</span><br>
+                <span class="productitem_pricetag" id="productitem_price16">$12.90 each</span><br>
                 Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty17"><br>
                 <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(16);">Add to Cart</button>
               </div>
@@ -205,7 +204,7 @@
                 <div id="productitem_description">Toothpaste? Obviously that's for your hair. Shampoo is the best thing to put on your teeth!!!<br><br>
                 </div>
                 <div id="productitem_purchase">
-                  <span class="productitem_pricetag" id="productitem_price12">$12.90 each</span><br>
+                  <span class="productitem_pricetag" id="productitem_price17">$12.90 each</span><br>
                   Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty18"><br>
                   <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(17);">Add to Cart</button>
                 </div>
@@ -217,24 +216,23 @@
               <div id="productitem_description">Big Spooks<br><br>
               </div>
               <div id="productitem_purchase">
-                <span class="productitem_pricetag" id="productitem_price7">$2.16 (value of your soul)</span><br>
+                <span class="productitem_pricetag" id="productitem_price18">$2.16 (value of your soul)</span><br>
                 Number of Souls: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty19"><br>
                 <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(18);">Add to Cart</button>
               </div>
             </div>
               <br>
+              <!--
               <div class="productitem" id="toothpaste_product">
                   <div id="productitem_title">Berry Cram</div>
                   <img id="productitem_displayimage" src="src/cram1.png">
                   <div id="productitem_description">Releasing on December 2nd, 2019<br><br>
                   </div>
-                  <!--
                   <div id="productitem_purchase">
-                    <span class="productitem_pricetag" id="productitem_price12">20 gold coins each</span><br>
-                    Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty19"><br>
+                    <span class="productitem_pricetag" id="productitem_price19">20 gold coins each</span><br>
+                    Quantity: <input placeholder="Qty" type="number" style="width: 60px;" min="1" max="1" class="ProductQuantitySelection" id="productqty20"><br>
                     <button type="button" id="productpurchase1" class="productItemCart" onClick="addToCart(19);">Add to Cart</button>
-                  </div>
-                  -->
+                  </div>-->
           </div>
             <!--ELECRTONICS-->
             <h2 id="electricproductslink">Electronics</h2>
@@ -314,9 +312,9 @@
         var productsBought = [];
         var currencyMultiplier = [1, 1.6, 5];
         var currency = 0;
-        var shefDollarPrices = ["$1.00", "$6.00", "$5.00", "$156.30", "$2.20", "$312.60", "$450.00", "$39.00", "$3.60", "$1.60", "$0.50", "$120.00", "$0.10", "$1337.00", "$3.30", "$12.90", "$4.00", "$2.16"];
-        var ghostDollarPrices = ["~$1.60", "~$9.60", "~$8.00", "~$250.00", "~$3.50", "~$500.00", "~$720.00", "~$62.40", "~$5.80", "~2.40", "~$0.80", "~$192.00", "~$0.20", "~$2139.00", "~$20.60", "~$5.30", "~$3.46"];
-        var starCoinPrices = ["☆5.00", "☆30.00", "☆25.00", "☆781.50", "☆11.00", "☆1563.00", "☆2250.00", "☆195.00", "☆18.00", "☆8.00", "☆4.00", "☆600.00", "☆0.50", "☆6685.00", "☆16.50", "☆64.50", "☆20.00", "☆10.80"];
+        var shefDollarPrices = ["$1.00", "$6.00", "$5.00", "$156.30", "$2.20", "$312.60", "$450.00", "$39.00", "$3.60", "$1.60", "$0.50", "$120.00", "$0.10", "$1337.00", "$3.30", "$12.90", "$4.00", "$2.16", "20 gold coins"];
+        var ghostDollarPrices = ["~$1.60", "~$9.60", "~$8.00", "~$250.00", "~$3.50", "~$500.00", "~$720.00", "~$62.40", "~$5.80", "~2.40", "~$0.80", "~$192.00", "~$0.20", "~$2139.00", "~$20.60", "~$5.30", "~$3.46" , "20 gold coins"];
+        var starCoinPrices = ["☆5.00", "☆30.00", "☆25.00", "☆781.50", "☆11.00", "☆1563.00", "☆2250.00", "☆195.00", "☆18.00", "☆8.00", "☆4.00", "☆600.00", "☆0.50", "☆6685.00", "☆16.50", "☆64.50", "☆20.00", "☆10.80" , "20 gold coins"];
         var itemToPossiblyRemove = 0;
         var nameOfProduct = 0;
         var showShopCart = 0;

@@ -160,6 +160,22 @@ a:hover  {
 @keyframes blinktext {
   50%  {opacity: 0;}
 }
+#glitch {
+  background-color: #000000;
+  animation: 1s glitch step-start infinite;
+}
+@keyframes glitch {
+  10% {color: #FF0000;}
+  20% {color: #0000FF;}
+  30% {color: #FF00FF;}
+  40% {color: #00FFFF;}
+  50% {color: #FFFF00;}
+  60% {color: #00FF00; font-weight: bold;}
+  70% {color: #0F90FF;}
+  80% {color: #9F0F9F;}
+  90% {color: #009F9F; font-weight: normal;}
+  100% {color: #FFF099;}
+}
 #hoveroof  {
   opacity: 0;
 }

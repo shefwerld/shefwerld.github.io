@@ -90,10 +90,11 @@
         margin: 0 15px 0 15px;
       }
       #nav  {
-        background-color: #444;
+        background-color: #252525;
         width: 100%;
         display: flex;
         justify-content: space-evenly;
+        padding: 4px 0 4px 0;
       }
       #mural {
         background-color: #FFF;
@@ -115,6 +116,7 @@
         margin: auto;
         display: flex;
         flex-direction: row;
+        padding: 10px 0 10px 0;
       }
       #character_name {
         margin: 20px 20px 0 20px;
@@ -255,7 +257,7 @@
           } else  {
             timezoneThing = date.getTimezoneOffset() / -60 + " ";
           }
-          if (date.getMinutes().length < 2) {
+          if (date.getMinutes().length === 2) {
             newsDate = date.getHours() + ":0" + date.getMinutes() + ", " + properMonth + "/" + date.getDate() + "/" + date.getFullYear() + " (" + timezoneThing + " UTC )";
           } else {
             newsDate = date.getHours() + ":" + date.getMinutes() + ", " + properMonth + "/" + date.getDate() + "/" + date.getFullYear() + " (" + timezoneThing + "UTC )";
@@ -265,7 +267,7 @@
           newsNumber = Math.floor(Math.random() * 3) + 1;
           newsArticles = ["The Full Soulja Boy Remix Track is now available on SKA!",
           "Shef Kerbi News Network Training Program II is now live!",
-          "Shef Kerbi News Network #38 is ready to view now! You can read this issue by <a href=&quot;shefkirb/news/38.html	&quot;>clicking here</a> or visiting the SKNN website."]
+          "Shef Kerbi News Network #39 is ready to view now! You can read this issue by <a href=&quot;shefkirb/news/39.html	&quot;>clicking here</a> or visiting the SKNN website."]
           document.getElementById('shefwerldnews').innerHTML = newsArticles[newsNumber - 1];
           }, 10000)
         </script>
@@ -295,10 +297,8 @@
     -->
     <br>
     <div id="nav">
-        <li><a href="about.html" title="About" id="colorlink" class="comicsans">About</a></li>
         <li><a href="history.html" title="History" id="colorlink" class="comicsans">History</a></li>
         <li><a href="updates.html" title="Updates" id="colorlink" class="comicsans">Updates</a></li>
-        <li><a href="status.html" title="Server Status" id="colorlink" class="comicsans">Server Status</a></li>
     </div>
     <br>
   </body>

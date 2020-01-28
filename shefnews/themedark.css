@@ -1,0 +1,336 @@
+body {
+background-color: #000000;
+font-family: "Comic Sans MS", "Comic Sans", sans-serif;
+color: #F2F2F2;
+}
+#main {
+width: 100%;
+margin: auto;
+padding: 0px;
+padding-bottom: 0px;
+background-color: #333333;
+/*border-radius: 5px;*/
+}
+#sub {
+width: 90%;
+margin: auto;
+background-color: #1C1C1C;
+border-radius: 5px;
+}
+nav {
+  background-color: #1C1C1C;
+  padding: 10px 10px 10px 10px;
+  margin: 5px 0 5px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#subflex {
+margin: 20px;
+border-radius: 5px;
+display: inline-flex;
+justify-content: space-around;
+flex-wrap: wrap;
+align-items: stretch;
+}
+.subflexitem {
+width: 48%;
+margin: auto;
+margin-bottom: 15px;
+padding: 3px;
+background-color: #1C1C1C;
+border-radius: 5px;
+align-items: stretch;
+}
+#interv {
+width: 70%;
+margin: auto;
+background-color: #3D3D3D;
+border: 2px solid #0000CC;
+border-radius: 4px;
+padding: 8px;
+line-height: 1.6em;
+}
+#sknnlogo {
+  width: 20%;
+  margin: auto;
+  display: flex;
+  padding: 0 0 20px 0;
+}
+.rightimg {
+float: right;
+display: block;
+width: 300px;
+}
+.leftimg {
+float: left;
+display: block;
+}
+.centerimg {
+margin: auto;
+display: block;
+}
+.bigbutton {
+height: 60px;
+width: 14%;
+font-size: 20px;
+border-radius: 5px;
+background-color: #1C1C1C;
+border: none;
+font-family: "Comic Sans MS", "Comic Sans", sans-serif;
+-moz-transition: background 0.25s;
+-webkit-transition: background 0.25s;
+transition: background 0.25s;
+color: #F2F2F2;
+}
+.bigbutton:hover {
+background-color: #3D3D3D;
+}
+.centertext {
+text-align: center;
+}
+.italic {
+font-style: italic;
+text-align: center;
+}
+.bold {
+font-weight: bold;
+text-align: center;
+}
+#backshefwerld  {
+  display: block;
+  color: #FF9999;
+}
+#gototop  {
+  position: fixed;
+  border-radius: 3px;
+  bottom: 1%;
+  right: 2.5%;
+  width: 100px;
+  height: 50px;
+  background-color: #9999FF;
+}
+a, #showanswerbutton  {
+  color: #9999FF;
+  cursor: pointer;
+  font-weight: 700;
+  transition: color 0.25s;
+  text-decoration: none;
+}
+a:hover, #showanswerbutton:hover  {
+  color: #9900CC;
+}
+
+#footerflex li {
+  flex-direction: column;
+  text-decoration: none;
+  list-style: none;
+  /* background-color: #FF0000; */ /* testing */
+  margin: 0 25px 5px 25px;
+}
+#footerflex {
+  display: flex;
+  justify-content: center;
+  width: 98%;
+  margin: auto;
+  justify-content: space-around;
+}
+.footer {
+  width: 100%;
+  margin: auto;
+}
+#shefwerldtext  {
+  color: #FF9999; 
+  text-decoration: none;
+  transition: color 0.25s;
+}
+#shefwerldtext:hover  {
+  color: #770000;
+}
+#newsarticle_title  {
+  font-weight: bold; font-size: 20px;
+}
+#newsarticle_author {
+  font-style: italic; color: #999;
+}
+#newsarticle_fineprint {
+  font-style: italic; color: #BBB; font-size: 12px;
+}
+#newsarticle_shefkerbiedit  {
+  color: #FF9999;
+  font-style: italic;
+  font-size: 14px;
+}
+#list_items {
+  width: 60%;
+  background-color: #3D3D3D;
+  border: 2px solid #00CC00;
+  border-radius: 4px;
+  margin: auto;
+  padding: 8px;
+  color: #F2F2F2;
+}
+#errortext  {
+  color: #FF0000;
+  font-weight: bold;
+  animation: 1s blinktext step-start infinite;
+}
+@keyframes blinktext {
+  50%  {opacity: 0;}
+}
+#glitch {
+  background-color: #000000;
+  animation: 1s glitch step-start infinite;
+}
+@keyframes glitch {
+  10% {color: #FF0000;}
+  20% {color: #0000FF;}
+  30% {color: #FF00FF;}
+  40% {color: #00FFFF;}
+  50% {color: #FFFF00;}
+  60% {color: #00FF00; font-weight: bold;}
+  70% {color: #0F90FF;}
+  80% {color: #9F0F9F;}
+  90% {color: #009F9F; font-weight: normal;}
+  100% {color: #FFF099;}
+}
+#hoveroof  {
+  opacity: 0;
+}
+#hoveroof:hover  {
+  opacity: 1;
+  color: #FF0000;
+  font-weight: bold;
+}
+#johngameman  {
+  color: #660000;
+}
+#opionion_comment {
+  width: 100%;
+  margin: auto;
+  background-color: #3D3D3D;
+  border: 2px solid #FF9900;
+  border-radius: 4px;
+  padding: 8px;
+}
+#opionion_comment a, #opionion_comment_reply a {
+  color: #FF9900;
+  transition: color 0.25s;
+}
+#opionion_comment a:hover, #opionion_comment_reply a:hover {
+  color: #9900CC;
+}
+#opionion_comment_reply {
+  width: 85%;
+  margin-left: auto;
+  background-color: #3D3D3D;
+  border: 2px solid #FF9900;
+  border-radius: 4px;
+  padding: 8px;
+  border-top: 0px;
+}
+#commentcontainer {
+  width: 70%;
+  margin: auto;
+  display: block;
+}
+.opionion_comment_reply_container {
+  display: none;
+}
+#scrappedcontent  {
+  background-color: #8C8C8C;
+  border-radius: 5px;
+  padding: 8px;
+}
+#scrappedcontent #newsarticle_author  {
+  color: #DDD;
+}
+#buttoncontainer  {
+  margin: auto;
+  width: 70%;
+  display: flex;
+  padding: 4px;
+  justify-content: center;
+}
+button  {
+  border-radius: 9px;
+  height: 30px;
+  font-size: 16px;
+}
+button:hover  {
+  background-color: #999;
+}
+#comic_auth {
+  font-size: 32px; 
+  font-weight: bold;
+  width: 98%;
+}
+#themeswitchbutton  {
+  background-color: #1C1C1C;
+  border: none;
+  -moz-transition: background 0.25s;
+  -webkit-transition: background 0.25s;
+  transition: background 0.25s;
+}
+.comicauthorbackground  {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin: auto;
+}
+#keynsunauthor {
+  background-color: #000088;
+}
+#carmesauthor {
+  background-color: #440000;
+}
+#realiauthor {
+  background-color: #595c01;
+}
+#baneauthor {
+  background-color: #006600;
+}
+#comicauthorimagecontainer  {
+  width: 98%;
+  margin: auto;
+  align-items: stretch;
+  text-align: center;
+}
+#comicbuttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+#comicbuttons *   {
+  width: 10%;
+}
+#comicbuttons input, button {
+  border-radius: 0;
+  background-color: #333333;
+  border: none;
+  color: #F2F2F2;
+  outline: none;
+  -moz-transition: background 0.25s;
+  -webkit-transition: background 0.25s;
+  transition: background 0.25s;
+  font-family: "Comic Sans MS", "Comic Sans", sans-serif;
+  font-size: 1em;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}
+#activityjuniorjumble  {
+  background-color: #212120;
+  height: 250px;
+}
+#activityhalloween  {
+  background-color: #6a6a6a;
+  height: 250px;
+}
+#activitywire {
+  background-color: #978262;
+  height: 250px;
+}

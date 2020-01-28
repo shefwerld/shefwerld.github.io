@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reali: Reali's Old Comics - Shef Kerbi News Network</title>
+<link rel="shortcut icon" href="../kerb.ico" type="image/x-icon">
+<link rel="stylesheet" href="" id="pagetheme">
+<link href="../../fontawesome/css/all.css" rel="stylesheet">
+<script src="../themehandler2.js"></script>
+<script src="themebutton.js"></script>
+</head>
+<body onload="themeloader2();">
+
+<!-- THIS IS THE TOP PART YO! -->
+<a href="../index.html"><img src="" id="sknnlogo" title="Shef Kerbi News Network"></a>
+<nav>
+  <button type="button" class="bigbutton" onclick="window.location.href='../index.html'">Home</a></button>
+  <button type="button" class="bigbutton" onclick="window.location.href='../news.html'">News</button>
+  <button type="button" class="bigbutton" onclick="window.location.href='../about.html'">About</button>
+  <button type="button" class="bigbutton" onclick="window.location.href='../comix.html'">Comix</button>
+  <button type="button" class="bigbutton" onclick="window.location.href='../activity.html'">Activites</button>
+</nav>
+<nav><button onclick="themeswitcher2()" id="themeswitchbutton" style="width: 10%;"><i class="far fa-moon"></i></button></nav>
+<div class="comicauthorbackground" id="realiauthor"><p class="centertext">
+<span id="comic_auth">Reali</span><br>
+<div id="comicauthorimagecontainer"><img src="../../usericon/11.jpg" style="width: 15%;"></p></div>
+<p class="centertext">Reali was one of the two original and fan-favorite comic creators for the network in its earlier days. A lot of Reali's old comics remain unreleased from an SKNN article, however we do plan on adding them into an issue eventually.
+</p>
+</div>
+<div id="main">
+<!-- NOW TO THE VERY COOL INTRO -->
+<br>
+<div id="subflex" style="width: 95%;">
+    <div class="subflexitem" style="width: 95%;"><span id="comictitledisplay"></span><br><span id="comicarticlefeaturedisplay"></span></div>
+    <div class="subflexitem" style="width: 95%;" id="comiccontainer" style="display:none;"><img class="centerimg" style="width: 90%;" id="comicdisplay"></div>
+    <div class="subflexitem" style="width: 95%;">
+        <div id="404container" style="display: none;">
+            <h1 style="font-size: 72px;">no</h1>
+        </div>
+    </div>
+    <div class="subflexitem" style="width: 95%;" id="comicbuttons">
+        <a id="firstbutton" href="?p=1">First</a>
+        <a id="backbutton">Previous</a>
+        <a id="forwardbutton">Next</a>
+        <a id="latestbutton">Latest</a>
+        <a id="randombutton">Random</a>
+        <input type="number" id="skipcomicnum" style="width:10%;" min="1"/>
+        <button style="width:10%;" onclick="window.location.replace((window.location.href.split('?')[0]) + '?p=' + document.getElementById('skipcomicnum').value);">Go</button>
+    </div>
+<div id="sub">
+</div>
+<script>
+var comicname = [
+    "Stuff World! 1",
+    "Stuff World! 2",
+    "Stuff World! 2 (part 2)",
+    "Stuff World! 3!!",
+    "Stuff World! 4!",
+    "Stuff World! 5!",
+    "Meow Meow Comic #1",
+    "Carmes draws Fren #1"
+];
+var comicarticle = [
+    17,
+    17.5,
+    27,
+    28,
+    29,
+    30,
+    37,
+    37
+];
+var comicsrcs = [
+    "1.png",
+    "2.png",
+    "stuff2p2.png",
+    "stuff3.png",
+    "stuff4.png",
+    "stuff5.png",
+    "meowmeow1.png",
+    "lifting.png"
+
+];
+function getQueryVariable(variable) { // stolen from css-tricks.com
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+			if (pair[0] == variable) {
+				return pair[1];
+			}
+		}
+	   return(false);
+}
+var id = getQueryVariable("p");
+document.getElementById("skipcomicnum").max = comicname.length;
+if(id === false) {
+	window.location.replace(document.URL + "?p=" + comicname.length);
+} else {
+	if (comicsrcs[id - 1] != null) {
+		document.getElementById("comiccontainer").style.display = "block";
+		document.getElementById("skipcomicnum").value = id;
+		var comicNumber = id;
+	} else {
+		document.getElementById("404container").style.display = "block";
+        document.getElementById("skipcomicnum").value = comicname.length;
+        document.getElementById("comictitledisplay").style.display = "none";
+        document.getElementById("comicarticlefeaturedisplay").style.display = "none";
+        document.getElementById("comiccontainer").style.display = "none";
+	}
+}
+function callComic(num) {
+    num = num - 1;
+    loadComic(num);
+}
+function loadComic(num) {
+	document.getElementById("comicdisplay").src = "media/carmes/" + comicsrcs[num];
+    document.getElementById("comicarticlefeaturedisplay").innerHTML = "<p class='centertext'>From Episode #" + comicarticle[num] + "</p>";
+	document.getElementById("comicdisplay").alt = comicname[num];
+	document.getElementById("comictitledisplay").innerHTML = "<h2 class='centertext'>#" + (num + 1) + ": " + comicname[num] + "</h2>";
+}
+/*
+document.getElementById("comicurldisplay").value = document.URL.split("?")[0] + "?p=" + comicNumber;
+document.getElementById("comicimgurldisplay").value = comicsrcs[comicNumber - 1];
+*/
+callComic(comicNumber);
+document.getElementById("backbutton").href = "?p=" + (comicNumber - 1);
+document.getElementById("randombutton").href = "?p=" + (Math.floor(Math.random()*comicname.length) + 1);
+document.getElementById("forwardbutton").href = "?p=" + (Number(comicNumber) + 1);
+document.getElementById("latestbutton").href = "?p=" + comicname.length;
+</script>
+</div>
+
+<p class="centertext">this website is best viewed with Ned's Escape</p>
+</div>
+</body>
+</html>

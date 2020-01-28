@@ -30,7 +30,7 @@
 /* 27 |  28  | The SKA Hypebeast | */
 /* 28 |  29  | Metar Nite | */
 
-var characternames = ["Shef Kerbi", "Mr MemeoftheWeek", "Tom Nook", "Kawsaki", "Blayyd Nite", "Jerry Springer", "MGD Taco Head Guy", "Cynthia", "TSM_Liquid_FaZe_Ninja", "Snivy", "Apple the Cat", "Reali", "Bon Starbuckle", "John Gameman", "Carmes", "Bon's Cat", "Gernfald", "Keynsun DDDO", "CrazeePi's Disembodied Voice", "Zeke Teddy", "Tom Nook's Kids", "Wingull", "Ryk", "Diet Water Retailer", "Scratch Cat", "Isabelle", "Gardevoir", "The SKA Hypebeast", "Metar Nite", ""];
+var characternames = ["Shef Kerbi", "Mr MemeoftheWeek", "Tom Nook", "Kawsaki", "Blayyd Nite", "Jerry Springer", "MGD Taco Head Guy", "Cynthia", "TSM_Liquid_FaZe_Ninja", "Snivy", "Apple the Cat", "Reali", "Bane Starbuckle", "John Gameman", "Carmes", "Bon's Cat", "Gernfald", "Keynsun DDDO", "CrazeePi's Disembodied Voice", "Zeke Teddy", "Tom Nook's Kids", "Wingull", "Ryk", "Diet Water Retailer", "Scratch Cat", "Isabelle", "Gardevoir", "The SKA Hypebeast", "Metar Nite", ""];
 var characterexecutive = [];
 var characterdescription = ["The CEO of Shef Werld and owner of the CatsUnited account since September 2018. Is doing very epicly and keeps Shef Werld running. The servers for this website actually live in Shef Kerbi's basement and definetly not from Github",
 "CEO of Meme of the Week, as part of Shef Werld's Media Department. Meme of the Week was the first video series on the internet to review subreddits - any Reddit channel you see on Youtube copied from Meme of the Week.",
@@ -47,8 +47,8 @@ var characterdescription = ["The CEO of Shef Werld and owner of the CatsUnited a
 "Went missing a little while ago, but is still one of the most loved indiviuals in Shef Werld because that was one nice green bowler hat.",
 "this is john gameman porfessonal game and man man and john gamean is sport man and porfessonal sport game man and write good article about game and how good game is game man but no scarys pls ah or dreem lend game team will not play good man",
 "Shef Kerbi News Network Reporter, Comic Writer and Advertiser. Creator of the famous Pig Soop™® (Patent Pending)",
-"Bon Starbuckle's Cat. A very philoshopical figure in the Shef Werld community.",
-"bon's cat if it was gray. Recently exploded in a pizza restaurant.",
+"Bane Starbuckle's Cat. A very philoshopical figure in the Shef Werld community.",
+"bane's cat if it was gray. Recently exploded in a pizza restaurant.",
 "One of the most (in)famous figures in the Shef Werld community, SKNN News Reporter, Comic Writer and *Advertiser* has brought to the world an incredible invention known as 'Dirty Clock Cleaning', which can be done for $19.99 plus $5 if you call right now. Also invented ghosts.",
 "SKNN News Reporter. Most well known for bringing the unholy invention known as 'The New News Generation Machien' into the world",
 "Weather man. Provides very good weather definetly doesn't say (0 < x < 15). Also we use signed integers.",

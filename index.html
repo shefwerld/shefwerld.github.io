@@ -107,9 +107,6 @@
         transition: color 0.25s;
         font-weight: bold;
       }
-      #shefwerldlogo:hover  {
-        color: #8800cc;
-      }
       #information  {
         width: 100%;
         background-color: #252525;
@@ -144,12 +141,12 @@
   
   <body>
     <div id="nav">
-        <li><span id="shefwerldlogo">Shef Werld</span></li>
-        <li><a title="Shef Kerbi News Network" href="shefkirb/index.html" id="colorlink" class="comicsans">Shef Kerbi News Network</a></li>
-        <li><a title="Shef Kerbi's Apparel" href="clothingstore/index.html" id="colorlink" class="comicsans">Shef Kerbi Apparel (SKA)</a></li>
+        <li><span id="shefwerldlogo" title="Shef Werld">Shef Werld</span></li>
+        <li><a title="Shef Kerbi News Network" href="shefnews/index.html" id="colorlink" class="comicsans">Shef Kerbi News Network</a></li>
+        <li><a title="Shef Kerbi's Apparel" href="clothingstore/index.html" id="colorlink" class="comicsans">Shef Kerbi Apparel</a></li>
         <li><a title="Shef Kerbi Game Studios" href="game/index.html" id="colorlink" class="comicsans">Shef Kerbi Game Studios</a></li>
         <li><a title="Shefmart" href="shefmart/index.html" id="colorlink" class="comicsans">Shefmart</a></li>
-        <li><a title="Shefmart" href="candysadness/index.html" id="colorlink" class="comicsans">Candy Sadness</a></li>
+        <li><a title="Candy Sadness" href="candysadness/index.html" id="colorlink" class="comicsans">Candy Sadness</a></li>
     </div>
     <br>
     <div id="shefwerldnews"></div>
@@ -266,8 +263,8 @@
           setInterval(function(){
           newsNumber = Math.floor(Math.random() * 3) + 1;
           newsArticles = ["The Full Soulja Boy Remix Track is now available on SKA!",
-          "Shef Kerbi News Network Training Program II is now live!",
-          "Shef Kerbi News Network #39 is ready to view now! You can read this issue by <a href=&quot;shefkirb/news/39.html	&quot;>clicking here</a> or visiting the SKNN website."]
+          "The Shef Kerbi News Network site has gone through a redesign!",
+          "Shef Kerbi News Network #40 is ready to view now! You can read this issue by <a href=&quot;shefnews/news/40.html	&quot; id=&quot;colorlink&quot;>clicking here</a> or visiting the SKNN website."]
           document.getElementById('shefwerldnews').innerHTML = newsArticles[newsNumber - 1];
           }, 10000)
         </script>
@@ -297,7 +294,6 @@
     -->
     <br>
     <div id="nav">
-        <li><a href="history.html" title="History" id="colorlink" class="comicsans">History</a></li>
         <li><a href="updates.html" title="Updates" id="colorlink" class="comicsans">Updates</a></li>
     </div>
     <br>

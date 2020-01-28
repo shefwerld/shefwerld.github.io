@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Keynsun DDDO Comic Series - Shef Kerbi News Network</title>
+<link rel="shortcut icon" href="../kerb.ico" type="image/x-icon">
+<link rel="stylesheet" href="" id="pagetheme">
+<link href="../../fontawesome/css/all.css" rel="stylesheet">
+<script src="../themehandler2.js"></script>
+<script src="themebutton.js"></script>
+</head>
+<body onload="themeloader2();">
+
+<!-- THIS IS THE TOP PART YO! -->
+<a href="../index.html"><img src="" id="sknnlogo" title="Shef Kerbi News Network"></a>
+<nav>
+    <button type="button" class="bigbutton" onclick="window.location.href='../index.html'">Home</a></button>
+      <button type="button" class="bigbutton" onclick="window.location.href='../news.html'">News</button>
+      <button type="button" class="bigbutton" onclick="window.location.href='../comix.html'">Comix</button>
+      <button type="button" class="bigbutton" onclick="window.location.href='../activity.html'">Activites</button>
+      <button type="button" class="bigbutton" onclick="window.location.href='../opionion.html'">Opionion</button>
+      <button type="button" class="bigbutton" onclick="window.location.href='../about.html'">About</button>
+  </nav>
+<nav><button onclick="themeswitcher2()" id="themeswitchbutton" style="width: 10%;"><i class="far fa-moon"></i></button></nav>
+<h1 class="centertext">Wire</h1>
+<p class="centertext"><a href="../activity.html">Back to Activities</a></p>
+<div id="main" >
+    <div id="subflex" style="width: 95%;">
+        <p class="centertext">
+        <img src="media/wires.png" style="width: 100%;" id="activityimage">
+    </p>
+    </div>
+    <h2 class="centertext" onclick="showanswer();" id="showanswerbutton">Show Answer</h2>
+    </div>
+</div>
+<script>
+    function showanswer()   {
+        if (document.getElementById("showanswerbutton").innerHTML != "Hide Answer") {
+            document.getElementById("activityimage").src = "media/wiresanswer.png";
+            document.getElementById("showanswerbutton").innerHTML = "Hide Answer";
+        } else  {
+            document.getElementById("activityimage").src = "media/wires.png";
+            document.getElementById("showanswerbutton").innerHTML = "Show Answer";
+        }
+    }
+</script>
+<p class="centertext">this website is best viewed with Ned's Escape</p>
+</div>
+</body>
+</html>

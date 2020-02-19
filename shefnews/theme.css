@@ -323,3 +323,12 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #CAB596;
   height: 250px;
 }
+.opionion_page_comment  {
+  width: 44%; 
+  font-style: italic; 
+  background-color: #EFEFEF; 
+  border-radius: 2px; 
+  padding: 2%;
+  margin-bottom: 10px;
+  border: 1px solid #FF9900;
+}

@@ -332,3 +332,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 10px;
   border: 1px solid #FF9900;
 }
+#carmespink {
+  width: 85%;
+  margin: auto;
+  background-color: #FFCCBB;
+  padding-left: 5%;
+  padding-right: 5%;
+}

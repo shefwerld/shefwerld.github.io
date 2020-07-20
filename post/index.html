@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Test</title>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <style>
+        *   {
+            font-family: "Proxima Nova";
+            font-weight: 800;
+        }
+        body    {
+            background-color: #333;
+        }
+        .userbox {
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #container, #heading  {
+            margin: auto;
+            width: 90%;
+        }
+        .userposts, .totalposts, .postcountpercentage   {
+            text-align: right;
+            color: #FFF;
+        }
+        .categoryranking    {
+            color: #FFF;
+        }
+        .userposts  {
+            font-size: 20px;
+        }
+        .username   {
+            font-size: 20px;
+            color: #f54260;
+            text-decoration: none;
+        }
+        #titletext  {
+            font-size: 40px;
+            color: #f54260;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        form    {
+            margin: auto;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        #footer    {
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            color: #FFF;
+            margin-top: 20px;
+            background-color: #1C1C1C;
+            padding: 25px 0 25px 0;
+        }
+        #footer a   {
+            color: #f54260;
+            text-decoration: none;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="heading">
+        </div>
+        <div id="container">
+            <form action="" method="get">
+                <select name="category">
+                    <option value="total">All Posts</option>
+                    <optgroup label="Welcome to Scratch">
+                        <option value="Announcements">Announcements</option>
+                        <option value="New Scratchers">New Scratchers</option>
+                    </optgroup>
+                    <optgroup label="Making Scratch Projects">
+                        <option value="Help With Scripts">Help With Scripts</option>
+                        <option value="Show and Tell">Show and Tell</option>
+                        <option value="Project Ideas">Project Ideas</option>
+                        <option value="Collaboration">Collaboration</option>
+                        <option value="Requests">Requests</option>
+                    </optgroup>
+                    <optgroup label="About Scratch">
+                        <option value="Questions about Scratch">Questions about Scratch</option>
+                        <option value="Suggestions">Suggestions</option>
+                        <option value="Bugs and Glitches">Bugs and Glitches</option>
+                        <option value="Advanced Topics">Advanced Topics</option>
+                        <option value="Connecting to the Physical World">Connecting to the Physical World</option>
+                        <option value="Developing Scratch Extensions">Developing Scratch Extensions</option>
+                        <option value="Open Source Projects">Open Source Projects</option>
+                    </optgroup>
+                    <optgroup label="Interests Beyond Scratch">
+                        <option value="Things I'm Making and Creating">Things I'm Making and Creating</option>
+                        <option value="Things I'm Reading and Playing">Things I'm Reading and Playing</option>
+                    </optgroup>
+                    <optgroup label="Scratch Around the World">
+                        <option value="Africa">Africa</option>
+                        <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                        <option value="Català">Català</option>
+                        <option value="Deutsch">Deutsch</option>
+                        <option value="Ελληνικά">Ελληνικά</option>
+                        <option value="Français">Français</option>
+                        <option value="עברית">עברית</option>
+                        <option value="한국어">한국어</option>
+                        <option value="Italiano">Italiano</option>
+                        <option value="Nederlands">Nederlands</option>
+                        <option value="日本語">日本語</option>
+                        <option value="Norsk">Norsk</option>
+                        <option value="Polski">Polski</option>
+                        <option value="Português">Português</option>
+                        <option value="Pусский">Pусский</option>
+                        <option value="Türkçe">Türkçe</option>
+                        <option value="中文">中文</option>
+                        <option value="Other Languages">Other Languages</option>
+                        <option value="Translating Scratch">Translating Scratch</option>
+                    </optgroup>
+
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+            <div id="content">
+            </div>
+        </div>
+        <div id="footer">
+            <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
+            <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
+        </div>
+        <script>
+            var urlparams = new URLSearchParams(window.location.search);
+            var selectedCategory = urlparams.get("category");
+            console.log(selectedCategory);
+            var requestlist = [selectedCategory, "total"];
+            var request = new XMLHttpRequest();
+            (function loop(i, length){
+                if (i >= length)    {
+                    return;
+                }
+                var url = "https://scratchdb.lefty.one/v2/forum/category/rank/" + requestlist[i];
+                request.open("GET" ,url)
+                request.onreadystatechange = function() {
+                    if (request.readyState == 4 && request.status == 200) {
+                        var posters = JSON.parse(request.responseText);
+                        function HSVtoRGB(h, s, v) {
+                            var r, g, b, i, f, p, q, t;
+                            if (arguments.length === 1) {
+                                s = h.s, v = h.v, h = h.h;
+                            }
+                            i = Math.floor(h * 6);
+                            f = h * 6 - i;
+                            p = v * (1 - s);
+                            q = v * (1 - f * s);
+                            t = v * (1 - (1 - f) * s);
+                            switch (i % 6) {
+                                case 0: r = v, g = t, b = p; break;
+                                case 1: r = q, g = v, b = p; break;
+                                case 2: r = p, g = v, b = t; break;
+                                case 3: r = p, g = q, b = v; break;
+                                case 4: r = t, g = p, b = v; break;
+                                case 5: r = v, g = p, b = q; break;
+                            }
+                            return {
+                                r: Math.round(r * 255),
+                                g: Math.round(g * 255),
+                                b: Math.round(b * 255)
+                            };
+                        }
+                        function positionbruh(input)    {
+                            switch (input)  {
+                                case 1:
+                                case 21:
+                                case 31:
+                                case 41:
+                                case 51:
+                                case 61:
+                                case 71:
+                                case 81:
+                                case 91:
+                                    return input + "st";
+                                    break;
+                                case 2:
+                                case 22:
+                                case 32:
+                                case 42:
+                                case 52:
+                                case 62:
+                                case 72:
+                                case 82:
+                                case 92:
+                                    return input + "nd";
+                                    break;
+                                case 3:
+                                case 23:
+                                case 33:
+                                case 43:
+                                case 53:
+                                case 63:
+                                case 73:
+                                case 83:
+                                case 93:
+                                    return input + "rd";
+                                    break;
+                                default:
+                                    return input + "th";
+                            }
+                                }
+                        if (i == 0) {
+                            /* specific category post */
+                            console.log(posters.users.length);
+                            var maxbarlength = posters.users[0].count;
+                            /* title text */
+                            titletext = document.createElement("div");
+                            titletext.setAttribute("id", "titletext");
+                            if (selectedCategory != "total")    {
+                                titletext.appendChild(document.createTextNode("The Top 100 Posters in " + selectedCategory));
+                            } else  {
+                                titletext.appendChild(document.createTextNode("The Top 100 Posters of the Scratch Forums"));
+                            }
+                            document.getElementById("heading").appendChild(titletext);
+                            for (let j in posters.users)    {
+                                console.log(posters.users[j]);
+                                /* create div for user */
+                                user = document.createElement("div");
+                                user.setAttribute("id", "user" + j);
+                                user.setAttribute("class", "userbox");
+                                var randomColor = HSVtoRGB(Math.random(), 0.5, 0.35);
+                                user.setAttribute("style", "width:" + posters.users[j].count / maxbarlength * 100 + "%; background-color: rgb(" + randomColor.r + "," + randomColor.g + "," + randomColor.b + "); padding: 5px " + window.innerWidth/50 + "px 5px " + window.innerWidth/50 + "px;");
+                                document.getElementById("content").appendChild(user);
+                                /* create div for left located info */
+                                info = document.createElement("div");
+                                info.setAttribute("id", "info" + j);
+                                info.setAttribute("class", "info");
+                                document.getElementById("user" + j).appendChild(info);
+                                /* position */
+                                categoryranking = document.createElement("div");
+                                categoryranking.setAttribute("id", "categoryranking" + j);
+                                categoryranking.setAttribute("class", "categoryranking");
+                                var ranking = positionbruh(posters.users[j].rank);
+                                categoryranking.appendChild(document.createTextNode(ranking));
+                                document.getElementById("info" + j).appendChild(categoryranking);
+                                /* username */
+                                username = document.createElement("a");
+                                username.setAttribute("id", "username" + j);
+                                username.setAttribute("class", "username");
+                                username.setAttribute("href", "https://scratch.mit.edu/users/" + posters.users[j].username);
+                                username.appendChild(document.createTextNode(posters.users[j].username));
+                                document.getElementById("info" + j).appendChild(username);
+                                /* create div for right located info */
+                                extrainfo = document.createElement("div");
+                                extrainfo.setAttribute("id", "extrainfo" + j);
+                                extrainfo.setAttribute("class", "extrainfo");
+                                document.getElementById("user" + j).appendChild(extrainfo);
+                                /* post count */
+                                postcount = document.createElement("div");
+                                postcount.setAttribute("id", "posts" + j);
+                                postcount.setAttribute("class", "userposts");
+                                postcount.appendChild(document.createTextNode(posters.users[j].count));
+                                document.getElementById("extrainfo" + j).appendChild(postcount);
+                            }
+                        }
+                        if (i == 1 && selectedCategory != "total") {
+                            /* total posts */
+                            console.log(posters.users.length);
+                            for (let j in posters.users)    {
+                                console.log(posters.users[j]);
+                                for (let k in posters.users)    {
+                                    if (posters.users[k].username == document.getElementById("username" + j).innerHTML)   {
+                                        /* global rank */
+                                        globalrank = document.createElement("div");
+                                        globalrank.setAttribute("id", "globalrank" + j);
+                                        globalrank.setAttribute("class", "totalposts");
+                                        var ranking = positionbruh(posters.users[k].rank);
+                                        ranking += " globally";
+                                        globalrank.appendChild(document.createTextNode(ranking));
+                                        document.getElementById("extrainfo" + j).appendChild(globalrank);
+                                        /* percentage of posts */
+                                        fullpostcount = document.createElement("div");
+                                        fullpostcount.setAttribute("id", "totalposts" + j);
+                                        fullpostcount.setAttribute("class", "postcountpercentage");
+                                        var perecentageposts = Math.round(document.getElementById("posts" + j).innerHTML / posters.users[k].count * 100 * 100)/100;
+                                        fullpostcount.appendChild(document.createTextNode(perecentageposts + "% of posts"));
+                                        document.getElementById("extrainfo" + j).appendChild(fullpostcount);
+                                    }
+                                }
+                            }
+                        }
+                        /* iterate */
+                        loop(i+ 1, length);
+                    }
+                }
+                request.send();
+            })(0, requestlist.length);
+        </script>
+    </body>
+</html>

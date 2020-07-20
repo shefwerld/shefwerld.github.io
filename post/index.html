@@ -2,13 +2,14 @@
 <html>
     <head>
         <meta charset="utf8">
-        <title>Test</title>
+        <title>Scratch Forum Post Statistics</title>
         <script src="https://d3js.org/d3.v4.js"></script>
         <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <style>
         *   {
-            font-family: "Proxima Nova";
-            font-weight: 800;
+            font-family: "Roboto";
+            font-weight: 700;
         }
         body    {
             background-color: #333;
@@ -59,9 +60,17 @@
             background-color: #1C1C1C;
             padding: 25px 0 25px 0;
         }
-        #footer a   {
+        #footer a, #navigation a   {
             color: #f54260;
             text-decoration: none;
+        }
+        #navigation {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            background-color: #1C1C1C;
+            padding: 10px 0 10px 0;
+            margin-bottom: 10px;
         }
         </style>
     </head>
@@ -69,6 +78,10 @@
         <div id="heading">
         </div>
         <div id="container">
+            <div id="navigation">
+                <a href="index.html">Forum Categories</a>
+                <a href="user.html">Users</a>
+            </div>
             <form action="" method="get">
                 <select name="category">
                     <option value="total">All Posts</option>
@@ -119,7 +132,7 @@
                     </optgroup>
 
                 </select>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Go">
             </form>
             <div id="content">
             </div>
@@ -132,6 +145,9 @@
             var urlparams = new URLSearchParams(window.location.search);
             var selectedCategory = urlparams.get("category");
             console.log(selectedCategory);
+            if (selectedCategory == "Dustbin")  {
+                window.location.href = "https://www.youtube.com/watch?v=nSW6scUfnFw";
+            }
             var requestlist = [selectedCategory, "total"];
             var request = new XMLHttpRequest();
             (function loop(i, length){

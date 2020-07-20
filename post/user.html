@@ -3,8 +3,7 @@
     <head>
         <meta charset="utf8">
         <title>Scratch Forum Post Statistics</title>
-        <script src="https://d3js.org/d3.v4.js"></script>
-        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <script src="Chart.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <style>
         *   {
@@ -13,13 +12,14 @@
         }
         body    {
             background-color: #333;
+            margin: 0;
         }
         .userbox {
             margin-bottom: 5px;
             display: flex;
             justify-content: space-between;
         }
-        #container, #heading  {
+        #container, #heading, #top_text  {
             margin: auto;
             width: 90%;
         }
@@ -38,16 +38,17 @@
         .userposts, .categorytext, .categorycount   {
             font-size: 20px;
         }
-        .username   {
+        .username, #top_text   {
             font-size: 20px;
             color: #f54260;
             text-decoration: none;
         }
         #titletext  {
-            font-size: 40px;
-            color: #f54260;
-            text-align: center;
+            font-size: 52px;
+            color: #fff;
+            text-align: right;
             margin-bottom: 10px;
+            margin-right: 20px;
         }
         form    {
             margin: auto;
@@ -77,20 +78,95 @@
             padding: 10px 0 10px 0;
             margin-bottom: 10px;
         }
+        #overview   {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 25px;
+            background-color: #f54260;
+            padding: 25px 0 25px 0;
+        }
+        #overview img   {
+            width: 150px;
+            height: 150px;
+            margin: 0 0 5px 15px;
+        }
+        #overview-information   {
+            order: 99;
+            width: 100%;
+            margin-left: 5%;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        #overview-postinformation   {
+            text-align: right;
+            font-size: 40px;
+            color: #FFF;
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 20px;
+        }
+        #overview-postinformationdescription, #overview-accountstatus {
+            text-align: right;
+            font-size: 15px;
+            color: #FFF;
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 20px; 
+        }
+        #overview-postinformation *, #overview-postinformationdescription *, #overview-accountstatus *   {
+            margin: 0 15px 0 15px;
+            width: 18%;
+        }
+        #overview-accountstatus {
+            margin-bottom: 5px;
+        }
+        #piechart-container {
+            width: 100%; 
+            background-color: #000000;
+        }
+        #piechart-area  {
+            width: 75%; 
+            margin: auto;
+        }
         </style>
     </head>
     <body>
-        <div id="heading">
+        <div id="top_text" style="margin: auto; text-align: center; margin-bottom: 15px;">
+            Scratch Forum Post Counts
         </div>
         <div id="container">
             <div id="navigation">
                 <a href="index.html">Forum Categories</a>
                 <a href="user.html">Users</a>
             </div>
+        </div>
             <form action="" method="get">
                 <input type="text" name="user" placeholder="Type username here"></input>
                 <input type="submit" value="Go">
             </form>
+            <div id="overview">
+                <div id="overview-information">
+                    <div id="overview-scratchinformation">
+
+                    </div>
+                    <div id="overview-postinformation">
+
+                    </div>
+                    <div id="overview-postinformationdescription">
+                        <div id="overviewTotalPostsDescription">TOTAL POSTS</div>
+                        <div id="overviewRankDescription">RANK</div>
+                    </div>
+                    <div id="overview-accountstatus">
+
+                    </div>
+                </div>
+            </div>
+            <div id="container">
+            <div id="piechart-container">
+            <div id="piechart-area">
+                <canvas id="piechart"></canvas>
+            </div>
+            </div>
             <div id="content">
             </div>
         </div>
@@ -98,7 +174,11 @@
             <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
             <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
         </div>
+        <div style="color: #FFF; text-align: center;">bottom text</div>
         <script>
+            var chartCategories = [];
+            var chartCounts = [];
+            var chartColors = [];
             var urlparams = new URLSearchParams(window.location.search);
             var selectedUsername = urlparams.get("user");
             console.log(selectedUsername);
@@ -136,6 +216,13 @@
                                 g: Math.round(g * 255),
                                 b: Math.round(b * 255)
                             };
+                        }
+                        function componentToHex(c) {
+                            var hex = c.toString(16);
+                            return hex.length == 1 ? "0" + hex : hex;
+                        }
+                        function RGBtoHEX(r,g,b) {
+                            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
                         }
                         function positionbruh(input)    {
                             switch (input)  {
@@ -179,10 +266,25 @@
                             /* title text */
                             titletext = document.createElement("div");
                             titletext.setAttribute("id", "titletext");
-                            if (selectedUsername != null)   {titletext.appendChild(document.createTextNode(selectedUsername + "'s Post Count"));}
-                            document.getElementById("heading").appendChild(titletext);
+                            if (selectedUsername != null)   {titletext.appendChild(document.createTextNode(selectedUsername));}
+                            document.getElementById("overview-information").appendChild(titletext);
+                            /* overview total posts */
+                            overviewTotalPosts = document.createElement("div");
+                            overviewTotalPosts.setAttribute("id", "overviewTotalPosts");
+                            console.log(posters.counts.total.count);
+                            overviewTotalPosts.appendChild(document.createTextNode(posters.counts.total.count));
+                            document.getElementById("overview-postinformation").appendChild(overviewTotalPosts);
+                            /* overview rank */
+                            overviewRank = document.createElement("div");
+                            overviewRank.setAttribute("id", "overviewRank");
+                            var ranking = positionbruh(posters.counts.total.rank);
+                            overviewRank.appendChild(document.createTextNode(ranking));
+                            document.getElementById("overview-postinformation").appendChild(overviewRank);
                             /* pie chart */
                             for (let i in posters.counts)    {
+                                if (i == "total")   {
+                                    break;
+                                }
                                 console.log(i);
                                 /* box for particular category */
                                 user = document.createElement("div");
@@ -227,12 +329,71 @@
                                 fullpostcount.appendChild(document.createTextNode(perecentageposts + "% of posts"));
                                 document.getElementById("extrainfo" + i).appendChild(fullpostcount);
 
+                                chartCounts.push(categorycount.innerHTML);
+                                chartCategories.push(categorytext.innerHTML);
+                                randomColor = RGBtoHEX(randomColor.r, randomColor.g, randomColor.b);
+                                chartColors.push(randomColor);
+                                }
                             }
-                        }
                         loop(i+ 1, length);
+                        /* pie graph */
+                        var config = {
+                            type: 'pie',
+                            data: {
+                                datasets: [{
+                                    data: chartCounts,
+                                    backgroundColor: chartColors,
+                                    label: 'Scratcher Posts'
+                                }],
+                                labels: chartCategories,
+                            },
+                            options: {
+                                responsive: true,
+                            },
+                        };
+                            var ctx = document.getElementById('piechart').getContext('2d');
+                            window.myPie = new Chart(ctx, config);
                     }
                 request.send();
             })(0, requestlist.length);
+        </script>
+        <script>
+        var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+        function doCORSRequest(options, printResult) {
+            var x = new XMLHttpRequest();
+            x.open(options.method, cors_api_url + options.url);
+            x.onload = x.onerror = function() {
+            printResult(
+                (x.responseText || '')
+            );
+            };
+            if (/^POST/i.test(options.method)) {
+                x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            }
+            x.send(options.data);
+        }
+        var outputCORS = document.getElementById("overview");
+        doCORSRequest({
+            method: this.id === 'post' ? 'POST' : 'GET',
+            url: "https://api.scratch.mit.edu/users/" + selectedUsername,
+            data: outputCORS.value
+        }, function printResult(result) {
+            outputCORS.value = result;
+            console.log(result);
+            var ScratchAPIContents = JSON.parse(result);
+            /* profile picture */
+            var profilepicture = document.createElement("img");
+            profilepicture.setAttribute("src", "https://cdn2.scratch.mit.edu/get_image/user/" + ScratchAPIContents.id + "_150x150.png?");
+            document.getElementById("overview").appendChild(profilepicture);
+            /* scratcher/scratch team */
+            var scratcher = document.createElement("div");
+            if (ScratchAPIContents.scratchteam === true)    {
+                scratcher.appendChild(document.createTextNode("SCRATCH TEAM"));
+            } else  {
+                scratcher.appendChild(document.createTextNode("SCRATCHER"));
+            }
+            document.getElementById("overview-accountstatus").appendChild(scratcher);
+        });
         </script>
     </body>
 </html>

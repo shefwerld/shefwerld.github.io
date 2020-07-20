@@ -141,6 +141,7 @@
             <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
             <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
         </div>
+        <div style="color: #FFF; text-align: center; font-family: 'Comic Sans MS', Comic Sans;">bottom text</div>
         <script>
             var urlparams = new URLSearchParams(window.location.search);
             var selectedCategory = urlparams.get("category");
@@ -260,7 +261,7 @@
                                 username = document.createElement("a");
                                 username.setAttribute("id", "username" + j);
                                 username.setAttribute("class", "username");
-                                username.setAttribute("href", "https://scratch.mit.edu/users/" + posters.users[j].username);
+                                username.setAttribute("href", "user.html?user=" + posters.users[j].username);
                                 username.appendChild(document.createTextNode(posters.users[j].username));
                                 document.getElementById("info" + j).appendChild(username);
                                 /* create div for right located info */

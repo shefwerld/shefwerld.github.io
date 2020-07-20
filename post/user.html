@@ -49,6 +49,7 @@
             text-align: right;
             margin-bottom: 10px;
             margin-right: 20px;
+            text-decoration: none;
         }
         form    {
             margin: auto;
@@ -174,21 +175,28 @@
             <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
             <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
         </div>
-        <div style="color: #FFF; text-align: center;">bottom text</div>
+        <div id="nowlaugh"></div>
+        <div style="color: #FFF; text-align: center; font-family: 'Comic Sans MS', Comic Sans;">bottom text</div>
         <script>
             var chartCategories = [];
             var chartCounts = [];
             var chartColors = [];
+            var customstatuses = [
+                {name: "CatsUnited", status: "PHANTOM THIEF (FORMERLY CEO OF SHEF WERLD (2018-2020), FOUNDER OF CATSUNITED'S COMPUTER CLUB (2014-2016))"},
+                {name: "DatOneLefty", status: "BIG DATA MAN"},
+                {name: "griffpatch", status: "<a href='https://www.youtube.com/watch?v=2zUDKhVQ9rY'>PAPER MINECRAFT; THE WAY HOME</a>"},
+                {name: "Moisture", status: "BE MOIST 😎"},
+            ];
             var urlparams = new URLSearchParams(window.location.search);
             var selectedUsername = urlparams.get("user");
             console.log(selectedUsername);
-            var requestlist = [selectedUsername];
+            var requestlist = ["https://scratchdb.lefty.one/v2/forum/user/info/" + selectedUsername, "https://api.scratch.mit.edu/users/" + selectedUsername];
             var request = new XMLHttpRequest();
             (function loop(i, length){
                 if (i >= length)    {
                     return;
                 }
-                var url = "https://scratchdb.lefty.one/v2/forum/user/info/" + requestlist[i];
+                var url = requestlist[i];
                 request.open("GET" ,url)
                 request.onreadystatechange = function() {
                     if (request.readyState == 4 && request.status == 200) {
@@ -263,9 +271,11 @@
                                     return input + "th";
                                 }
                             }
+                            if (i == 0) {
                             /* title text */
-                            titletext = document.createElement("div");
+                            titletext = document.createElement("a");
                             titletext.setAttribute("id", "titletext");
+                            titletext.setAttribute("href", "https://scratch.mit.edu/users/" + selectedUsername);
                             if (selectedUsername != null)   {titletext.appendChild(document.createTextNode(selectedUsername));}
                             document.getElementById("overview-information").appendChild(titletext);
                             /* overview total posts */
@@ -335,9 +345,32 @@
                                 chartColors.push(randomColor);
                                 }
                             }
+                            if (i == 1) {
+                                console.log(posters);
+                                /* profile picture */
+                                var profilepicture = document.createElement("img");
+                                profilepicture.setAttribute("id", "profileimage");
+                                profilepicture.setAttribute("src", "https://cdn2.scratch.mit.edu/get_image/user/" + posters.id + "_150x150.png?");
+                                document.getElementById("overview").appendChild(profilepicture);
+                                /* scratcher/scratch team */
+                                var scratcher = document.createElement("div");
+                                if (posters.scratchteam === true)    {
+                                    var scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCH TEAM"));
+                                } else  {
+                                    var scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCHER"));
+                                }
+                                for (k in customstatuses)   {
+                                    if (posters.username == customstatuses[k].name)   {
+                                        scratcher.removeChild(scratcherstatus);
+                                        scratcher.innerHTML = customstatuses[k].status;
+                                    }
+                                }
+                                document.getElementById("overview-accountstatus").appendChild(scratcher);
+                            }
                         loop(i+ 1, length);
                         /* pie graph */
-                        var config = {
+                    }
+                    var config = {
                             type: 'pie',
                             data: {
                                 datasets: [{
@@ -353,47 +386,15 @@
                         };
                             var ctx = document.getElementById('piechart').getContext('2d');
                             window.myPie = new Chart(ctx, config);
+                    /* funny */
+                    if (selectedUsername == "DatOneLefty")    {
+                        funny = document.createElement("img");
+                        funny.setAttribute("src", "linus.jpg");
+                        document.getElementById("nowlaugh").appendChild(funny);
                     }
+                }
                 request.send();
             })(0, requestlist.length);
-        </script>
-        <script>
-        var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
-        function doCORSRequest(options, printResult) {
-            var x = new XMLHttpRequest();
-            x.open(options.method, cors_api_url + options.url);
-            x.onload = x.onerror = function() {
-            printResult(
-                (x.responseText || '')
-            );
-            };
-            if (/^POST/i.test(options.method)) {
-                x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            }
-            x.send(options.data);
-        }
-        var outputCORS = document.getElementById("overview");
-        doCORSRequest({
-            method: this.id === 'post' ? 'POST' : 'GET',
-            url: "https://api.scratch.mit.edu/users/" + selectedUsername,
-            data: outputCORS.value
-        }, function printResult(result) {
-            outputCORS.value = result;
-            console.log(result);
-            var ScratchAPIContents = JSON.parse(result);
-            /* profile picture */
-            var profilepicture = document.createElement("img");
-            profilepicture.setAttribute("src", "https://cdn2.scratch.mit.edu/get_image/user/" + ScratchAPIContents.id + "_150x150.png?");
-            document.getElementById("overview").appendChild(profilepicture);
-            /* scratcher/scratch team */
-            var scratcher = document.createElement("div");
-            if (ScratchAPIContents.scratchteam === true)    {
-                scratcher.appendChild(document.createTextNode("SCRATCH TEAM"));
-            } else  {
-                scratcher.appendChild(document.createTextNode("SCRATCHER"));
-            }
-            document.getElementById("overview-accountstatus").appendChild(scratcher);
-        });
         </script>
     </body>
 </html>

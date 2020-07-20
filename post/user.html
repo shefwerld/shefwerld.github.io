@@ -83,7 +83,6 @@
             display: flex;
             flex-direction: row;
             margin-bottom: 25px;
-            background-color: #f54260;
             padding: 25px 0 25px 0;
         }
         #overview img   {
@@ -98,7 +97,7 @@
             display: flex;
             flex-direction: column-reverse;
         }
-        #overview-postinformation   {
+        #overview-postinformation  {
             text-align: right;
             font-size: 40px;
             color: #FFF;
@@ -113,8 +112,15 @@
             display: flex;
             justify-content: flex-end;
             margin-right: 20px; 
+            text-decoration: none;
         }
-        #overview-postinformation *, #overview-postinformationdescription *, #overview-accountstatus *   {
+        #accountstatus a    {
+            text-decoration: none;
+            color: #FFF;
+            text-align: right;
+            font-size: 15px;
+        }
+        #overview-postinformation *, #overview-postinformationdescription *   {
             margin: 0 15px 0 15px;
             width: 18%;
         }
@@ -182,21 +188,32 @@
             var chartCounts = [];
             var chartColors = [];
             var customstatuses = [
-                {name: "CatsUnited", status: "PHANTOM THIEF (FORMERLY CEO OF SHEF WERLD (2018-2020), FOUNDER OF CATSUNITED'S COMPUTER CLUB (2014-2016))"},
+                {name: "CatsUnited", status: "PHANTOM THIEF <div style='font-size: 9px'>(FORMERLY SHEF KERBI, CEO OF SHEF WERLD (2018-2020), FOUNDER OF CATSUNITED'S COMPUTER CLUB (2014-2016))</div>"},
                 {name: "DatOneLefty", status: "BIG DATA MAN"},
                 {name: "griffpatch", status: "<a href='https://www.youtube.com/watch?v=2zUDKhVQ9rY'>PAPER MINECRAFT; THE WAY HOME</a>"},
                 {name: "Moisture", status: "BE MOIST 😎"},
+                {name: "deck26", status: "THE GUY FROM HELP WITH SCRIPTS"},
+                {name: "Sigton", status: "SHOP GUY"},
+                {name: "World_Languages", status: "MAKE SURE TO CHECK US OUT ON <a href='https://scratchstats.com'>SCRATCHSTATS.COM</a>"},
+                {name: "Jeffalo", status: "GUY WHO GIVES THE SCRATCHDB API AN EXISTENTIAL CRISIS"},
+                {name: "PrincessPanda_test_", status: "<a href='https://www.youtube.com/watch?v=m7Q0_DgXHG0'>THE SONIC FAN</a>"},
+                {name: "PrincessPandaLover", status: "<a href='https://www.youtube.com/watch?v=m7Q0_DgXHG0'>THE SONIC FAN</a>"},
+                {name: "Wahsp", status: "AUNT JEMIMA OFFICIAL SCRATCH ACCOUNT"},
+                {name: "comp09", status: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},
+            ];
+            var customcolors = [
+                {name: "CatsUnited", color: "#f54260"}
             ];
             var urlparams = new URLSearchParams(window.location.search);
             var selectedUsername = urlparams.get("user");
             console.log(selectedUsername);
-            var requestlist = ["https://scratchdb.lefty.one/v2/forum/user/info/" + selectedUsername, "https://api.scratch.mit.edu/users/" + selectedUsername];
+            var requestlist = [selectedUsername];
             var request = new XMLHttpRequest();
             (function loop(i, length){
                 if (i >= length)    {
                     return;
                 }
-                var url = requestlist[i];
+                var url = "https://scratchdb.lefty.one/v2/forum/user/info/" + requestlist[i];
                 request.open("GET" ,url)
                 request.onreadystatechange = function() {
                     if (request.readyState == 4 && request.status == 200) {
@@ -271,7 +288,6 @@
                                     return input + "th";
                                 }
                             }
-                            if (i == 0) {
                             /* title text */
                             titletext = document.createElement("a");
                             titletext.setAttribute("id", "titletext");
@@ -345,32 +361,9 @@
                                 chartColors.push(randomColor);
                                 }
                             }
-                            if (i == 1) {
-                                console.log(posters);
-                                /* profile picture */
-                                var profilepicture = document.createElement("img");
-                                profilepicture.setAttribute("id", "profileimage");
-                                profilepicture.setAttribute("src", "https://cdn2.scratch.mit.edu/get_image/user/" + posters.id + "_150x150.png?");
-                                document.getElementById("overview").appendChild(profilepicture);
-                                /* scratcher/scratch team */
-                                var scratcher = document.createElement("div");
-                                if (posters.scratchteam === true)    {
-                                    var scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCH TEAM"));
-                                } else  {
-                                    var scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCHER"));
-                                }
-                                for (k in customstatuses)   {
-                                    if (posters.username == customstatuses[k].name)   {
-                                        scratcher.removeChild(scratcherstatus);
-                                        scratcher.innerHTML = customstatuses[k].status;
-                                    }
-                                }
-                                document.getElementById("overview-accountstatus").appendChild(scratcher);
-                            }
                         loop(i+ 1, length);
                         /* pie graph */
-                    }
-                    var config = {
+                        var config = {
                             type: 'pie',
                             data: {
                                 datasets: [{
@@ -386,15 +379,69 @@
                         };
                             var ctx = document.getElementById('piechart').getContext('2d');
                             window.myPie = new Chart(ctx, config);
+                    }
                     /* funny */
                     if (selectedUsername == "DatOneLefty")    {
                         funny = document.createElement("img");
                         funny.setAttribute("src", "linus.jpg");
                         document.getElementById("nowlaugh").appendChild(funny);
                     }
-                }
                 request.send();
             })(0, requestlist.length);
+        </script>
+        <script>
+        var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+        function doCORSRequest(options, printResult) {
+            var x = new XMLHttpRequest();
+            x.open(options.method, cors_api_url + options.url);
+            x.onload = x.onerror = function() {
+            printResult(
+                (x.responseText || '')
+            );
+            };
+            if (/^POST/i.test(options.method)) {
+                x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            }
+            x.send(options.data);
+        }
+        var outputCORS = document.getElementById("overview");
+        doCORSRequest({
+            method: this.id === 'post' ? 'POST' : 'GET',
+            url: "https://api.scratch.mit.edu/users/" + selectedUsername,
+            data: outputCORS.value
+        }, function printResult(result) {
+            outputCORS.value = result;
+            console.log(result);
+            var ScratchAPIContents = JSON.parse(result);
+            /* profile picture */
+            var profilepicture = document.createElement("img");
+            profilepicture.setAttribute("id", "profileimage");
+            profilepicture.setAttribute("src", "https://cdn2.scratch.mit.edu/get_image/user/" + ScratchAPIContents.id + "_150x150.png?");
+            document.getElementById("overview").appendChild(profilepicture);
+            /* scratcher/scratch team */
+            var scratcher = document.createElement("div");
+            scratcher.setAttribute("id", "accountstatus")
+            if (ScratchAPIContents.scratchteam === true)    {
+                var scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCH TEAM"));
+            } else  {
+                var scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCHER"));
+            }
+            for (k in customstatuses)   {
+                if (ScratchAPIContents.username == customstatuses[k].name)   {
+                    scratcher.removeChild(scratcherstatus);
+                    scratcher.innerHTML = customstatuses[k].status;
+                }
+            }
+            document.getElementById("overview-accountstatus").appendChild(scratcher);
+            console.log(ScratchAPIContents.profile.bio);
+            console.log(ScratchAPIContents.profile.bio.length);
+            /* custom overview color code */
+            for (k in customcolors)   {
+                if (ScratchAPIContents.username == customcolors[k].name)   {
+                    document.getElementById("overview").setAttribute("style", "background-color:" + customcolors[k].color);
+                }
+            }
+        });
         </script>
     </body>
 </html>

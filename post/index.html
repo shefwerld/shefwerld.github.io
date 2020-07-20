@@ -79,8 +79,8 @@
         </div>
         <div id="container">
             <div id="navigation">
-                <a href="index.html">Forum Categories</a>
-                <a href="user.html">Users</a>
+                <a href="index.html?category=total">Forum Categories</a>
+                <a href="user.html?user=CatsUnited">Users</a>
             </div>
             <form action="" method="get">
                 <select name="category">
@@ -148,6 +148,9 @@
             console.log(selectedCategory);
             if (selectedCategory == "Dustbin")  {
                 window.location.href = "https://www.youtube.com/watch?v=nSW6scUfnFw";
+            }
+            if (selectedCategory == null)   {
+                selectedCategory = "total";
             }
             var requestlist = [selectedCategory, "total"];
             var request = new XMLHttpRequest();

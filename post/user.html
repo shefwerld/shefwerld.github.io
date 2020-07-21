@@ -82,8 +82,14 @@
         #overview   {
             display: flex;
             flex-direction: row;
+            margin-bottom: 0;
+            padding: 25px 0 5px 0;
+        }
+        #dateinformation   {
+            display: flex;
+            flex-direction: row;
             margin-bottom: 25px;
-            padding: 25px 0 25px 0;
+            padding: 5px 0 25px 0;
         }
         #overview img   {
             width: 150px;
@@ -105,7 +111,7 @@
             justify-content: flex-end;
             margin-right: 20px;
         }
-        #overview-postinformationdescription, #overview-accountstatus {
+        #overview-postinformationdescription, #overview-accountstatus, #overview-postdates * {
             text-align: right;
             font-size: 15px;
             color: #FFF;
@@ -134,6 +140,11 @@
         #piechart-area  {
             width: 75%; 
             margin: auto;
+        }
+        #overview-postdates {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
         }
         </style>
     </head>
@@ -166,6 +177,11 @@
                     <div id="overview-accountstatus">
 
                     </div>
+                </div>
+            </div>
+            <div id="dateinformation">
+                <div id="overview-postdates">
+
                 </div>
             </div>
             <div id="container">
@@ -210,6 +226,9 @@
             ];
             var urlparams = new URLSearchParams(window.location.search);
             var selectedUsername = urlparams.get("user");
+            if (selectedUsername == null)   {
+                var selectedUsername = "CatsUnited";
+            }
             console.log(selectedUsername);
             var requestlist = [selectedUsername];
             var request = new XMLHttpRequest();
@@ -310,6 +329,19 @@
                             var ranking = positionbruh(posters.counts.total.rank);
                             overviewRank.appendChild(document.createTextNode(ranking));
                             document.getElementById("overview-postinformation").appendChild(overviewRank);
+                            /* first posted */
+                            var monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                            var da = "FIRST POST: " + monthList[new Date(posters.firstPost.post_time).getMonth()] + " " + new Date(posters.firstPost.post_time).getDate() + ", " + new Date(posters.firstPost.post_time).getFullYear();  
+                            firstPost = document.createElement("div");
+                            firstPost.setAttribute("id", "firstPostInformation");
+                            firstPost.appendChild(document.createTextNode(da));
+                            document.getElementById("overview-postdates").appendChild(firstPost);
+                            /* last posted */
+                            var da = "LAST POST: " + monthList[new Date(posters.lastPost.post_time).getMonth()] + " " + new Date(posters.lastPost.post_time).getDate() + ", " + new Date(posters.lastPost.post_time).getFullYear();
+                            lastPost = document.createElement("div");
+                            lastPost.setAttribute("id", "lastPostInformation");
+                            lastPost.appendChild(document.createTextNode(da));
+                            document.getElementById("overview-postdates").appendChild(lastPost);
                             /* pie chart */
                             for (let i in posters.counts)    {
                                 if (i == "total")   {
@@ -358,7 +390,7 @@
                                 var perecentageposts = Math.round(document.getElementById(i + " Post Count").innerHTML / posters.counts.total.count * 100 * 100)/100;
                                 fullpostcount.appendChild(document.createTextNode(perecentageposts + "% of posts"));
                                 document.getElementById("extrainfo" + i).appendChild(fullpostcount);
-
+                                /* chart colors */
                                 chartCounts.push(categorycount.innerHTML);
                                 chartCategories.push(categorytext.innerHTML);
                                 randomColor = RGBtoHEX(randomColor.r, randomColor.g, randomColor.b);
@@ -443,6 +475,7 @@
             for (k in customcolors)   {
                 if (ScratchAPIContents.username == customcolors[k].name)   {
                     document.getElementById("overview").setAttribute("style", "background-color:" + customcolors[k].color);
+                    document.getElementById("dateinformation").setAttribute("style", "background-color:" + customcolors[k].color);
                 }
             }
         });

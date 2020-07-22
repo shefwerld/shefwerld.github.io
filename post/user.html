@@ -38,10 +38,15 @@
         .userposts, .categorytext, .categorycount   {
             font-size: 20px;
         }
-        .username, #top_text   {
+        .username, #top_text, .graphtitletext   {
             font-size: 20px;
             color: #f54260;
             text-decoration: none;
+        }
+        .graphtitletext {
+            margin: auto;
+            text-align: center;
+            margin: 15px 0 15px 0;
         }
         #titletext  {
             font-size: 52px;
@@ -133,13 +138,14 @@
         #overview-accountstatus {
             margin-bottom: 5px;
         }
-        #piechart-container {
+        #piechart-container, #historychart-container {
             width: 100%; 
             background-color: #000000;
         }
-        #piechart-area  {
-            width: 75%; 
+        #piechart-area, #historychart-area  {
+            width: 85%; 
             margin: auto;
+            padding: 10px;
         }
         #overview-postdates {
             width: 100%;
@@ -185,11 +191,19 @@
                 </div>
             </div>
             <div id="container">
+            <div class="graphtitletext">Post Distribtion</div>
             <div id="piechart-container">
             <div id="piechart-area">
                 <canvas id="piechart"></canvas>
             </div>
             </div>
+            <div class="graphtitletext" id="PostOverTime">Post Count Over Time</div>
+            <div id="historychart-container">
+            <div id="historychart-area">
+                <canvas id="historychart"></canvas>
+            </div>
+            </div>
+            <br>
             <div id="content">
             </div>
         </div>
@@ -203,6 +217,9 @@
             var chartCategories = [];
             var chartCounts = [];
             var chartColors = [];
+            var historyPostCount = [];
+            var historyPostDate = [];
+            var historyPostRank = [];
             var customstatuses = [
                 {name: "CatsUnited", status: "PHANTOM THIEF <div style='font-size: 9px'>(FORMERLY SHEF KERBI, CEO OF SHEF WERLD (2018-2020), FOUNDER OF CATSUNITED'S COMPUTER CLUB (2014-2016))</div>"},
                 {name: "DatOneLefty", status: "BIG DATA MAN"},
@@ -417,7 +434,7 @@
                         };
                             var ctx = document.getElementById('piechart').getContext('2d');
                             window.myPie = new Chart(ctx, config);
-                    }
+                        }
                     /* funny */
                     if (selectedUsername == "DatOneLefty")    {
                         funny = document.createElement("img");
@@ -479,6 +496,83 @@
                     document.getElementById("overview").setAttribute("style", "background-color:" + customcolors[k].color);
                     document.getElementById("dateinformation").setAttribute("style", "background-color:" + customcolors[k].color);
                 }
+            }
+        });
+        function readTextFile(file, callback) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.overrideMimeType("application/json");
+            rawFile.open("GET", file, true);
+            rawFile.onreadystatechange = function() {
+                if (rawFile.readyState === 4 && rawFile.status == "200") {
+                    callback(rawFile.responseText);
+                }
+            }
+            rawFile.send(null);
+        }
+
+        //usage:
+        readTextFile("https://shefwerld.github.io/post/topuserhistory.json", function(text){
+            var data = JSON.parse(text);
+            for (i in data) {
+                var currentTestingDate = data[i];
+                for (j in currentTestingDate)  {
+                    if (j == selectedUsername)  {
+                        console.log(currentTestingDate[j]);
+                        historyPostCount.push(currentTestingDate[j].COUNT);
+                        historyPostRank.push(currentTestingDate[j].RANK);
+                        historyPostDate.push(i);
+                    }
+                }
+            }
+            /* history bar graph */
+            if (historyPostCount.length != 0)   {
+            var ctx = document.getElementById('historychart').getContext('2d');
+            window.lineChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: historyPostDate,
+                        datasets: [{
+                            label: "Posts",
+                            backgroundColor: "#EEEEEE",
+                            borderColor: "#FF0000",
+                            data: historyPostCount,
+                            fill: false,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Post Count Over Time'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            x: {
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Date'
+                                }
+                            },
+                            y: {
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Posts'
+                                }
+                            }
+                        }
+                    }
+                });
+            } else  {
+                document.getElementById("PostOverTime").setAttribute("style", "display: none;")
             }
         });
         </script>

@@ -357,6 +357,9 @@
                             overviewRank = document.createElement("div");
                             overviewRank.setAttribute("id", "overviewRank");
                             var ranking = positionbruh(posters.counts.total.rank);
+                            if (posters.counts.total.rank == 69)   {
+                                    ranking += " (nice)";
+                                }
                             overviewRank.appendChild(document.createTextNode(ranking));
                             document.getElementById("overview-postinformation").appendChild(overviewRank);
                             /* first posted */

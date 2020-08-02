@@ -152,6 +152,9 @@
             display: flex;
             justify-content: flex-end;
         }
+        #nowlaugh  {
+            color: #FFF;
+        }
         </style>
     </head>
     <body>
@@ -228,7 +231,7 @@
                 {name: "deck26", status: "THAT ONE GUY WHO HAS 8% OF ALL THE POSTS ON HELP WITH SCRIPTS"},
                 {name: "Sigton", status: "SHOP GUY™"},
                 {name: "World_Languages", status: "MAKE SURE TO CHECK US OUT ON <a href='https://scratchstats.com' style='color: #f54260;'>SCRATCHSTATS.COM</a>"},
-                {name: "Jeffalo", status: "GUY WHO GIVES THE SCRATCHDB API AN EXISTENTIAL CRISIS"},
+                {name: "Jeffalo", status: "	&lt;script&gt;alert(1)&lt;/script&gt;"},
                 {name: "PrincessPanda_test_", status: "<a href='https://scratch.mit.edu/discuss/youtube/m7Q0_DgXHG0/' style='color: #f54260;'>THE SONIC FAN</a>"},
                 {name: "PrincessPandaLover", status: "<a href='https://scratch.mit.edu/discuss/youtube/m7Q0_DgXHG0/' style='color: #f54260;'>THE SONIC FAN</a>"},
                 {name: "Wahsp", status: "AUNT JEMIMA OFFICIAL SCRATCH ACCOUNT"},
@@ -453,6 +456,10 @@
                     if (selectedUsername == "DatOneLefty")    {
                         funny = document.createElement("img");
                         funny.setAttribute("src", "linus.jpg");
+                        document.getElementById("nowlaugh").appendChild(funny);
+                    } else if (selectedUsername == "Jeffalo")   {
+                        funny = document.createElement("div")
+                        funny.appendChild(document.createTextNode("ha pranked you trying to xss this page that's a not gaming moment Jeffalo ha pranked"));
                         document.getElementById("nowlaugh").appendChild(funny);
                     }
                 request.send();

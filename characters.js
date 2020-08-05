@@ -46,7 +46,7 @@ var characterdescription = ["The CEO of Shef Werld and owner of the CatsUnited a
 "Reali was one of the first people to join SKNN as a news reporter and advertiser. Very nice",
 "Went missing a little while ago, but is still one of the most loved indiviuals in Shef Werld because that was one nice green bowler hat.",
 "this is john gameman porfessonal game and man man and john gamean is sport man and porfessonal sport game man and write good article about game and how good game is game man but no scarys pls ah or dreem lend game team will not play good man",
-"Shef Kerbi News Network Reporter, Comic Writer and Advertiser. Creator of the famous Pig Soop™® (Patent Pending)",
+"Shef Kerbi News Network Reporter, Comic Writer and Advertiser. Creator of the famous Pig Soop™® (Patent Pending) and many other things. Also CEO of Carmes Inc.",
 "Bane Starbuckle's Cat. A very philoshopical figure in the Shef Werld community.",
 "bane's cat if it was gray. Recently exploded in a pizza restaurant.",
 "One of the most (in)famous figures in the Shef Werld community, SKNN News Reporter, Comic Writer and *Advertiser* has brought to the world an incredible invention known as 'Dirty Clock Cleaning', which can be done for $19.99 plus $5 if you call right now. Also invented ghosts.",

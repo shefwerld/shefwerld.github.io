@@ -375,13 +375,13 @@
                             document.getElementById("overview-postinformation").appendChild(overviewRank);
                             /* first posted */
                             var monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                            var da = "FIRST POST: " + monthList[new Date(posters.firstPost.post_time).getMonth()] + " " + new Date(posters.firstPost.post_time).getDate() + ", " + new Date(posters.firstPost.post_time).getFullYear();  
+                            var da = "FIRST POST: " + monthList[new Date(posters.firstPost.time.posted).getMonth()] + " " + new Date(posters.firstPost.time.posted).getDate() + ", " + new Date(posters.firstPost.time.posted).getFullYear();  
                             firstPost = document.createElement("div");
                             firstPost.setAttribute("id", "firstPostInformation");
                             firstPost.appendChild(document.createTextNode(da));
                             document.getElementById("overview-postdates").appendChild(firstPost);
                             /* last posted */
-                            var da = "LAST POST: " + monthList[new Date(posters.lastPost.post_time).getMonth()] + " " + new Date(posters.lastPost.post_time).getDate() + ", " + new Date(posters.lastPost.post_time).getFullYear();
+                            var da = "LAST POST: " + monthList[new Date(posters.lastPost.time.posted).getMonth()] + " " + new Date(posters.lastPost.time.posted).getDate() + ", " + new Date(posters.lastPost.time.posted).getFullYear();
                             lastPost = document.createElement("div");
                             lastPost.setAttribute("id", "lastPostInformation");
                             lastPost.appendChild(document.createTextNode(da));

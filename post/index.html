@@ -244,9 +244,9 @@
                             titletext = document.createElement("div");
                             titletext.setAttribute("id", "titletext");
                             if (selectedCategory != "total")    {
-                                titletext.appendChild(document.createTextNode("The Top 100 Posters in " + selectedCategory));
+                                titletext.appendChild(document.createTextNode("The Top Posters in " + selectedCategory));
                             } else  {
-                                titletext.appendChild(document.createTextNode("The Top 100 Posters of the Scratch Forums"));
+                                titletext.appendChild(document.createTextNode("The Top Posters of the Scratch Forums"));
                             }
                             document.getElementById("heading").appendChild(titletext);
                             for (let j in posters.users)    {

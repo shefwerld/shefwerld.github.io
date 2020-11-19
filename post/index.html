@@ -6,82 +6,9 @@
         <script src="https://d3js.org/d3.v4.js"></script>
         <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <style>
-        *   {
-            font-family: "Roboto";
-            font-weight: 700;
-        }
-        body    {
-            background-color: #333;
-        }
-        .userbox {
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            transition: width 1s;
-        }
-        #container, #heading  {
-            margin: auto;
-            width: 90%;
-        }
-        .userposts, .totalposts, .postcountpercentage   {
-            text-align: right;
-            color: #FFF;
-        }
-        .categoryranking    {
-            color: #FFF;
-        }
-        .userposts  {
-            font-size: 20px;
-        }
-        .username   {
-            font-size: 20px;
-            color: #f54260;
-            text-decoration: none;
-        }
-        #titletext  {
-            font-size: 40px;
-            color: #f54260;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        form    {
-            margin: auto;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        #footer    {
-            width: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: space-around;
-            color: #FFF;
-            margin-top: 20px;
-            background-color: #1C1C1C;
-            padding: 25px 0 25px 0;
-        }
-        #footer a, #navigation a   {
-            color: #f54260;
-            text-decoration: none;
-        }
-        #navigation {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            background-color: #1C1C1C;
-            padding: 10px 0 10px 0;
-            margin-bottom: 10px;
-        }
-        .username, #top_text, .graphtitletext   {
-            font-size: 20px;
-            color: #f54260;
-            text-decoration: none;
-        }
-        </style>
+        <link href="style.css" rel="stylesheet">
     </head>
     <body>
-        yes that is a .com domain above my head. this will be the temporary home of the shefwerld website until November/December 2020 when I've hopefully got some stuff worked out
         <div id="top_text" style="margin: auto; text-align: center; margin-bottom: 15px;">
             Scratch Forum Post Counts
         </div>
@@ -125,6 +52,8 @@
                         <option value="Català">Català</option>
                         <option value="Deutsch">Deutsch</option>
                         <option value="Ελληνικά">Ελληνικά</option>
+                        <option value="Español">Español</option>
+                        <option value="فارسی">فارسی</option>
                         <option value="Français">Français</option>
                         <option value="עברית">עברית</option>
                         <option value="한국어">한국어</option>
@@ -144,19 +73,18 @@
                 </select>
                 <input type="submit" value="Go">
             </form>
+            <div id="footer">
+                <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
+                <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
+            </div>
             <div id="content">
             </div>
         </div>
-        <div id="footer">
-            <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
-            <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
-        </div>
-        <div style="color: #FFF; text-align: center; font-family: 'Comic Sans MS', Comic Sans;">bottom text</div>
         <script>
-            var urlparams = new URLSearchParams(window.location.search);
-            var selectedCategory = urlparams.get("category");
-            var transitiondone = 0;
-            console.log(selectedCategory);
+            const urlparams = new URLSearchParams(window.location.search);
+            let selectedCategory = urlparams.get("category");
+            var currentpage = 0;
+
             if (selectedCategory == "Dustbin")  {
                 window.location.href = "https://scratch.mit.edu/discuss/youtube/nSW6scUfnFw/";
             }
@@ -187,155 +115,85 @@
                     b: Math.round(b * 255)
                 };
             }
-            var requestlist = [selectedCategory, "total"];
-            var request = new XMLHttpRequest();
-            (function loop(i, length){
-                if (i >= length)    {
-                    return;
-                }
-                var url = "https://scratchdb.lefty.one/v2/forum/category/rank/" + requestlist[i];
-                request.open("GET" ,url)
-                request.onreadystatechange = function() {
-                    if (request.readyState == 4 && request.status == 200) {
-                        var posters = JSON.parse(request.responseText);
-                        function positionbruh(input)    {
-                            switch (input)  {
-                                case 1:
-                                case 21:
-                                case 31:
-                                case 41:
-                                case 51:
-                                case 61:
-                                case 71:
-                                case 81:
-                                case 91:
-                                    return input + "st";
-                                    break;
-                                case 2:
-                                case 22:
-                                case 32:
-                                case 42:
-                                case 52:
-                                case 62:
-                                case 72:
-                                case 82:
-                                case 92:
-                                    return input + "nd";
-                                    break;
-                                case 3:
-                                case 23:
-                                case 33:
-                                case 43:
-                                case 53:
-                                case 63:
-                                case 73:
-                                case 83:
-                                case 93:
-                                    return input + "rd";
-                                    break;
-                                default:
-                                    return input + "th";
-                            }
-                                }
-                        if (i == 0) {
-                            /* specific category post */
-                            console.log(posters.users.length);
-                            var maxbarlength = posters.users[0].count;
-                            /* title text */
-                            titletext = document.createElement("div");
-                            titletext.setAttribute("id", "titletext");
-                            if (selectedCategory != "total")    {
-                                titletext.appendChild(document.createTextNode("The Top Posters in " + selectedCategory));
-                            } else  {
-                                titletext.appendChild(document.createTextNode("The Top Posters of the Scratch Forums"));
-                            }
-                            document.getElementById("heading").appendChild(titletext);
-                            for (let j in posters.users)    {
-                                console.log(posters.users[j]);
-                                /* create div for user */
-                                user = document.createElement("div");
-                                user.setAttribute("id", "user" + j);
-                                user.setAttribute("class", "userbox");
-                                var randomColor = HSVtoRGB(Math.random(), 0.5, 0.35);
-                                user.setAttribute("style", "width: 0%;");
-                                document.getElementById("content").appendChild(user);
-                                /* create div for left located info */
-                                info = document.createElement("div");
-                                info.setAttribute("id", "info" + j);
-                                info.setAttribute("class", "info");
-                                document.getElementById("user" + j).appendChild(info);
-                                /* position */
-                                categoryranking = document.createElement("div");
-                                categoryranking.setAttribute("id", "categoryranking" + j);
-                                categoryranking.setAttribute("class", "categoryranking");
-                                var ranking = positionbruh(posters.users[j].rank);
-                                categoryranking.appendChild(document.createTextNode(ranking));
-                                document.getElementById("info" + j).appendChild(categoryranking);
-                                /* username */
-                                username = document.createElement("a");
-                                username.setAttribute("id", "username" + j);
-                                username.setAttribute("class", "username");
-                                username.setAttribute("href", "user.html?user=" + posters.users[j].username);
-                                username.appendChild(document.createTextNode(posters.users[j].username));
-                                document.getElementById("info" + j).appendChild(username);
-                                /* create div for right located info */
-                                extrainfo = document.createElement("div");
-                                extrainfo.setAttribute("id", "extrainfo" + j);
-                                extrainfo.setAttribute("class", "extrainfo");
-                                document.getElementById("user" + j).appendChild(extrainfo);
-                                /* post count */
-                                postcount = document.createElement("div");
-                                postcount.setAttribute("id", "posts" + j);
-                                postcount.setAttribute("class", "userposts");
-                                postcount.appendChild(document.createTextNode(posters.users[j].count));
-                                document.getElementById("extrainfo" + j).appendChild(postcount);
-                            }
+            titletext = document.createElement("div");
+            titletext.setAttribute("id", "titletext");
+            if (selectedCategory != "total")    {
+                titletext.appendChild(document.createTextNode("The Top Posters in " + selectedCategory));
+            } else  {
+                titletext.appendChild(document.createTextNode("The Top Posters of the Scratch Forums"));
+            }
+            document.getElementById("heading").appendChild(titletext);
+            loadUserPosts(0);
+            
+            function loadUserPosts(page)    {
+                fetch(`https://scratchdb.lefty.one/v2/forum/category/rank/${selectedCategory}/${page}`)
+                .then(res => res.json())
+                .then(data => {
+                    let responsedata = data.users;
+                    for (let j in responsedata)   {
+                        if (responsedata[j].count == 0) {
+                            break;
                         }
-                        if (i == 1 && selectedCategory != "total") {
-                            /* total posts */
-                            console.log(posters.users.length);
-                            for (let j in posters.users)    {
-                                console.log(posters.users[j]);
-                                for (let k in posters.users)    {
-                                    if (posters.users[k].username == document.getElementById("username" + j).innerHTML)   {
-                                        /* global rank */
-                                        globalrank = document.createElement("div");
-                                        globalrank.setAttribute("id", "globalrank" + j);
-                                        globalrank.setAttribute("class", "totalposts");
-                                        var ranking = positionbruh(posters.users[k].rank);
-                                        ranking += " globally";
-                                        globalrank.appendChild(document.createTextNode(ranking));
-                                        document.getElementById("extrainfo" + j).appendChild(globalrank);
-                                        /* percentage of posts */
-                                        fullpostcount = document.createElement("div");
-                                        fullpostcount.setAttribute("id", "totalposts" + j);
-                                        fullpostcount.setAttribute("class", "postcountpercentage");
-                                        var perecentageposts = Math.round(document.getElementById("posts" + j).innerHTML / posters.users[k].count * 100 * 100)/100;
-                                        fullpostcount.appendChild(document.createTextNode(perecentageposts + "% of posts"));
-                                        document.getElementById("extrainfo" + j).appendChild(fullpostcount);
-                                    }
-                                }
-                            }
+                        if (page == 0)  {
+                            k = j;
+                        } else  {
+                            k = (100 * page) + Number(j);
                         }
-                        /* iterate */
-                        loop(i+ 1, length);
-                        
-                    }
-                }
-                request.send();
-            })(0, requestlist.length);
-            setInterval(function(){
-                
-                if (transitiondone == 0)    {
-                    for ( i = 0; i < 100; i++)    {
+                        console.log(responsedata[j]);
+                        /* create div for user */
+                        user = document.createElement("div");
+                        user.setAttribute("id", `user${k}`);
+                        user.setAttribute("class", "userbox");
                         var randomColor = HSVtoRGB(Math.random(), 0.5, 0.35);
-                        document.getElementById("user" + i).style.transition = "width 1s";
-                        document.getElementById("user" + i).setAttribute("style", "width:" + document.getElementById("posts" + i).innerHTML / document.getElementById("posts0").innerHTML * 100 + "%; background-color: rgb(" + randomColor.r + "," + randomColor.g + "," + randomColor.b + "); padding: 5px " + window.innerWidth/50 + "px 5px " + window.innerWidth/50 + "px;");
+                        user.setAttribute("style", "width: 0%;");
+                        document.getElementById("content").appendChild(user);
+                        /* create div for left located info */
+                        info = document.createElement("div");
+                        info.setAttribute("id", `info${k}`);
+                        info.setAttribute("class", "info");
+                        document.getElementById(`user${k}`).appendChild(info);
+                        /* position */
+                        categoryranking = document.createElement("div");
+                        categoryranking.setAttribute("id", `categoryranking${k}`);
+                        categoryranking.setAttribute("class", "categoryranking");
+                        categoryranking.appendChild(document.createTextNode(responsedata[j].rank));
+                        document.getElementById(`info${k}`).appendChild(categoryranking);
+                        /* username */
+                        username = document.createElement("a");
+                        username.setAttribute("id", `username${k}`);
+                        username.setAttribute("class", "username");
+                        username.setAttribute("href", `user.html?user=${responsedata[j].username}`);
+                        username.appendChild(document.createTextNode(responsedata[j].username));
+                        document.getElementById(`info${k}`).appendChild(username);
+                        /* create div for right located info */
+                        extrainfo = document.createElement("div");
+                        extrainfo.setAttribute("id", `extrainfo${k}`);
+                        extrainfo.setAttribute("class", "extrainfo");
+                        document.getElementById(`user${k}`).appendChild(extrainfo);
+                        /* post count */
+                        postcount = document.createElement("div");
+                        postcount.setAttribute("id", `posts${k}`);
+                        postcount.setAttribute("class", "userposts");
+                        postcount.appendChild(document.createTextNode(responsedata[j].count));
+                        document.getElementById(`extrainfo${k}`).appendChild(postcount);
                     }
+                })
+                .catch(function(){
+                });
+            }
+            setInterval(animation => {
+                for (j = 0; j < document.getElementsByClassName("userbox").length; j++)    {
+                var randomColor = "#441144";
+                document.getElementById(`user${j}`).style.transition = "width 1s";
+                document.getElementById(`user${j}`).setAttribute("style", `width: ${document.getElementById(`posts${j}`).innerHTML / document.getElementById("posts0").innerHTML * 100}%; background-color: ${randomColor}; padding: 5px ${window.innerWidth/50}px 5px ${window.innerWidth/50}px;`);
                 }
-                transitiondone = 1;
-            }, 500);
-
+            },500);
+            window.onscroll = () => {
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    currentpage++;
+                    loadUserPosts(currentpage);
+                }
+            };
         </script>
     </body>
 </html>

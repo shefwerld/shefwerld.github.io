@@ -87,13 +87,13 @@ form    {
     margin-bottom: 0;
     padding: 25px 0 5px 0;
     border-top: 2px solid var(--white);
-    border-bottom: 2px solid var(--white);
 }
 #dateinformation   {
     display: flex;
     flex-direction: row;
     margin-bottom: 25px;
     padding: 5px 0 25px 0;
+    border-bottom: 2px solid var(--white);
 }
 #overview img   {
     width: 150px;

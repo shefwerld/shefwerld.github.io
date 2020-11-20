@@ -1,5 +1,5 @@
 {
-"statuses": [
+    "status": [
         {"name": "CatsUnited", "status": "PHANTOM THIEF"},
         {"name": "DatOneLefty", "status": "BIG DATA MAN"},
         {"name": "griffpatch", "status": "PAPER MINECRAFT; THE WAY HOME"},
@@ -41,5 +41,26 @@
         {"name": "GSqueezydaddy", "status": "The Only Pokégod"},
         {"name": "p-p-p-p-p-p-p-p-p-p-", "status": "Be moist, unless you are not wet. Then be dry."},
         {"name": "EZ-Games", "status": "Lucky Rabbit"}
+    ],
+    "color":[
+        {"name": "CatsUnited", "color": "#f54260"},
+        {"name": "-Zyte-", "color": "#3FA2FF"},
+        {"name": "BearSlothCoding", "color": "#3ebda8"},
+        {"name": "jaguar1501", "color": "#ff0000"},
+        {"name": "SausageMcSauce", "color": "#a81313"},
+        {"name": "GrahamSH", "color": "#0356fc"},
+        {"name": "Boomer001", "color": "#0136e2"},
+        {"name": "_-BuRnInGfLaMeS-_", "color": "#ff0000"},
+        {"name": "4096bits", "color": "#e39b20"},
+        {"name": "K02119", "color": "#69b3ff"},
+        {"name": "RiverDay", "color": "#B7E3FF"},
+        {"name": "Ihatr", "color": "#568cff"},
+        {"name": "scratch978654", "color": "#ff9200"},
+        {"name": "GoboSnack", "color": "#d64b36"},
+        {"name": "64lu", "color": "#ff0b11"},
+        {"name": "Super_Scratch_Bros20", "color": "#214dc4"},
+        {"name": "-InsanityPlays-", "color": "#0f8bc0"},
+        {"name": "p-p-p-p-p-p-p-p-p-p-", "color": "#112e5e"},
+        {"name": "garnetluvcookie", "color": "#2AFF44"}
     ]
 }

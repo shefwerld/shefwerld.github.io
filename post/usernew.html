@@ -22,7 +22,7 @@
                 <input type="text" name="user" placeholder="Username"></input>
                 <input type="submit" value="Go">
             </form>
-            <div id="loadingtext">Loading</div>
+            <div id="loadingtext">Loading<br><br></div>
             <div id="overview">
                 <div id="overview-information">
                     <div id="overview-scratchinformation">
@@ -169,6 +169,11 @@
                         document.title = `${selectedUsername}'s Scratch Forums Statistics`;
                         /* delete loading text */
                         document.getElementById("loadingtext").remove();
+
+                        /* render site layout */
+
+
+
                         /* title text */
                         titletext = document.createElement("a");
                         titletext.setAttribute("id", "titletext");
@@ -214,7 +219,7 @@
                             user = document.createElement("div");
                             user.setAttribute("id", i);
                             user.setAttribute("class", "category");
-                            var randomColor = HSVtoRGB(Math.random(), 0.5, 0.35);
+                            var randomColor = HSVtoRGB(Math.random(), 0.5, Math.random() * (0.3-0.15) + 0.15);
                             user.setAttribute("style", "background-color: rgb(" + randomColor.r + "," + randomColor.g + "," + randomColor.b + "); padding: 5px " + window.innerWidth/50 + "px 5px " + window.innerWidth/50 + "px;");
                             document.getElementById("content").appendChild(user);
                             /* category name */
@@ -256,9 +261,10 @@
                             /* chart colors */
                             chartCounts.push(categorycount.innerHTML);
                             chartCategories.push(categorytext.innerHTML);
-                            randomColor = RGBtoHEX(randomColor.r, randomColor.g, randomColor.b);
+                            randomColor = `#${RGBtoHEX(randomColor.r, randomColor.g, randomColor.b)}`;
                             chartColors.push(randomColor);
                         }
+                        console.log(chartColors)
                         /* pie graph */
                         var config = {
                             type: 'pie',
@@ -288,19 +294,32 @@
                         for (let i in data.history)    {
                             var currentDate = new Date(data.history[i].date);
                             if (i > 0)  {var previousDate = new Date(data.history[i-1].date);}
+
+                            /* enter in missing points */
+
                             if ( currentDate - previousDate > 2678400000) {
                                 var monthgap = Math.floor((currentDate - previousDate) / 1000 / 60 / 60 / 24 / 30.438);
+                                /*
                                 console.log(`bruh: ${currentDate - previousDate} ms (${monthgap} months)`);
                                 console.log(currentDate)
                                 console.log(previousDate)
-                                for (j = 0; j < monthgap - 1; j++)    {
-                                    var calculatedMonth = new Date(data.history[i-1].date).getMonth() + j + 2;
-                                    console.log(calculatedMonth);
-                                    var yearCompensation = Math.floor((j + 2)/12);
+                                */
+                                var yearCompensation = 0;
+                                for (j = 1; j < monthgap + yearCompensation; j++)    {
+                                    var calculatedMonth = new Date(previousDate).getMonth() + (1 + j);
+                                    if (calculatedMonth == 13)   {
+                                        yearCompensation++
+                                    }
+                                    /*
+                                    console.log(j);
+                                    console.log(`Month: ${calculatedMonth - (yearCompensation * 12)}`);
+                                    console.log(`Year: ${yearCompensation}`)
+                                    */
                                     historyPostCount.push(data.history[i-1].value);
-                                    historyPostDate.push(`${calculatedMonth - (yearCompensation * 12)}/${new Date(data.history[i-1].date).getFullYear() + yearCompensation}`);
+                                    historyPostDate.push(`${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
                                 }
                             }
+
                             historyPostCount.push(data.history[i].value);
                             historyPostDate.push(`${new Date(data.history[i].date).getMonth() + 1}/${new Date(data.history[i].date).getFullYear()}`);
                         }

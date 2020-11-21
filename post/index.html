@@ -78,6 +78,7 @@
                 <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
                 <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
             </div>
+            <div id="loadingtext">Loading</div>
             <div id="content">
             </div>
         </div>
@@ -130,6 +131,10 @@
                 fetch(`https://scratchdb.lefty.one/v2/forum/category/rank/${selectedCategory}/${page}`)
                 .then(res => res.json())
                 .then(data => {
+                    /* modify webpage title */
+                    if (selectedCategory != "total") {document.title = `${selectedCategory}: Scratch Forums Statistics`;}
+                    /* delete loading text */
+                    document.getElementById("loadingtext").remove();
                     let responsedata = data.users;
                     for (let j in responsedata)   {
                         if (responsedata[j].count == 0) {
@@ -184,9 +189,11 @@
             }
             setInterval(animation => {
                 for (j = 0; j < document.getElementsByClassName("userbox").length; j++)    {
-                var randomColor = "#441144";
-                document.getElementById(`user${j}`).style.transition = "width 1s";
-                document.getElementById(`user${j}`).setAttribute("style", `width: ${document.getElementById(`posts${j}`).innerHTML / document.getElementById("posts0").innerHTML * 100}%; background-color: ${randomColor}; padding: 5px ${window.innerWidth/50}px 5px ${window.innerWidth/50}px;`);
+                    var randomColor = "#1C1C1C";
+                    document.getElementById(`user${j}`).style.transition = "width 1s";
+                    document.getElementById(`user${j}`).style.width = `${document.getElementById(`posts${j}`).innerHTML / document.getElementById("posts0").innerHTML * 100}%`;
+                    document.getElementById(`user${j}`).style.backgroundColor = `${randomColor}`;
+                    document.getElementById(`user${j}`).style.padding = `5px ${window.innerWidth/50}px 5px ${window.innerWidth/50}px`;
                 }
             },500);
             window.onscroll = () => {

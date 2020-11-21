@@ -1,6 +1,7 @@
 :root   {
     --white: #FFF;
     --highlight: #f54260;
+    --black: #1C1C1C;
 }
 *   {
     font-family: "Roboto";
@@ -80,4 +81,26 @@ form    {
     color: var(--white);
     font-style: italic;
     font-size: 11px;
+}
+select    {
+    height: 3.5em;
+    padding: 8px 0 8px 8px;
+    width: 30%;
+    background-color: var(--black);
+    color: var(--white);
+    border: 0;
+}
+input[type=submit]  {
+    width: 10%;
+    background-color: var(--black);
+    color: var(--white);
+    border: 0;
+}
+#loadingtext    {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    color: var(--white);
+    font-size: 48px;
+    justify-content: center;
 }

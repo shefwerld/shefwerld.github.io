@@ -386,13 +386,13 @@
                                 } else  {
                                     scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCHER"));
                                 }
-                                    if (otherdata.username == userdata.name)   {
+                                    if (otherdata.username.toUpperCase() == userdata.name.toUpperCase())   {
                                         scratcher.removeChild(scratcherstatus);
                                         scratcher.appendChild(document.createTextNode(userdata.status));
                                     }
                                 document.getElementById("overview-accountstatus").appendChild(scratcher);
                                 /* custom overview color code */
-                                    if (otherdata.username == userdata.name)   {
+                                    if (otherdata.username.toUpperCase() == userdata.name.toUpperCase())   {
                                         document.getElementById("overview").setAttribute("style", "background-color:" + userdata.color);
                                         document.getElementById("dateinformation").setAttribute("style", "background-color:" + userdata.color);
                                     }

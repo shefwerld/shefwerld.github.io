@@ -18,6 +18,7 @@
             <div id="navigation">
                 <a href="index.html?category=total">Forum Categories</a>
                 <a href="user.html?user=CatsUnited">Users</a>
+                <a href="https://my-ocular.jeffalo.net/login">Customise Profile (myocular)</a>
             </div>
             <form action="" method="get">
                 <select name="category">
@@ -116,6 +117,9 @@
                     b: Math.round(b * 255)
                 };
             }
+            dectoHex = (num) => {
+                return num.toString(16);
+            }
             titletext = document.createElement("div");
             titletext.setAttribute("id", "titletext");
             if (selectedCategory != "total")    {
@@ -167,7 +171,7 @@
                         username = document.createElement("a");
                         username.setAttribute("id", `username${k}`);
                         username.setAttribute("class", "username");
-                        username.setAttribute("href", `usernew.html?user=${responsedata[j].username}`);
+                        username.setAttribute("href", `user.html?user=${responsedata[j].username}`);
                         username.appendChild(document.createTextNode(responsedata[j].username));
                         document.getElementById(`info${k}`).appendChild(username);
                         /* create div for right located info */

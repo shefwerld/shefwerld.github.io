@@ -15,6 +15,7 @@
             <div id="navigation">
                 <a href="index.html?category=total">Forum Categories</a>
                 <a href="user.html?user=CatsUnited">Users</a>
+                <a href="https://my-ocular.jeffalo.net/login">Customise Profile (myocular)</a>
             </div>
         </div>
             <form action="" method="get">
@@ -63,7 +64,7 @@
         </div>
         <div id="footer">
             <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
-            <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
+            <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a> and <a href="https://ocular.jeffalo.net/">Ocular</a> from <a href="https://scratch.mit.edu/users/Jeffalo">Jeffalo</a></div>
         </div>
         <div id="nowlaugh"></div>
         <div style="color: #FFF; text-align: center; font-family: 'Comic Sans MS', Comic Sans;">bottom text</div>
@@ -371,7 +372,7 @@
 
 
                         /* user customised stuff */
-                        fetch(`custom.json`)
+                        fetch(`https://my-ocular.jeffalo.net/api/user/${selectedUsername}`)
                             .then(res2 => res2.json())
                             .then(userdata => {
                                 /* scratcher/scratch team */
@@ -385,20 +386,16 @@
                                 } else  {
                                     scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCHER"));
                                 }
-                                for (k in userdata.status)   {
-                                    if (otherdata.username == userdata.status[k].name)   {
+                                    if (otherdata.username == userdata.name)   {
                                         scratcher.removeChild(scratcherstatus);
-                                        scratcher.innerHTML = userdata.status[k].status;
+                                        scratcher.appendChild(document.createTextNode(userdata.status));
                                     }
-                                }
                                 document.getElementById("overview-accountstatus").appendChild(scratcher);
                                 /* custom overview color code */
-                                for (k in userdata.color)   {
-                                    if (otherdata.username == userdata.color[k].name)   {
-                                        document.getElementById("overview").setAttribute("style", "background-color:" + userdata.color[k].color);
-                                        document.getElementById("dateinformation").setAttribute("style", "background-color:" + userdata.color[k].color);
+                                    if (otherdata.username == userdata.name)   {
+                                        document.getElementById("overview").setAttribute("style", "background-color:" + userdata.color);
+                                        document.getElementById("dateinformation").setAttribute("style", "background-color:" + userdata.color);
                                     }
-                                }
                             })
                         /* end user customised stuff */
                         if (selectedUsername == "DatOneLefty")    {

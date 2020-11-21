@@ -5,157 +5,7 @@
         <title>Scratch Forum Post Statistics</title>
         <script src="Chart.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <style> 
-        *   {
-            font-family: "Roboto";
-            font-weight: 700;
-        }
-        body    {
-            background-color: #333;
-            margin: 0;
-        }
-        .userbox {
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-        }
-        #container, #heading, #top_text  {
-            margin: auto;
-            width: 90%;
-        }
-        .userposts, .totalposts, .postcountpercentage, .categorycount, .categoryrank   {
-            text-align: right;
-            color: #FFF;
-        }
-        .categoryranking, .category    {
-            color: #FFF;
-        }
-        .category   {
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .userposts, .categorytext, .categorycount   {
-            font-size: 20px;
-        }
-        .username, #top_text, .graphtitletext   {
-            font-size: 20px;
-            color: #f54260;
-            text-decoration: none;
-        }
-        .graphtitletext {
-            margin: auto;
-            text-align: center;
-            margin: 15px 0 15px 0;
-        }
-        #titletext  {
-            font-size: 52px;
-            color: #fff;
-            text-align: right;
-            margin-bottom: 10px;
-            margin-right: 20px;
-            text-decoration: none;
-        }
-        form    {
-            margin: auto;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        #footer    {
-            width: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: space-around;
-            color: #FFF;
-            margin-top: 20px;
-            background-color: #1C1C1C;
-            padding: 25px 0 25px 0;
-        }
-        #footer a, #navigation a, .categorytext   {
-            color: #f54260;
-            text-decoration: none;
-        }
-        #navigation {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            background-color: #1C1C1C;
-            padding: 10px 0 10px 0;
-            margin-bottom: 10px;
-        }
-        #overview   {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 0;
-            padding: 25px 0 5px 0;
-        }
-        #dateinformation   {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 25px;
-            padding: 5px 0 25px 0;
-        }
-        #overview img   {
-            width: 150px;
-            height: 150px;
-            margin: 0 0 5px 15px;
-        }
-        #overview-information   {
-            order: 99;
-            width: 100%;
-            margin-left: 5%;
-            display: flex;
-            flex-direction: column-reverse;
-        }
-        #overview-postinformation  {
-            text-align: right;
-            font-size: 40px;
-            color: #FFF;
-            display: flex;
-            justify-content: flex-end;
-            margin-right: 20px;
-        }
-        #overview-postinformationdescription, #overview-accountstatus, #overview-postdates * {
-            text-align: right;
-            font-size: 15px;
-            color: #FFF;
-            display: flex;
-            justify-content: flex-end;
-            margin-right: 20px; 
-            text-decoration: none;
-        }
-        #accountstatus a    {
-            text-decoration: none;
-            color: #FFF;
-            text-align: right;
-            font-size: 15px;
-        }
-        #overview-postinformation *, #overview-postinformationdescription *   {
-            margin: 0 15px 0 15px;
-            width: 18%;
-        }
-        #overview-accountstatus {
-            margin-bottom: 5px;
-        }
-        #piechart-container, #historychart-container {
-            width: 100%; 
-            background-color: #000000;
-        }
-        #piechart-area, #historychart-area  {
-            width: 85%; 
-            margin: auto;
-            padding: 10px;
-        }
-        #overview-postdates {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-        }
-        #nowlaugh  {
-            color: #FFF;
-        }
-        </style>
+        <link href="userstyle.css" rel="stylesheet"> 
     </head>
     <body>
         <div id="top_text" style="margin: auto; text-align: center; margin-bottom: 15px;">
@@ -165,13 +15,13 @@
             <div id="navigation">
                 <a href="index.html?category=total">Forum Categories</a>
                 <a href="user.html?user=CatsUnited">Users</a>
-                <a href="usernew.html?user=CatsUnited">New User Page (WIP)</a>
             </div>
         </div>
             <form action="" method="get">
-                <input type="text" name="user" placeholder="Type username here"></input>
+                <input type="text" name="user" placeholder="Username"></input>
                 <input type="submit" value="Go">
             </form>
+            <div id="loadingtext">Loading<br><br></div>
             <div id="overview">
                 <div id="overview-information">
                     <div id="overview-scratchinformation">
@@ -224,249 +74,196 @@
             var historyPostCount = [];
             var historyPostDate = [];
             var historyPostRank = [];
-            var customstatuses = [
-                {name: "CatsUnited", status: "PHANTOM THIEF"},
-                {name: "DatOneLefty", status: "BIG DATA MAN"},
-                {name: "griffpatch", status: "PAPER MINECRAFT; THE WAY HOME"},
-                {name: "Moisture", status: "BE MOIST 😎"},
-                {name: "deck26", status: "THAT ONE GUY WHO HAS 8% OF ALL THE POSTS ON HELP WITH SCRIPTS"},
-                {name: "Sigton", status: "SHOP GUY™"},
-                {name: "World_Languages", status: "MAKE SURE TO CHECK US OUT ON <a href='https://scratchstats.com' style='color: #f54260;'>SCRATCHSTATS.COM</a>"},
-                {name: "Jeffalo", status: "	&lt;script&gt;alert(1)&lt;/script&gt;"},
-                {name: "PrincessPanda_test_", status: "<a href='https://scratch.mit.edu/discuss/youtube/m7Q0_DgXHG0/' style='color: #f54260;'>THE SONIC FAN</a>"},
-                {name: "PrincessPandaLover", status: "<a href='https://scratch.mit.edu/discuss/youtube/m7Q0_DgXHG0/' style='color: #f54260;'>THE SONIC FAN</a>"},
-                {name: "Wahsp", status: "AUNT JEMIMA OFFICIAL SCRATCH ACCOUNT"},
-                {name: "Za-Chary", status: "AUNT JEMIMA ALT ACCOUNT"},
-                {name: "comp09", status: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},
-                {name: "Paddle2See", status: "THE MAINE MAN"},
-                {name: "ResExsention", status: "NEW SCRATCHER"},
-                {name: "M1mikyu", status: "N"},
-                {name: "cheese-duck", status: "N"},
-                {name: "SPACEINTHEUNIVERSE", status: "N"},
-                {name: "DownsGameClub", status: "FIRE ALARM"},
-                {name: "SausageMcSauce", status: "CEO, CARMES INC <br><div style='font-size: 9px'>&quot;5年前から髪の毛に歯磨き粉を入れています!&quot; - Precure Selene<br>undefined NaN, NaN</div>"},
-                {name: "-Zyte-", status: "HUMAN <br><div style='font-size: 9px'>An 12 year old male, lower than average, your average human child.</div>"},
-                {name: "jaguar1501", status: "NINTENDO FANGIRL <br><div style='font-size: 9px'>Left-handed nerd who’s obsessed with Pokemon, Splatoon, ACNH and AHiT</div>"},
-                {name: "GrahamSH", status: "AVID REQUESTER"},
-                {name: "--Explosion--", status: "KABOOM!!1!"},
-                {name: "Boomer001", status: "PRESS ALT+F4 ANYWHERE FOR FREE FOLLOWS"},
-                {name: "Squirreistar", status: "ALDERHEART'S SOMETHING"},
-                {name: "jammum", status: "WHY AM I HERE"},
-                {name: "4096bits", status: "<div style='font-size: 9px'>I'm a happy, mildly underrated normal person and tech nerd who goes on the forums a lot.</div>"},
-                {name: "K02119", status: "<div style='font-size: 9px'>Heya, I'm K02119, a Coder, Designer and Forumer with lots of Posts</div>"},
-                {name: "RiverDay", status: "PERSON, I THINK"},
-                {name: "Ihatr", status: "PERSON"},
-                {name: "scratch978654", status: "HALF-BAKED FORUMER"},
-                {name: "GoboSnack", status: "<div style='font-size: 9px'>Just A Normal Young Scratcher Making Projects and Browsing the Forums.</div>"},
-                {name: "Super_Scratch_Bros20", status: "CAME FOR JOKES, STAYED FOR STICKS"},
-                {name: "-ShadowOfTheFuture-", status: "YES"},
-                {name: "-InsanityPlays-", status: "Active on the forums! <br><div style='font-size: 9px'>i am not a furry ok</div>" },
-                {name: "garnetluvcookie", status: "use code garnet10 for 10% off"},
-                {name: "TapingAnimations", status: "That One Minecrafter"},
-                {name: "GSqueezydaddy", status: "The Only Pokégod"},
-                {name: "p-p-p-p-p-p-p-p-p-p-", status: "Be moist, unless you are not wet. Then be dry."},
-                {name: "EZ-Games", status: "Lucky Rabbit"}
-            ];
-            var customcolors = [
-                {name: "CatsUnited", color: "#f54260"},
-                {name: "-Zyte-", color: "#3FA2FF"},
-                {name: "BearSlothCoding", color: "#3ebda8"},
-                {name: "jaguar1501", color: "#ff0000"},
-                {name: "SausageMcSauce", color: "#a81313"},
-                {name: "GrahamSH", color: "#0356fc"},
-                {name: "Boomer001", color: "#0136e2"},
-                {name: "_-BuRnInGfLaMeS-_", color: "#ff0000"},
-                {name: "4096bits", color: "#e39b20"},
-                {name: "K02119", color: "#69b3ff"},
-                {name: "RiverDay", color: "#B7E3FF"},
-                {name: "Ihatr", color: "#568cff"},
-                {name: "scratch978654", color: "#ff9200"},
-                {name: "GoboSnack", color: "#d64b36"},
-                {name: "64lu", color: "#ff0b11"},
-                {name: "Super_Scratch_Bros20", color: "#214dc4"},
-                {name: "-InsanityPlays-", color: "#0f8bc0"},
-                {name: "p-p-p-p-p-p-p-p-p-p-", color: "#112e5e"},
-                {name: "garnetluvcookie", color: "#2AFF44"}
+            var monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-            ];
             var urlparams = new URLSearchParams(window.location.search);
             var selectedUsername = urlparams.get("user");
             if (selectedUsername == null)   {
                 var selectedUsername = "CatsUnited";
             }
-            console.log(selectedUsername);
-            var requestlist = [selectedUsername];
-            var request = new XMLHttpRequest();
-            (function loop(i, length){
-                if (i >= length)    {
-                    return;
+
+            function HSVtoRGB(h, s, v) {
+                var r, g, b, i, f, p, q, t;
+                if (arguments.length === 1) {
+                    s = h.s, v = h.v, h = h.h;
                 }
-                var url = "https://scratchdb.lefty.one/v2/forum/user/info/" + requestlist[i];
-                request.open("GET" ,url)
-                request.onreadystatechange = function() {
-                    if (request.readyState == 4 && request.status == 200) {
-                        var posters = JSON.parse(request.responseText);
-                        function HSVtoRGB(h, s, v) {
-                            var r, g, b, i, f, p, q, t;
-                            if (arguments.length === 1) {
-                                s = h.s, v = h.v, h = h.h;
+                i = Math.floor(h * 6);
+                f = h * 6 - i;
+                p = v * (1 - s);
+                q = v * (1 - f * s);
+                t = v * (1 - (1 - f) * s);
+                switch (i % 6) {
+                    case 0: r = v, g = t, b = p; break;
+                    case 1: r = q, g = v, b = p; break;
+                    case 2: r = p, g = v, b = t; break;
+                    case 3: r = p, g = q, b = v; break;
+                    case 4: r = t, g = p, b = v; break;
+                    case 5: r = v, g = p, b = q; break;
+                }
+                return {
+                    r: Math.round(r * 255),
+                    g: Math.round(g * 255),
+                    b: Math.round(b * 255)
+                };
+            }
+            componentToHex = (c) => {
+                var hex = c.toString(16);
+                return hex.length == 1 ? `0${hex}` : hex;
+            }
+            RGBtoHEX = (r,g,b) => {
+                return `${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
+            }
+            rankifier = (input) => {
+                switch (input)  {
+                    case 1:
+                    case 21:
+                    case 31:
+                    case 41:
+                    case 51:
+                    case 61:
+                    case 71:
+                    case 81:
+                    case 91:
+                        return `${input}st`;
+                        break;
+                    case 2:
+                    case 22:
+                    case 32:
+                    case 42:
+                    case 52:
+                    case 62:
+                    case 72:
+                    case 82:
+                    case 92:
+                        return `${input}nd`;
+                        break;
+                    case 3:
+                    case 23:
+                    case 33:
+                    case 43:
+                    case 53:
+                    case 63:
+                    case 73:
+                    case 83:
+                    case 93:
+                        return `${input}rd`;
+                        break;
+                    case 69:
+                        return `${input}th (nice)`;
+                        break;
+                    default:
+                        return `${input}th`;
+                    }
+                }
+
+
+            console.log(selectedUsername);
+            fetch(`https://scratchdb.lefty.one/v2/forum/user/info/${selectedUsername}`)
+                .then(res => res.json())
+                .then(data => {
+                    fetch(`https://scratchdb.lefty.one/v2/user/info/${selectedUsername}`)
+                    .then(res1 => res1.json())
+                    .then(otherdata => {
+                        /* modify webpage title */
+                        document.title = `${selectedUsername}'s Scratch Forums Statistics`;
+                        /* delete loading text */
+                        document.getElementById("loadingtext").remove();
+
+                        /* render site layout */
+
+
+
+                        /* title text */
+                        titletext = document.createElement("a");
+                        titletext.setAttribute("id", "titletext");
+                        titletext.setAttribute("href", `https://scratch.mit.edu/users/${selectedUsername}`);
+                        if (selectedUsername != null)   {titletext.appendChild(document.createTextNode(selectedUsername));}
+                        document.getElementById("overview-information").appendChild(titletext);
+                        /* overview total posts */
+                        overviewTotalPosts = document.createElement("div");
+                        overviewTotalPosts.setAttribute("id", "overviewTotalPosts");
+                        console.log(data.counts.total.count);
+                        overviewTotalPosts.appendChild(document.createTextNode(data.counts.total.count));
+                        document.getElementById("overview-postinformation").appendChild(overviewTotalPosts);
+                        /* overview rank */
+                        overviewRank = document.createElement("div");
+                        overviewRank.setAttribute("id", "overviewRank");
+                        var ranking = rankifier(data.counts.total.rank);
+                        overviewRank.appendChild(document.createTextNode(ranking));
+                        document.getElementById("overview-postinformation").appendChild(overviewRank);
+                        /* first posted */
+                        var da = `FIRST POST: ${monthList[new Date(data.firstPost.time.posted).getMonth()]} ${rankifier(new Date(data.firstPost.time.posted).getDate())}, ${new Date(data.firstPost.time.posted).getFullYear()}`;  
+                        firstPost = document.createElement("div");
+                        firstPost.setAttribute("id", "firstPostInformation");
+                        firstPost.appendChild(document.createTextNode(da));
+                        document.getElementById("overview-postdates").appendChild(firstPost);
+                        /* last posted */
+                        var da = `LAST POST: ${monthList[new Date(data.lastPost.time.posted).getMonth()]} ${rankifier(new Date(data.lastPost.time.posted).getDate())}, ${new Date(data.lastPost.time.posted).getFullYear()}`;
+                        lastPost = document.createElement("div");
+                        lastPost.setAttribute("id", "lastPostInformation");
+                        lastPost.appendChild(document.createTextNode(da));
+                        document.getElementById("overview-postdates").appendChild(lastPost);
+                        /* profile picture */
+                        var profilepicture = document.createElement("img");
+                        profilepicture.setAttribute("id", "profileimage");
+                        profilepicture.setAttribute("src", `https://cdn2.scratch.mit.edu/get_image/user/${otherdata.id}_150x150.png`);
+                        document.getElementById("overview").appendChild(profilepicture);
+                        /* pie graph setup */
+                        for (let i in data.counts)    {
+                            if (i == "total")   {
+                                break;
                             }
-                            i = Math.floor(h * 6);
-                            f = h * 6 - i;
-                            p = v * (1 - s);
-                            q = v * (1 - f * s);
-                            t = v * (1 - (1 - f) * s);
-                            switch (i % 6) {
-                                case 0: r = v, g = t, b = p; break;
-                                case 1: r = q, g = v, b = p; break;
-                                case 2: r = p, g = v, b = t; break;
-                                case 3: r = p, g = q, b = v; break;
-                                case 4: r = t, g = p, b = v; break;
-                                case 5: r = v, g = p, b = q; break;
+                            console.log(i);
+                            /* box for particular category */
+                            user = document.createElement("div");
+                            user.setAttribute("id", i);
+                            user.setAttribute("class", "category");
+                            var randomColor = HSVtoRGB(Math.random(), 0.5, Math.random() * (0.45-0.15) + 0.15);
+                            user.setAttribute("style", "background-color: rgb(" + randomColor.r + "," + randomColor.g + "," + randomColor.b + "); padding: 5px " + window.innerWidth/50 + "px 5px " + window.innerWidth/50 + "px;");
+                            document.getElementById("content").appendChild(user);
+                            /* category name */
+                            categorytext = document.createElement("a");
+                            categorytext.setAttribute("id", i);
+                            categorytext.setAttribute("class", "categorytext");
+                            categorytext.setAttribute("href", "index.html?category=" + i);
+                            if (i == "total")   {
+                                categorytext.appendChild(document.createTextNode("Total Posts"));
+                            } else  {
+                                categorytext.appendChild(document.createTextNode(i));
                             }
-                            return {
-                                r: Math.round(r * 255),
-                                g: Math.round(g * 255),
-                                b: Math.round(b * 255)
-                            };
+                            document.getElementById(i).appendChild(categorytext);
+                            /* right located content */
+                            extrainfo = document.createElement("div");
+                            extrainfo.setAttribute("id", "extrainfo" + i);
+                            extrainfo.setAttribute("class", "extrainfo");
+                            document.getElementById(i).appendChild(extrainfo);
+                            /* category count */
+                            categorycount = document.createElement("div");
+                            categorycount.setAttribute("id", i + " Post Count");
+                            categorycount.setAttribute("class", "categorycount");
+                            categorycount.appendChild(document.createTextNode(data.counts[i].count));
+                            document.getElementById("extrainfo" + i).appendChild(categorycount);
+                            /* category rank */
+                            categoryrank = document.createElement("div");
+                            categoryrank.setAttribute("id", i + " Ranking");
+                            categoryrank.setAttribute("class", "categoryrank");
+                            var ranking = rankifier(data.counts[i].rank);
+                            categoryrank.appendChild(document.createTextNode(ranking));
+                            document.getElementById("extrainfo" + i).appendChild(categoryrank);
+                            /* category percentage */
+                            fullpostcount = document.createElement("div");
+                            fullpostcount.setAttribute("id", "totalposts" + i);
+                            fullpostcount.setAttribute("class", "postcountpercentage");
+                            var perecentageposts = Math.round(document.getElementById(i + " Post Count").innerHTML / data.counts.total.count * 100 * 100)/100;
+                            fullpostcount.appendChild(document.createTextNode(perecentageposts + "% of posts"));
+                            document.getElementById("extrainfo" + i).appendChild(fullpostcount);
+                            /* chart colors */
+                            chartCounts.push(categorycount.innerHTML);
+                            chartCategories.push(categorytext.innerHTML);
+                            randomColor = `#${RGBtoHEX(randomColor.r, randomColor.g, randomColor.b)}`;
+                            chartColors.push(randomColor);
                         }
-                        function componentToHex(c) {
-                            var hex = c.toString(16);
-                            return hex.length == 1 ? "0" + hex : hex;
-                        }
-                        function RGBtoHEX(r,g,b) {
-                            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-                        }
-                        function positionbruh(input)    {
-                            switch (input)  {
-                                case 1:
-                                case 21:
-                                case 31:
-                                case 41:
-                                case 51:
-                                case 61:
-                                case 71:
-                                case 81:
-                                case 91:
-                                    return input + "st";
-                                    break;
-                                case 2:
-                                case 22:
-                                case 32:
-                                case 42:
-                                case 52:
-                                case 62:
-                                case 72:
-                                case 82:
-                                case 92:
-                                    return input + "nd";
-                                    break;
-                                case 3:
-                                case 23:
-                                case 33:
-                                case 43:
-                                case 53:
-                                case 63:
-                                case 73:
-                                case 83:
-                                case 93:
-                                    return input + "rd";
-                                    break;
-                                default:
-                                    return input + "th";
-                                }
-                            }
-                            /* title text */
-                            titletext = document.createElement("a");
-                            titletext.setAttribute("id", "titletext");
-                            titletext.setAttribute("href", "https://scratch.mit.edu/users/" + selectedUsername);
-                            if (selectedUsername != null)   {titletext.appendChild(document.createTextNode(selectedUsername));}
-                            document.getElementById("overview-information").appendChild(titletext);
-                            /* overview total posts */
-                            overviewTotalPosts = document.createElement("div");
-                            overviewTotalPosts.setAttribute("id", "overviewTotalPosts");
-                            console.log(posters.counts.total.count);
-                            overviewTotalPosts.appendChild(document.createTextNode(posters.counts.total.count));
-                            document.getElementById("overview-postinformation").appendChild(overviewTotalPosts);
-                            /* overview rank */
-                            overviewRank = document.createElement("div");
-                            overviewRank.setAttribute("id", "overviewRank");
-                            var ranking = positionbruh(posters.counts.total.rank);
-                            if (posters.counts.total.rank == 69)   {
-                                    ranking += " (nice)";
-                                }
-                            overviewRank.appendChild(document.createTextNode(ranking));
-                            document.getElementById("overview-postinformation").appendChild(overviewRank);
-                            /* first posted */
-                            var monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                            var da = "FIRST POST: " + monthList[new Date(posters.firstPost.time.posted).getMonth()] + " " + new Date(posters.firstPost.time.posted).getDate() + ", " + new Date(posters.firstPost.time.posted).getFullYear();  
-                            firstPost = document.createElement("div");
-                            firstPost.setAttribute("id", "firstPostInformation");
-                            firstPost.appendChild(document.createTextNode(da));
-                            document.getElementById("overview-postdates").appendChild(firstPost);
-                            /* last posted */
-                            var da = "LAST POST: " + monthList[new Date(posters.lastPost.time.posted).getMonth()] + " " + new Date(posters.lastPost.time.posted).getDate() + ", " + new Date(posters.lastPost.time.posted).getFullYear();
-                            lastPost = document.createElement("div");
-                            lastPost.setAttribute("id", "lastPostInformation");
-                            lastPost.appendChild(document.createTextNode(da));
-                            document.getElementById("overview-postdates").appendChild(lastPost);
-                            /* pie chart */
-                            for (let i in posters.counts)    {
-                                if (i == "total")   {
-                                    break;
-                                }
-                                console.log(i);
-                                /* box for particular category */
-                                user = document.createElement("div");
-                                user.setAttribute("id", i);
-                                user.setAttribute("class", "category");
-                                var randomColor = HSVtoRGB(Math.random(), 0.5, 0.35);
-                                user.setAttribute("style", "background-color: rgb(" + randomColor.r + "," + randomColor.g + "," + randomColor.b + "); padding: 5px " + window.innerWidth/50 + "px 5px " + window.innerWidth/50 + "px;");
-                                document.getElementById("content").appendChild(user);
-                                /* category name */
-                                categorytext = document.createElement("a");
-                                categorytext.setAttribute("id", i);
-                                categorytext.setAttribute("class", "categorytext");
-                                categorytext.setAttribute("href", "index.html?category=" + i);
-                                if (i == "total")   {
-                                    categorytext.appendChild(document.createTextNode("Total Posts"));
-                                } else  {
-                                    categorytext.appendChild(document.createTextNode(i));
-                                }
-                                document.getElementById(i).appendChild(categorytext);
-                                /* right located content */
-                                extrainfo = document.createElement("div");
-                                extrainfo.setAttribute("id", "extrainfo" + i);
-                                extrainfo.setAttribute("class", "extrainfo");
-                                document.getElementById(i).appendChild(extrainfo);
-                                /* category count */
-                                categorycount = document.createElement("div");
-                                categorycount.setAttribute("id", i + " Post Count");
-                                categorycount.setAttribute("class", "categorycount");
-                                categorycount.appendChild(document.createTextNode(posters.counts[i].count));
-                                document.getElementById("extrainfo" + i).appendChild(categorycount);
-                                /* category rank */
-                                categoryrank = document.createElement("div");
-                                categoryrank.setAttribute("id", i + " Ranking");
-                                categoryrank.setAttribute("class", "categoryrank");
-                                var ranking = positionbruh(posters.counts[i].rank);
-                                categoryrank.appendChild(document.createTextNode(ranking));
-                                document.getElementById("extrainfo" + i).appendChild(categoryrank);
-                                /* category percentage */
-                                fullpostcount = document.createElement("div");
-                                fullpostcount.setAttribute("id", "totalposts" + i);
-                                fullpostcount.setAttribute("class", "postcountpercentage");
-                                var perecentageposts = Math.round(document.getElementById(i + " Post Count").innerHTML / posters.counts.total.count * 100 * 100)/100;
-                                fullpostcount.appendChild(document.createTextNode(perecentageposts + "% of posts"));
-                                document.getElementById("extrainfo" + i).appendChild(fullpostcount);
-                                /* chart colors */
-                                chartCounts.push(categorycount.innerHTML);
-                                chartCategories.push(categorytext.innerHTML);
-                                randomColor = RGBtoHEX(randomColor.r, randomColor.g, randomColor.b);
-                                chartColors.push(randomColor);
-                                }
-                            }
-                        loop(i+ 1, length);
+                        console.log(chartColors)
                         /* pie graph */
                         var config = {
                             type: 'pie',
@@ -482,156 +279,144 @@
                                 responsive: true,
                             },
                         };
-                            var ctx = document.getElementById('piechart').getContext('2d');
-                            window.myPie = new Chart(ctx, config);
-                        }
-                    /* funny */
-                    if (selectedUsername == "DatOneLefty")    {
-                        funny = document.createElement("img");
-                        funny.setAttribute("src", "linus.jpg");
-                        document.getElementById("nowlaugh").appendChild(funny);
-                    } else if (selectedUsername == "Jeffalo")   {
-                        funny = document.createElement("div")
-                        funny.appendChild(document.createTextNode("ha pranked you trying to xss this page that's a not gaming moment Jeffalo ha pranked"));
-                        document.getElementById("nowlaugh").appendChild(funny);
-                    }
-                request.send();
-            })(0, requestlist.length);
-        </script>
-        <script>
-        var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
-        function doCORSRequest(options, printResult) {
-            var x = new XMLHttpRequest();
-            x.open(options.method, cors_api_url + options.url);
-            x.onload = x.onerror = function() {
-            printResult(
-                (x.responseText || '')
-            );
-            };
-            if (/^POST/i.test(options.method)) {
-                x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            }
-            x.send(options.data);
-        }
-        var outputCORS = document.getElementById("overview");
-        doCORSRequest({
-            method: this.id === 'post' ? 'POST' : 'GET',
-            url: "https://api.scratch.mit.edu/users/" + selectedUsername,
-            data: outputCORS.value
-        }, function printResult(result) {
-            outputCORS.value = result;
-            console.log(result);
-            var ScratchAPIContents = JSON.parse(result);
-            /* profile picture */
-            var profilepicture = document.createElement("img");
-            profilepicture.setAttribute("id", "profileimage");
-            profilepicture.setAttribute("src", "https://cdn2.scratch.mit.edu/get_image/user/" + ScratchAPIContents.id + "_150x150.png?");
-            document.getElementById("overview").appendChild(profilepicture);
-            /* scratcher/scratch team */
-            var scratcher = document.createElement("div");
-            scratcher.setAttribute("id", "accountstatus")
-            if (ScratchAPIContents.scratchteam === true)    {
-                var scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCH TEAM"));
-            } else  {
-                var scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCHER"));
-            }
-            for (k in customstatuses)   {
-                if (ScratchAPIContents.username == customstatuses[k].name)   {
-                    scratcher.removeChild(scratcherstatus);
-                    scratcher.innerHTML = customstatuses[k].status;
-                }
-            }
-            document.getElementById("overview-accountstatus").appendChild(scratcher);
-            console.log(ScratchAPIContents.profile.bio);
-            console.log(ScratchAPIContents.profile.bio.length);
-            /* custom overview color code */
-            for (k in customcolors)   {
-                if (ScratchAPIContents.username == customcolors[k].name)   {
-                    document.getElementById("overview").setAttribute("style", "background-color:" + customcolors[k].color);
-                    document.getElementById("dateinformation").setAttribute("style", "background-color:" + customcolors[k].color);
-                }
-            }
-        });
-        function readTextFile(file, callback) {
-            var rawFile = new XMLHttpRequest();
-            rawFile.overrideMimeType("application/json");
-            rawFile.open("GET", file, true);
-            rawFile.onreadystatechange = function() {
-                if (rawFile.readyState === 4 && rawFile.status == "200") {
-                    callback(rawFile.responseText);
-                }
-            }
-            rawFile.send(null);
-        }
+                        var ctx = document.getElementById('piechart').getContext('2d');
+                        window.myPie = new Chart(ctx, config);
 
-        //usage: 
-        readTextFile("https://rirurin.com/post/topuserhistory.json", function(text){
-            var data = JSON.parse(text);
-            for (i in data) {
-                var currentTestingDate = data[i];
-                for (j in currentTestingDate)  {
-                    if (j == selectedUsername)  {
-                        console.log(currentTestingDate[j]);
-                        historyPostCount.push(currentTestingDate[j].COUNT);
-                        historyPostRank.push(currentTestingDate[j].RANK);
-                        historyPostDate.push(i);
-                    }
-                }
-            }
-            if (historyPostCount.length == 0)   {
-                document.getElementById("historychart-container").setAttribute("style", "display: none;");
-            }
-            /* history bar graph */
-            if (historyPostCount.length != 0)   {
-            var ctx = document.getElementById('historychart').getContext('2d');
-            window.lineChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: historyPostDate,
-                        datasets: [{
-                            label: "Posts",
-                            backgroundColor: "#EEEEEE",
-                            borderColor: "#FF0000",
-                            data: historyPostCount,
-                            fill: false,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        title: {
-                            display: true,
-                            text: 'Post Count Over Time'
-                        },
-                        tooltips: {
-                            mode: 'index',
-                            intersect: false,
-                        },
-                        hover: {
-                            mode: 'nearest',
-                            intersect: true
-                        },
-                        scales: {
-                            x: {
-                                display: true,
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Date'
-                                }
-                            },
-                            y: {
-                                display: true,
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Posts'
+                        /* post count history setup */
+                        var firstDate = new Date(data.history[0].date);
+                        var lastDate = new Date(data.history[data.history.length - 1].date);
+                        console.log(lastDate - firstDate); // time in milliseconds
+                        var dateMonthSeparation = (lastDate - firstDate) / 1000 / 60 / 60 / 24;
+                        console.log(dateMonthSeparation);
+                        var lessDayMonths = [];
+                        var moreDayMonths = [];
+                        for (let i in data.history)    {
+                            var currentDate = new Date(data.history[i].date);
+                            if (i > 0)  {var previousDate = new Date(data.history[i-1].date);}
+
+                            /* enter in missing points */
+
+                            if ( currentDate - previousDate > 2678400000) {
+                                var monthgap = Math.floor((currentDate - previousDate) / 1000 / 60 / 60 / 24 / 30.438);
+                                console.log(`bruh: ${currentDate - previousDate} ms (${monthgap} months)`);
+                                console.log(currentDate)
+                                console.log(previousDate)
+                                var yearCompensation = 0;
+                                for (j = 1; j < monthgap + (yearCompensation > 0); j++)    {
+                                    var calculatedMonth = new Date(previousDate).getMonth() + (1 + j);
+                                    if (calculatedMonth - (yearCompensation * 12) == 13)   {
+                                        yearCompensation++
+                                    }
+                                    console.log(j);
+                                    console.log(`Month: ${calculatedMonth - (yearCompensation * 12)}`);
+                                    console.log(`Year: ${yearCompensation}`)
+                                    historyPostCount.push(data.history[i-1].value);
+                                    historyPostDate.push(`${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
                                 }
                             }
+
+                            historyPostCount.push(data.history[i].value);
+                            historyPostDate.push(`${new Date(data.history[i].date).getMonth() + 1}/${new Date(data.history[i].date).getFullYear()}`);
                         }
-                    }
+                        var currentTime = new Date()
+
+                        /* post count history line graph */
+
+                        var ctx = document.getElementById('historychart').getContext('2d');
+                        window.lineChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: historyPostDate,
+                                    datasets: [{
+                                        label: `${selectedUsername}`,
+                                        backgroundColor: "#EEEEEE",
+                                        borderColor: "#FF0000",
+                                        data: historyPostCount,
+                                        fill: false,
+                                        lineTension: 0,
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Post Count Over Time'
+                                    },
+                                    tooltips: {
+                                        mode: 'index',
+                                        intersect: false,
+                                    },
+                                    hover: {
+                                        mode: 'nearest',
+                                        intersect: true
+                                    },
+                                    scales: {
+                                        x: {
+                                            display: true,
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: 'Date'
+                                            }
+                                        },
+                                        y: {
+                                            display: true,
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: 'Posts'
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+
+
+                        /* user customised stuff */
+                        fetch(`custom.json`)
+                            .then(res2 => res2.json())
+                            .then(userdata => {
+                                /* scratcher/scratch team */
+                                var scratcher = document.createElement("div");
+                                scratcher.setAttribute("id", "accountstatus")
+                                var scratcherstatus;
+                                if (otherdata.status == "Scratch Team")    {
+                                    scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCH TEAM"));
+                                } else if (otherdata.status == "New Scratcher") {
+                                    scratcherstatus = scratcher.appendChild(document.createTextNode("NEW SCRATCHER"));
+                                } else  {
+                                    scratcherstatus = scratcher.appendChild(document.createTextNode("SCRATCHER"));
+                                }
+                                for (k in userdata.status)   {
+                                    if (otherdata.username == userdata.status[k].name)   {
+                                        scratcher.removeChild(scratcherstatus);
+                                        scratcher.innerHTML = userdata.status[k].status;
+                                    }
+                                }
+                                document.getElementById("overview-accountstatus").appendChild(scratcher);
+                                /* custom overview color code */
+                                for (k in userdata.color)   {
+                                    if (otherdata.username == userdata.color[k].name)   {
+                                        document.getElementById("overview").setAttribute("style", "background-color:" + userdata.color[k].color);
+                                        document.getElementById("dateinformation").setAttribute("style", "background-color:" + userdata.color[k].color);
+                                    }
+                                }
+                            })
+                        /* end user customised stuff */
+                        if (selectedUsername == "DatOneLefty")    {
+                            funny = document.createElement("img");
+                            funny.setAttribute("src", "linus.jpg");
+                            document.getElementById("nowlaugh").appendChild(funny);
+                        } else if (selectedUsername == "Jeffalo")   {
+                            funny = document.createElement("div")
+                            funny.appendChild(document.createTextNode("ha pranked you trying to xss this page that's a not gaming moment Jeffalo ha pranked"));
+                            document.getElementById("nowlaugh").appendChild(funny);
+                        }
+                    })
+                })
+                .catch(function(){
+                    alert(`https://scratchdb.lefty.one/v2/forum/user/info/${selectedUsername} failed to load D:`);
                 });
-            } else  {
-                document.getElementById("PostOverTime").setAttribute("style", "display: none;")
-            }
-        });
+
+                
         </script>
     </body>
 </html>

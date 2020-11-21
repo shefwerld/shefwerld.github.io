@@ -24,6 +24,10 @@ body    {
     text-align: right;
     color: var(--white);
 }
+#content    {
+    display: flex;
+    flex-wrap: wrap;
+}
 .categoryranking, .category    {
     color: var(--white);
 }
@@ -31,6 +35,7 @@ body    {
     margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
+    width: 45%;
 }
 .userposts, .categorytext, .categorycount   {
     font-size: 20px;

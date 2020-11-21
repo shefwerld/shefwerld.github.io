@@ -392,7 +392,7 @@
                                 for (k in userdata.status)   {
                                     if (otherdata.username == userdata.status[k].name)   {
                                         scratcher.removeChild(scratcherstatus);
-                                        scratcher.appendChild(document.createTextNode(userdata.status[k].status));
+                                        scratcher.innerHTML = userdata.status[k].status;
                                     }
                                 }
                                 document.getElementById("overview-accountstatus").appendChild(scratcher);

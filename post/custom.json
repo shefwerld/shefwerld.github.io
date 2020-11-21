@@ -25,7 +25,7 @@
         {"name": "GrahamSH", "status": "AVID REQUESTER"},
         {"name": "--Explosion--", "status": "KABOOM!!1!"},
         {"name": "Boomer001", "status": "PRESS ALT+F4 ANYWHERE FOR FREE FOLLOWS"},
-        {"name": "Squirreistar", "status": "ALDERHEART'S SOMETHING"},
+        {"name": "Squirreistar", "status": "Faith of the Acorne"},
         {"name": "jammum", "status": "WHY AM I HERE"},
         {"name": "4096bits", "status": "<div style='font-size: 9px'>I'm a happy, mildly underrated normal person and tech nerd who goes on the forums a lot.</div>"},
         {"name": "K02119", "status": "<div style='font-size: 9px'>Heya, I'm K02119, a Coder, Designer and Forumer with lots of Posts</div>"},
@@ -40,7 +40,9 @@
         {"name": "TapingAnimations", "status": "That One Minecrafter"},
         {"name": "GSqueezydaddy", "status": "The Only Pokégod"},
         {"name": "p-p-p-p-p-p-p-p-p-p-", "status": "Be moist, unless you are not wet. Then be dry."},
-        {"name": "EZ-Games", "status": "Lucky Rabbit"}
+        {"name": "EZ-Games", "status": "Lucky Rabbit"},
+        {"name": "Burgher1679", "status": "Sratcz Terms"},
+        {"name": "LankyBox01", "status": "<a href='https://scratch.mit.edu/studios/26653886/'>LankyBox Gang</a>"}
     ],
     "color":[
         {"name": "CatsUnited", "color": "#f54260"},
@@ -61,6 +63,8 @@
         {"name": "Super_Scratch_Bros20", "color": "#214dc4"},
         {"name": "-InsanityPlays-", "color": "#0f8bc0"},
         {"name": "p-p-p-p-p-p-p-p-p-p-", "color": "#112e5e"},
-        {"name": "garnetluvcookie", "color": "#2AFF44"}
+        {"name": "garnetluvcookie", "color": "#2AFF44"},
+        {"name": "Squirreistar", "color": "#dd674b"},
+        {"name": "Lankybox01", "color": "#c300ff"}
     ]
 }

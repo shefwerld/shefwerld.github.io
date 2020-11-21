@@ -299,22 +299,18 @@
 
                             if ( currentDate - previousDate > 2678400000) {
                                 var monthgap = Math.floor((currentDate - previousDate) / 1000 / 60 / 60 / 24 / 30.438);
-                                /*
                                 console.log(`bruh: ${currentDate - previousDate} ms (${monthgap} months)`);
                                 console.log(currentDate)
                                 console.log(previousDate)
-                                */
                                 var yearCompensation = 0;
                                 for (j = 1; j < monthgap + yearCompensation; j++)    {
                                     var calculatedMonth = new Date(previousDate).getMonth() + (1 + j);
-                                    if (calculatedMonth == 13)   {
+                                    if (calculatedMonth - (yearCompensation * 12) == 13)   {
                                         yearCompensation++
                                     }
-                                    /*
                                     console.log(j);
                                     console.log(`Month: ${calculatedMonth - (yearCompensation * 12)}`);
                                     console.log(`Year: ${yearCompensation}`)
-                                    */
                                     historyPostCount.push(data.history[i-1].value);
                                     historyPostDate.push(`${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
                                 }

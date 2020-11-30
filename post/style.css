@@ -70,10 +70,16 @@ form    {
     padding: 10px 0 10px 0;
     margin-bottom: 10px;
 }
-.username, #top_text, .graphtitletext   {
+.username, #top_text, #top_text_2, .graphtitletext   {
     font-size: 16px;
     color: var(--highlight);
     text-decoration: none;
+}
+#top_text   {
+    font-size: 40px;
+}
+#top_text_2   {
+    font-size: 24px;
 }
 .responsetext   {
     text-align: center;

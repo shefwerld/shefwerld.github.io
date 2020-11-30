@@ -9,8 +9,11 @@
         <link href="style.css" rel="stylesheet">
     </head>
     <body>
-        <div id="top_text" style="margin: auto; text-align: center; margin-bottom: 15px;">
-            Scratch Forum Post Counts
+        <div id="top_text" style="margin: auto; text-align: center; margin-bottom: 5px;">
+            Scratch Forum Leaderboards
+        </div>
+        <div id="top_text_2" style="margin: auto; text-align: center; margin-bottom: 15px;">
+            ^^^^ (This is what it's called by the way) ^^^^
         </div>
         <div id="heading">
         </div>
@@ -205,6 +208,7 @@
             window.onscroll = () => {
                 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                     currentpage++;
+                    console.log("load page");
                     loadUserPosts(currentpage);
                 }
             };

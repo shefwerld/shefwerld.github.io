@@ -40,10 +40,16 @@ body    {
 .userposts, .categorytext, .categorycount   {
     font-size: 20px;
 }
-.username, #top_text, .graphtitletext   {
+.username, #top_text, #top_text_2, .graphtitletext   {
     font-size: 20px;
     color: var(--highlight);
     text-decoration: none;
+}
+#top_text   {
+    font-size: 40px;
+}
+#top_text_2   {
+    font-size: 24px;
 }
 .graphtitletext {
     margin: auto;

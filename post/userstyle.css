@@ -148,11 +148,11 @@ form    {
 #overview-accountstatus {
     margin-bottom: 5px;
 }
-#piechart-container, #historychart-container {
+#piechart-container, #historychart-container, #monthchart-container {
     width: 100%; 
     background-color: var(--black);
 }
-#piechart-area, #historychart-area  {
+#piechart-area, #historychart-area, #monthchart-area  {
     width: 85%; 
     margin: auto;
     padding: 10px;

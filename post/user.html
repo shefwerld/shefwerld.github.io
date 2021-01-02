@@ -61,6 +61,12 @@
                 <canvas id="historychart"></canvas>
             </div>
             </div>
+            <div class="graphtitletext" id="PostPerMonths">Posts Per Month</div>
+            <div id="monthchart-container">
+            <div id="monthchart-area">
+                <canvas id="monthchart"></canvas>
+            </div>
+            </div>
             <br>
             <div id="content">
             </div>
@@ -78,6 +84,8 @@
             var historyPostCount = [];
             var historyPostDate = [];
             var historyPostRank = [];
+            var monthPosts = [];
+            var monthPostsDate = [];
             var monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
             var urlparams = new URLSearchParams(window.location.search);
@@ -373,6 +381,94 @@
                                 }
                             });
 
+                            /* posts per month setup */
+                            var firstDate = new Date(data.history[0].date);
+                            var lastDate = new Date(data.history[data.history.length - 1].date);
+                            console.log(lastDate - firstDate); // time in milliseconds
+                            var dateMonthSeparation = (lastDate - firstDate) / 1000 / 60 / 60 / 24;
+                            console.log(dateMonthSeparation);
+                            var lessDayMonths = [];
+                            var moreDayMonths = [];
+                            for (let i in data.history)    {
+                                var currentDate = new Date(data.history[i].date);
+                                if (i > 0)  {var previousDate = new Date(data.history[i-1].date);}
+
+                                /* enter in missing points */
+
+                                if ( currentDate - previousDate > 2678400000) {
+                                    var monthgap = Math.floor((currentDate - previousDate) / 1000 / 60 / 60 / 24 / 30.438);
+                                    console.log(`bruh: ${currentDate - previousDate} ms (${monthgap} months)`);
+                                    console.log(currentDate)
+                                    console.log(previousDate)
+                                    var yearCompensation = 0;
+                                    for (j = 1; j < monthgap + (yearCompensation > 0); j++)    {
+                                        var calculatedMonth = new Date(previousDate).getMonth() + (1 + j);
+                                        if (calculatedMonth - (yearCompensation * 12) == 13)   {
+                                            yearCompensation++
+                                        }
+                                        console.log(j);
+                                        console.log(`Month: ${calculatedMonth - (yearCompensation * 12)}`);
+                                        console.log(`Year: ${yearCompensation}`)
+                                        monthPosts.push(0);
+                                        monthPostsDate.push(`${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
+                                    }
+                                }
+                                if (i == 0)    {
+                                    monthPosts.push(0);
+                                } else  {
+                                    monthPosts.push(data.history[i].value - data.history[i-1].value);
+                                }
+                                monthPostsDate.push(`${new Date(data.history[i].date).getMonth() + 1}/${new Date(data.history[i].date).getFullYear()}`);
+                            }
+                            var currentTime = new Date()
+                            /* posts per month chart */
+
+                            var ctx = document.getElementById('monthchart').getContext('2d');
+                            window.lineChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                        labels: historyPostDate,
+                                        datasets: [{
+                                            label: `${selectedUsername}`,
+                                            backgroundColor: "#EEEEEE",
+                                            borderColor: "#FF0000",
+                                            data: monthPosts,
+                                            fill: false,
+                                            lineTension: 0,
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Posts Per Month'
+                                        },
+                                        tooltips: {
+                                            mode: 'index',
+                                            intersect: false,
+                                        },
+                                        hover: {
+                                            mode: 'nearest',
+                                            intersect: true
+                                        },
+                                        scales: {
+                                            x: {
+                                                display: true,
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Date'
+                                                }
+                                            },
+                                            y: {
+                                                display: true,
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Posts'
+                                                }
+                                            }
+                                        }
+                                    }
+                            });
 
                         /* user customised stuff */
                         fetch(`https://my-ocular.jeffalo.net/api/user/${selectedUsername}`)

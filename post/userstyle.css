@@ -45,6 +45,14 @@ body    {
     color: var(--highlight);
     text-decoration: none;
 }
+.downloadlink   {
+    display: flex;
+    justify-content: center;
+}
+.downloadlink a {
+    color: var(--highlight);
+    text-decoration: none;
+}
 #top_text   {
     font-size: 40px;
 }

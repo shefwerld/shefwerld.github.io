@@ -61,12 +61,14 @@
                 <canvas id="historychart"></canvas>
             </div>
             </div>
+            <div id="historychart-download" class="downloadlink"></div>
             <div class="graphtitletext" id="PostPerMonths">Posts Per Month</div>
             <div id="monthchart-container">
             <div id="monthchart-area">
                 <canvas id="monthchart"></canvas>
             </div>
             </div>
+            <div id="monthchart-download" class="downloadlink"></div>
             <br>
             <div id="content">
             </div>
@@ -412,7 +414,7 @@
                                     }
                                 }
                                 if (i == 0)    {
-                                    monthPosts.push(0);
+                                    monthPosts.push(data.history[i].value - 0);
                                 } else  {
                                     monthPosts.push(data.history[i].value - data.history[i-1].value);
                                 }
@@ -504,6 +506,16 @@
                             funny.appendChild(document.createTextNode("ha pranked you trying to xss this page that's a not gaming moment Jeffalo ha pranked"));
                             document.getElementById("nowlaugh").appendChild(funny);
                         }
+                        /* download links */
+                        var downloadlink = document.createElement("a");
+                        downloadlink.setAttribute("href", `download-posts-total?user=${selectedUsername}`);
+                        downloadlink.innerText = "Download data as CSV";
+                        document.getElementById("historychart-download").appendChild(downloadlink);
+                        
+                        downloadlink = document.createElement("a");
+                        downloadlink.setAttribute("href", `download-posts-monthly?user=${selectedUsername}`);
+                        downloadlink.innerText = "Download data as CSV";
+                        document.getElementById("monthchart-download").appendChild(downloadlink);
                     })
                 })
                 .catch(function(){

@@ -62,6 +62,7 @@ form    {
     color: var(--highlight);
     text-decoration: none;
 }
+
 #navigation {
     display: flex;
     justify-content: space-around;

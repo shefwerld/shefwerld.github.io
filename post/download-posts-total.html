@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>e</title>
+    </head>
+    <body>
+        <script>
+            var urlparams = new URLSearchParams(window.location.search);
+            var selectedUsername = urlparams.get("user");
+            var historyCount = [];
+            fetch(`https://scratchdb.lefty.one/v2/forum/user/info/${selectedUsername}`)
+                .then(res => res.json())
+                .then(data => {
+                    for (let i in data.history)    {
+                        var currentDate = new Date(data.history[i].date);
+                        if (i > 0)  {var previousDate = new Date(data.history[i-1].date);}
+
+                        /* enter in missing points */
+
+                        if (currentDate - previousDate > 2678400000) {
+                            var monthgap = Math.floor((currentDate - previousDate) / 1000 / 60 / 60 / 24 / 30.438);
+                            var yearCompensation = 0;
+                            for (j = 1; j < monthgap + (yearCompensation > 0); j++)    {
+                                var calculatedMonth = new Date(previousDate).getMonth() + (1 + j);
+                                if (calculatedMonth - (yearCompensation * 12) == 13)   {
+                                    yearCompensation++
+                                }
+                                historyCount.push([data.history[i-1].value, `${new Date(previousDate).getFullYear() + yearCompensation}-${calculatedMonth - (yearCompensation * 12)}`]);
+                            }
+                        }
+                    historyCount.push([data.history[i].value, `${new Date(data.history[i].date).getFullYear()}-${new Date(data.history[i].date).getMonth() + 1}`]);
+                    }
+                    let csv = "data:text/csv;charset=utf-8,";
+                    historyCount.forEach(function(rowArray) {
+                        let row = rowArray.join(",");
+                        csv += row + "\r\n";
+                    });
+                    var encodedUri = encodeURI(csv);
+                    var link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute("download", `${selectedUsername}-total.csv`);
+                    document.body.appendChild(link); // Required for FF
+
+                    link.click()
+                })
+        </script>
+    </body>
+</html>

@@ -9,6 +9,8 @@
             var urlparams = new URLSearchParams(window.location.search);
             var selectedUsername = urlparams.get("user");
             var monthCount = [];
+            var monthPosts = [];
+            var monthPostsDate = [];
             fetch(`https://scratchdb.lefty.one/v2/forum/user/info/${selectedUsername}`)
                 .then(res => res.json())
                 .then(data => {

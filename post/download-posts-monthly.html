@@ -38,7 +38,7 @@
                                 monthPosts.push(0);
                                 monthPostsDate.push(`${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
                                 */
-                                monthCount.push(0, `${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
+                                monthCount.push([0, `${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`]);
                             }
                         }
                         if (i == 0)    {

@@ -33,9 +33,12 @@
                                 }
                                 console.log(j);
                                 console.log(`Month: ${calculatedMonth - (yearCompensation * 12)}`);
-                                console.log(`Year: ${yearCompensation}`)
+                                console.log(`Year: ${yearCompensation}`);
+                                /*
                                 monthPosts.push(0);
                                 monthPostsDate.push(`${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
+                                */
+                                monthCount.push(0, `${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
                             }
                         }
                         if (i == 0)    {

@@ -11,6 +11,9 @@
         <div id="top_text" style="margin: auto; text-align: center; margin-bottom: 5px;">
             Scratch Forum Leaderboards
         </div>
+        <div id="top_text_2" style="margin: auto; text-align: center; margin-bottom: 15px;">
+            ^^^^ (This is what it's called by the way) ^^^^
+        </div>
         <div id="container">
             <div id="navigation">
                 <a href="./?category=total">Forum Categories</a>
@@ -23,11 +26,8 @@
                 <input type="submit" value="Go">
             </form>
             <div id="loadingtext">Loading<br><br></div>
-            <div id="overview" style="display:none;">
+            <div id="overview">
                 <div id="overview-information">
-                    <div id="overview-postdates">
-
-                    </div>
                     <div id="overview-scratchinformation">
 
                     </div>
@@ -43,6 +43,10 @@
                     </div>
                 </div>
             </div>
+            <div id="dateinformation">
+                <div id="overview-postdates">
+
+                </div>
             </div>
             <div id="container">
             <div class="graphtitletext">Post Distribution</div>
@@ -51,14 +55,14 @@
                 <canvas id="piechart"></canvas>
             </div>
             </div>
-            <div class="graphtitletext" id="PostOverTime">Posts Per Month</div>
+            <div class="graphtitletext" id="PostOverTime">Post Count Over Time</div>
             <div id="historychart-container">
             <div id="historychart-area">
                 <canvas id="historychart"></canvas>
             </div>
             </div>
             <div id="historychart-download" class="downloadlink"></div>
-            <div class="graphtitletext" id="PostPerMonths">Post Count Over Time</div>
+            <div class="graphtitletext" id="PostPerMonths">Posts Per Month</div>
             <div id="monthchart-container">
             <div id="monthchart-area">
                 <canvas id="monthchart"></canvas>
@@ -85,7 +89,6 @@
             var monthPosts = [];
             var monthPostsDate = [];
             var monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            var finalTotalPostGraph = [];
 
             var urlparams = new URLSearchParams(window.location.search);
             var selectedUsername = urlparams.get("user");
@@ -125,32 +128,52 @@
                 return `${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
             }
             rankifier = (input) => {
-                if (String(input).length > 1 && String(input)[String(input).length - 2] != 1 || String(input).length == 1) {
-                    if (String(input)[String(input).length - 1] == "1")    {
+                switch (input)  {
+                    case 1:
+                    case 21:
+                    case 31:
+                    case 41:
+                    case 51:
+                    case 61:
+                    case 71:
+                    case 81:
+                    case 91:
                         return `${input}st`;
-                    } else if (String(input)[String(input).length - 1] == "2") {
+                        break;
+                    case 2:
+                    case 22:
+                    case 32:
+                    case 42:
+                    case 52:
+                    case 62:
+                    case 72:
+                    case 82:
+                    case 92:
                         return `${input}nd`;
-                    } else if (String(input)[String(input).length - 1] == "3") {
+                        break;
+                    case 3:
+                    case 23:
+                    case 33:
+                    case 43:
+                    case 53:
+                    case 63:
+                    case 73:
+                    case 83:
+                    case 93:
                         return `${input}rd`;
-                    } else {
+                        break;
+                    /* There was meant to be a very funny joke here, but the ST banned it...*/
+                    default:
                         return `${input}th`;
                     }
-                } else {
-                    if (String(input).length > 1 && String(input)[String(input).length - 2] == 1)   {
-                        return `${input}th`;
-                    } else {
-                        return `${input} bug!`;
-                    }
-                    
                 }
-            }
 
 
             console.log(selectedUsername);
-            fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${selectedUsername}`)
+            fetch(`https://scratchdb.lefty.one/v2/forum/user/info/${selectedUsername}`)
                 .then(res => res.json())
                 .then(data => {
-                    fetch(`https://scratchdb.lefty.one/v3/user/info/${selectedUsername}`)
+                    fetch(`https://scratchdb.lefty.one/v2/user/info/${selectedUsername}`)
                     .then(res1 => res1.json())
                     .then(otherdata => {
                         /* modify webpage title */
@@ -159,7 +182,8 @@
                         document.getElementById("loadingtext").remove();
 
                         /* render site layout */
-                        document.getElementById("overview").setAttribute("style", `display: flex;`);
+
+
 
                         /* title text */
                         titletext = document.createElement("a");
@@ -180,13 +204,13 @@
                         overviewRank.appendChild(document.createTextNode(ranking));
                         document.getElementById("overview-postinformation").appendChild(overviewRank);
                         /* first posted */
-                        var da = `FIRST POST: ${monthList[new Date(data.firstSeen.date).getMonth()]} ${rankifier(new Date(data.firstSeen.date).getDate())}, ${new Date(data.firstSeen.date).getFullYear()}`;  
+                        var da = `FIRST POST: ${monthList[new Date(data.firstPost.time.posted).getMonth()]} ${rankifier(new Date(data.firstPost.time.posted).getDate())}, ${new Date(data.firstPost.time.posted).getFullYear()}`;  
                         firstPost = document.createElement("div");
                         firstPost.setAttribute("id", "firstPostInformation");
                         firstPost.appendChild(document.createTextNode(da));
                         document.getElementById("overview-postdates").appendChild(firstPost);
                         /* last posted */
-                        var da = `LAST POST: ${monthList[new Date(data.lastSeen.date).getMonth()]} ${rankifier(new Date(data.lastSeen.date).getDate())}, ${new Date(data.lastSeen.date).getFullYear()}`;
+                        var da = `LAST POST: ${monthList[new Date(data.lastPost.time.posted).getMonth()]} ${rankifier(new Date(data.lastPost.time.posted).getDate())}, ${new Date(data.lastPost.time.posted).getFullYear()}`;
                         lastPost = document.createElement("div");
                         lastPost.setAttribute("id", "lastPostInformation");
                         lastPost.appendChild(document.createTextNode(da));
@@ -198,59 +222,60 @@
                         document.getElementById("overview").appendChild(profilepicture);
                         /* pie graph setup */
                         for (let i in data.counts)    {
-                            if (i != "total")   {
-                                console.log(i);
-                                /* box for particular category */
-                                user = document.createElement("div");
-                                user.setAttribute("id", i);
-                                user.setAttribute("class", "category");
-                                var randomColor = HSVtoRGB(Math.random(), 0.5, Math.random() * (0.45-0.15) + 0.15);
-                                user.setAttribute("style", `background-color: rgb(${randomColor.r},${randomColor.g},${randomColor.b}); padding: 5px ${window.innerWidth/50}px 5px ${window.innerWidth/50}px; order: ${data.counts[i].count * -1};`);
-                                document.getElementById("content").appendChild(user);
-                                /* category name */
-                                categorytext = document.createElement("a");
-                                categorytext.setAttribute("id", i);
-                                categorytext.setAttribute("class", "categorytext");
-                                categorytext.setAttribute("href", "index.html?category=" + i);
-                                if (i == "total")   {
-                                    categorytext.appendChild(document.createTextNode("Total Posts"));
-                                } else  {
-                                    categorytext.appendChild(document.createTextNode(i));
-                                }
-                                document.getElementById(i).appendChild(categorytext);
-                                /* right located content */
-                                extrainfo = document.createElement("div");
-                                extrainfo.setAttribute("id", "extrainfo" + i);
-                                extrainfo.setAttribute("class", "extrainfo");
-                                document.getElementById(i).appendChild(extrainfo);
-                                /* category count */
-                                categorycount = document.createElement("div");
-                                categorycount.setAttribute("id", i + " Post Count");
-                                categorycount.setAttribute("class", "categorycount");
-                                categorycount.appendChild(document.createTextNode(data.counts[i].count));
-                                document.getElementById("extrainfo" + i).appendChild(categorycount);
-                                /* category rank */
-                                categoryrank = document.createElement("div");
-                                categoryrank.setAttribute("id", i + " Ranking");
-                                categoryrank.setAttribute("class", "categoryrank");
-                                var ranking = rankifier(data.counts[i].rank);
-                                categoryrank.appendChild(document.createTextNode(ranking));
-                                document.getElementById("extrainfo" + i).appendChild(categoryrank);
-                                /* category percentage */
-                                fullpostcount = document.createElement("div");
-                                fullpostcount.setAttribute("id", "totalposts" + i);
-                                fullpostcount.setAttribute("class", "postcountpercentage");
-                                var perecentageposts = Math.round(document.getElementById(i + " Post Count").innerHTML / data.counts.total.count * 100 * 100)/100;
-                                fullpostcount.appendChild(document.createTextNode(perecentageposts + "% of posts"));
-                                document.getElementById("extrainfo" + i).appendChild(fullpostcount);
-                                /* chart colors */
-                                chartCounts.push(categorycount.innerHTML);
-                                chartCategories.push(categorytext.innerHTML);
-                                randomColor = `#${RGBtoHEX(randomColor.r, randomColor.g, randomColor.b)}`;
-                                chartColors.push(randomColor);
+                            if (i == "total")   {
+                                break;
                             }
+                            console.log(i);
+                            /* box for particular category */
+                            user = document.createElement("div");
+                            user.setAttribute("id", i);
+                            user.setAttribute("class", "category");
+                            var randomColor = HSVtoRGB(Math.random(), 0.5, Math.random() * (0.45-0.15) + 0.15);
+                            user.setAttribute("style", "background-color: rgb(" + randomColor.r + "," + randomColor.g + "," + randomColor.b + "); padding: 5px " + window.innerWidth/50 + "px 5px " + window.innerWidth/50 + "px;");
+                            document.getElementById("content").appendChild(user);
+                            /* category name */
+                            categorytext = document.createElement("a");
+                            categorytext.setAttribute("id", i);
+                            categorytext.setAttribute("class", "categorytext");
+                            categorytext.setAttribute("href", "index.html?category=" + i);
+                            if (i == "total")   {
+                                categorytext.appendChild(document.createTextNode("Total Posts"));
+                            } else  {
+                                categorytext.appendChild(document.createTextNode(i));
+                            }
+                            document.getElementById(i).appendChild(categorytext);
+                            /* right located content */
+                            extrainfo = document.createElement("div");
+                            extrainfo.setAttribute("id", "extrainfo" + i);
+                            extrainfo.setAttribute("class", "extrainfo");
+                            document.getElementById(i).appendChild(extrainfo);
+                            /* category count */
+                            categorycount = document.createElement("div");
+                            categorycount.setAttribute("id", i + " Post Count");
+                            categorycount.setAttribute("class", "categorycount");
+                            categorycount.appendChild(document.createTextNode(data.counts[i].count));
+                            document.getElementById("extrainfo" + i).appendChild(categorycount);
+                            /* category rank */
+                            categoryrank = document.createElement("div");
+                            categoryrank.setAttribute("id", i + " Ranking");
+                            categoryrank.setAttribute("class", "categoryrank");
+                            var ranking = rankifier(data.counts[i].rank);
+                            categoryrank.appendChild(document.createTextNode(ranking));
+                            document.getElementById("extrainfo" + i).appendChild(categoryrank);
+                            /* category percentage */
+                            fullpostcount = document.createElement("div");
+                            fullpostcount.setAttribute("id", "totalposts" + i);
+                            fullpostcount.setAttribute("class", "postcountpercentage");
+                            var perecentageposts = Math.round(document.getElementById(i + " Post Count").innerHTML / data.counts.total.count * 100 * 100)/100;
+                            fullpostcount.appendChild(document.createTextNode(perecentageposts + "% of posts"));
+                            document.getElementById("extrainfo" + i).appendChild(fullpostcount);
+                            /* chart colors */
+                            chartCounts.push(categorycount.innerHTML);
+                            chartCategories.push(categorytext.innerHTML);
+                            randomColor = `#${RGBtoHEX(randomColor.r, randomColor.g, randomColor.b)}`;
+                            chartColors.push(randomColor);
                         }
-                        console.log(chartColors);
+                        console.log(chartColors)
                         /* pie graph */
                         var config = {
                             type: 'pie',
@@ -269,7 +294,7 @@
                         var ctx = document.getElementById('piechart').getContext('2d');
                         window.myPie = new Chart(ctx, config);
 
-                        /* post count per month setup */
+                        /* post count history setup */
                         var firstDate = new Date(data.history[0].date);
                         var lastDate = new Date(data.history[data.history.length - 1].date);
                         console.log(lastDate - firstDate); // time in milliseconds
@@ -297,7 +322,7 @@
                                     console.log(j);
                                     console.log(`Month: ${calculatedMonth - (yearCompensation * 12)}`);
                                     console.log(`Year: ${yearCompensation}`)
-                                    historyPostCount.push(0);
+                                    historyPostCount.push(data.history[i-1].value);
                                     historyPostDate.push(`${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
                                 }
                             }
@@ -356,7 +381,7 @@
                                 }
                             });
 
-                            /* accumulated posts setup */
+                            /* posts per month setup */
                             var firstDate = new Date(data.history[0].date);
                             var lastDate = new Date(data.history[data.history.length - 1].date);
                             console.log(lastDate - firstDate); // time in milliseconds
@@ -385,16 +410,14 @@
                                         console.log(`Month: ${calculatedMonth - (yearCompensation * 12)}`);
                                         console.log(`Year: ${yearCompensation}`)
                                         monthPosts.push(0);
-                                        finalTotalPostGraph.push(monthPosts.reduce((a, b) => a + b));
                                         monthPostsDate.push(`${calculatedMonth - (yearCompensation * 12)}/${new Date(previousDate).getFullYear() + yearCompensation}`);
                                     }
                                 }
                                 if (i == 0)    {
-                                    monthPosts.push(data.history[i].value);
+                                    monthPosts.push(data.history[i].value - 0);
                                 } else  {
-                                    monthPosts.push(data.history[i].value);
+                                    monthPosts.push(data.history[i].value - data.history[i-1].value);
                                 }
-                                finalTotalPostGraph.push(monthPosts.reduce((a, b) => a + b));
                                 monthPostsDate.push(`${new Date(data.history[i].date).getMonth() + 1}/${new Date(data.history[i].date).getFullYear()}`);
                             }
                             var currentTime = new Date()
@@ -409,7 +432,7 @@
                                             label: `${selectedUsername}`,
                                             backgroundColor: "#EEEEEE",
                                             borderColor: "#FF0000",
-                                            data: finalTotalPostGraph,
+                                            data: monthPosts,
                                             fill: false,
                                             lineTension: 0,
                                         }]
@@ -469,7 +492,8 @@
                                 document.getElementById("overview-accountstatus").appendChild(scratcher);
                                 /* custom overview color code */
                                     if (otherdata.username.toUpperCase() == userdata.name.toUpperCase())   {
-                                        document.getElementById("overview").setAttribute("style", `display: flex; background-color: ${userdata.color}`);
+                                        document.getElementById("overview").setAttribute("style", "background-color:" + userdata.color);
+                                        document.getElementById("dateinformation").setAttribute("style", "background-color:" + userdata.color);
                                     }
                             })
                         /* end user customised stuff */
@@ -495,7 +519,7 @@
                     })
                 })
                 .catch(function(){
-                    alert(`https://scratchdb.lefty.one/v3/forum/user/info/${selectedUsername} failed to load D:`);
+                    alert(`https://scratchdb.lefty.one/v2/forum/user/info/${selectedUsername} failed to load D:`);
                 });
 
                 

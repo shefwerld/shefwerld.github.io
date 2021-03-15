@@ -16,7 +16,7 @@ body    {
     display: flex;
     justify-content: space-between;
 }
-#container, #heading, #top_text  {
+.container, #heading, #top_text  {
     margin: auto;
     width: 90%;
 }
@@ -186,5 +186,10 @@ input[type=submit]  {
     margin: 0;
     color: var(--white);
     font-size: 48px;
+    justify-content: center;
+}
+#historySlider  {
+    width: 90%;
+    display: flex;
     justify-content: center;
 }

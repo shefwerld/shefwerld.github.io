@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Scratch Forum Post Statistics</title>
+        <script src="Chart.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="userstyle.css" rel="stylesheet"> 
+    </head>
+    <body>
+        <div id="top_text" style="margin: auto; text-align: center; margin-bottom: 5px;">
+            Scratch Forum Leaderboards
+        </div>
+        <div class="container">
+            <div id="navigation">
+                <a href="./?category=total">Forum Categories</a>
+                <a href="user?user=CatsUnited">Users</a>
+                <a href="https://my-ocular.jeffalo.net/login">Customise Profile (myocular)</a>
+            </div>
+        </div>
+            <form action="" method="get">
+                <input type="text" name="user" placeholder="Username"></input>
+                <input type="submit" value="Go">
+            </form>
+        <div class="container">
+            <div id="dateReadout" class="graphtitletext"></div>
+            <input type="range" id="historySlider">
+            <div id="content">
+            </div>
+        </div>
+        <script>
+        function HSVtoRGB(h, s, v) {
+            var r, g, b, i, f, p, q, t;
+            if (arguments.length === 1) {
+                s = h.s, v = h.v, h = h.h;
+            }
+            i = Math.floor(h * 6);
+            f = h * 6 - i;
+            p = v * (1 - s);
+            q = v * (1 - f * s);
+            t = v * (1 - (1 - f) * s);
+            switch (i % 6) {
+                case 0: r = v, g = t, b = p; break;
+                case 1: r = q, g = v, b = p; break;
+                case 2: r = p, g = v, b = t; break;
+                case 3: r = p, g = q, b = v; break;
+                case 4: r = t, g = p, b = v; break;
+                case 5: r = v, g = p, b = q; break;
+            }
+            return {
+                r: Math.round(r * 255),
+                g: Math.round(g * 255),
+                b: Math.round(b * 255)
+            };
+        }
+        componentToHex = (c) => {
+            var hex = c.toString(16);
+            return hex.length == 1 ? `0${hex}` : hex;
+        }
+        RGBtoHEX = (r,g,b) => {
+            return `${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
+        }
+        rankifier = (input) => {
+            if (String(input).length > 1 && String(input)[String(input).length - 2] != 1 || String(input).length == 1) {
+                if (String(input)[String(input).length - 1] == "1")    {
+                    return `${input}st`;
+                } else if (String(input)[String(input).length - 1] == "2") {
+                    return `${input}nd`;
+                } else if (String(input)[String(input).length - 1] == "3") {
+                    return `${input}rd`;
+                } else {
+                    return `${input}th`;
+                }
+            } else {
+                if (String(input).length > 1 && String(input)[String(input).length - 2] == 1)   {
+                    return `${input}th`;
+                } else {
+                    return `${input} bug!`;
+                }
+                
+            }
+        }
+
+        let urlparams = new URLSearchParams(window.location.search);
+        const user = {username: urlparams.get("user")};
+        if (user.username == null)   {
+            user.username = "CatsUnited";
+        }
+        
+        const forums = [];
+        /* "Suggestions", "Bugs and Glitches", "Questions about Scratch", "Announcements", "Advanced Topics", "Help With Scripts", "total" */
+        /* , "Show and Tell", "Français", "Deutsch", "Translating Scratch", "Español", "Polski", "Nederlands", "Português", "Italiano", "Norsk", "Türkçe", "中文", "日本語", "עברית", "한국어", "Ελληνικά", "Pусский", "Collaboration", "Requests", "Project Ideas", "Things I'm Making and Creating", "Things I'm Reading and Playing", "New Scratchers", "Connecting to the Physical World", "Català", "Other Languages", "Bahasa Indonesia", "Developing Scratch Extensions", "Open Source Projects", "Africa", "فارسی", "total" */
+        let src = `https://scratchdb.lefty.one/v3/forum/user/graph/${user.username}/`;
+        const historySlider = document.getElementById("historySlider")
+        const dateReadout = document.getElementById("dateReadout")
+        const postData = {}
+        const dates = {maxArray: [], dates: []}
+        const widthPercentage = {max: 0}
+        fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user.username}`)
+                .then(res => res.json())
+                .then(data => {
+                    for (let i in Object.keys(data.counts)) {
+                        forums.push(Object.keys(data.counts)[i])
+                    }
+                }).then( main => {
+                    const forumcategories = Promise.all(forums.map(x => fetch(`${src}${x}`)))
+                    .then(res => { return Promise.all(res.map(response => { return response.json();}));})
+                    .then(data => {
+                        console.log(data)
+
+                        /* get longest length data set */
+                        for (let i in data) {
+                            if (data[i].length > dates.maxArray.length)  {
+                                dates.maxArray = data[i]
+                            }
+                        }
+
+                        /* create dates */
+                        for (let i in dates.maxArray)    {
+                            dates.dates.push(`${new Date(dates.maxArray[i].date).getMonth() + 1}/${new Date(dates.maxArray[i].date).getFullYear()}`)
+                        }
+                        console.log(dates)
+
+                        for (let i in forums)   {
+                            console.log(forums[i])
+                            postData[i] = new Array
+                        }
+                        
+                        for (let j in postData) {
+                            for (i = 0; i < dates.maxArray.length - data[j].length; i++)   { 
+                                postData[j].push(0) 
+                            }
+                            for (let i in data[j])  { 
+                                postData[j].push(data[j][i].value) 
+                            }
+                        }
+                        console.log(postData)
+
+                        for (let i in postData) {
+                            if (forums[i] != "total") {
+                                /* history slider setup */
+                                historySlider.setAttribute("min", "0")
+                                historySlider.setAttribute("max", dates.maxArray.length - 1)
+                                historySlider.setAttribute("value", dates.maxArray.length - 1)
+
+                                /* date readout */
+                                dateReadout.innerText = `${dates.dates[historySlider.value]}`;
+                                document.getElementById("content").style.display = "flex";
+                                document.getElementById("content").style.flexDirection = "column";
+
+
+                                /* category container */
+                                const categoryContainer = document.createElement("div");
+                                categoryContainer.setAttribute("id", forums[i]);
+                                categoryContainer.setAttribute("class", "category");
+                                categoryContainer.setAttribute("style", `width: ${postData[i][this.value] / widthPercentage.max * 100}%; background-color: var(--black); padding: 5px ${window.innerWidth/50}px 5px ${window.innerWidth/50}px; order: ${postData[i][this.value] * -1};`)
+                                document.getElementById("content").appendChild(categoryContainer);
+                                /* category name */
+                                const categoryTitle = document.createElement("a");
+                                categoryTitle.setAttribute("id", forums[i]);
+                                categoryTitle.setAttribute("class", "categorytext");
+                                categoryTitle.setAttribute("href", `index.html?category=${forums[i]}`);
+                                categoryTitle.appendChild(document.createTextNode(`${forums[i]}`));
+                                document.getElementById(forums[i]).appendChild(categoryTitle);
+                                /* right located content */
+                                const extraInfo = document.createElement("div");
+                                extraInfo.setAttribute("id", `extrainfo${forums[i]}`);
+                                extraInfo.setAttribute("class", "extrainfo");
+                                document.getElementById(forums[i]).appendChild(extraInfo);
+                                /* category count */
+                                const categoryCount = document.createElement("div");
+                                categoryCount.setAttribute("id", `${forums[i]} Post Count`);
+                                categoryCount.setAttribute("class", "categorycount");
+                                categoryCount.appendChild(document.createTextNode(postData[i][historySlider.value]));
+                                document.getElementById(`extrainfo${forums[i]}`).appendChild(categoryCount);
+                                /* category percentage */
+                                const fullPostCount = document.createElement("div");
+                                fullPostCount.setAttribute("id", `totalposts${forums[i]}`);
+                                fullPostCount.setAttribute("class", "postcountpercentage");
+                                fullPostCount.appendChild(document.createTextNode(`${Math.round(postData[i][historySlider.value] / postData[0][historySlider.value] * 10000)/100}%`));
+                                document.getElementById(`extrainfo${forums[i]}`).appendChild(fullPostCount);
+                            }
+                        }
+                        historySlider.oninput = function () {
+                        widthPercentage.max = 0;
+                        for (let i in postData) {
+                            if (postData[i][this.value] > widthPercentage.max && forums[i] != "total")  {
+                                widthPercentage.max = postData[i][this.value]
+                            }
+                        }
+                        for (let i in postData) {
+                            if (forums[i] != "total")   {
+                                document.getElementById(`${forums[i]} Post Count`).innerText = postData[i][this.value];
+                                document.getElementById(`${forums[i]}`).setAttribute("style", `width: ${postData[i][this.value] / widthPercentage.max * 100}%; background-color: var(--black); padding: 5px ${window.innerWidth/50}px 5px ${window.innerWidth/50}px; order: ${postData[i][this.value] * -1};`)
+                                dateReadout.innerText = `${dates.dates[this.value]} (${postData[0][this.value]} total posts)`;
+                                document.getElementById("content").style.display = "flex";
+                                document.getElementById("content").style.flexDirection = "column";
+                                document.getElementById(`totalposts${forums[i]}`).innerText = `${Math.round(postData[i][historySlider.value] / postData[0][historySlider.value] * 10000)/100}%`;
+                            }
+                        }
+                    }
+                    });
+                })
+        </script>
+    </body>
+</html>

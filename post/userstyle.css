@@ -2,13 +2,14 @@
     --white: #FFF;
     --highlight: #f54260;
     --black: #1C1C1C;
+    --body: #333;
 }
 *   {
     font-family: "Roboto";
     font-weight: 700;
 }
 body    {
-    background-color: #333;
+    background-color: var(--body);
     margin: 0;
 }
 .userbox {
@@ -44,6 +45,10 @@ body    {
     font-size: 20px;
     color: var(--highlight);
     text-decoration: none;
+}
+.graphtitletext {
+    font-size: 28px;
+    color: var(--white);
 }
 .downloadlink   {
     display: flex;
@@ -104,8 +109,7 @@ form    {
     flex-direction: row;
     margin-bottom: 0;
     padding: 25px 0 25px 0;
-    border-top: 1px solid var(--white);
-    border-bottom: 1px solid var(--white);
+    background-color: var(--black);
 }
 #overview img   {
     width: 150px;
@@ -174,6 +178,13 @@ input[type=text]    {
     color: var(--white);
     border: 0;
 }
+button  {
+    height: 3em;
+    padding: 8px;
+    background-color: var(--black);
+    color: var(--white);
+    border: 0;
+}
 input[type=submit]  {
     width: 10%;
     background-color: var(--black);
@@ -192,4 +203,8 @@ input[type=submit]  {
     width: 90%;
     display: flex;
     justify-content: center;
+}
+#information-display    {
+    display: flex;
+    justify-content: space-between;
 }

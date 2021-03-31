@@ -2,23 +2,28 @@
     --white: #FFF;
     --highlight: #f54260;
     --black: #1C1C1C;
+    --body: #333;
 }
 *   {
     font-family: "Roboto";
     font-weight: 700;
 }
 body    {
-    background-color: #333;
+    background-color: var(--body);
 }
 .userbox {
     margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
     transition: width 1s;
+    background-color: var(--black);
 }
 #container, #heading  {
     margin: auto;
     width: 90%;
+}
+#content    {
+    margin-top: 15px;
 }
 .userposts, .totalposts, .postcountpercentage   {
     text-align: right;
@@ -29,11 +34,13 @@ body    {
 }
 .userposts  {
     font-size: 16px;
+    flex-grow: 2;
 }
 .username   {
     font-size: 16px;
     color: var(--highlight);
     text-decoration: none;
+    margin-left: 8px;
 }
 #titletext  {
     font-size: 40px;
@@ -90,14 +97,15 @@ form    {
     font-size: 11px;
 }
 select    {
-    height: 3.5em;
+    height: 3em;
     padding: 8px 0 8px 8px;
     width: 30%;
     background-color: var(--black);
     color: var(--white);
     border: 0;
+    outline: none;
 }
-input[type=submit]  {
+input[type=submit], button  {
     width: 10%;
     background-color: var(--black);
     color: var(--white);
@@ -110,4 +118,178 @@ input[type=submit]  {
     color: var(--white);
     font-size: 48px;
     justify-content: center;
+}
+.container, #heading, #top_text  {
+    margin: auto;
+    width: 90%;
+}
+.userposts, .totalposts, .postcountpercentage, .categorycount, .categoryrank   {
+    text-align: right;
+    color: var(--white);
+}
+.categoryranking, .category    {
+    color: var(--white);
+}
+.category   {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+}
+.downloadlink   {
+    display: flex;
+    justify-content: center;
+}
+.downloadlink a {
+    color: var(--highlight);
+    text-decoration: none;
+}
+#top_text   {
+    font-size: 40px;
+}
+#top_text_2   {
+    font-size: 24px;
+}
+.graphtitletext {
+    margin: auto;
+    text-align: center;
+    margin: 15px 0 15px 0;
+}
+#titletext  {
+    color: var(--white);
+    margin-bottom: 10px;
+    margin-right: 20px;
+    text-decoration: none;
+}
+form    {
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+form *  {
+    margin: 0 2px 0 2px;
+}
+#footer    {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    color: var(--white);
+    margin-top: 20px;
+    background-color: var(--black);
+    padding: 25px 0 25px 0;
+}
+#footer a, #navigation a, .categorytext   {
+    color: var(--highlight);
+    text-decoration: none;
+}
+#navigation {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: var(--black);
+    padding: 10px 0 10px 0;
+    margin-bottom: 10px;
+}
+#overview   {
+    flex-direction: row;
+    margin-bottom: 0;
+    padding: 25px 0 25px 0;
+    border-top: 1px solid var(--white);
+    border-bottom: 1px solid var(--white);
+}
+#overview img   {
+    width: 150px;
+    height: 150px;
+    margin: 0 0 5px 15px;
+}
+#overview-information   {
+    order: 99;
+    width: 100%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+#overview-postinformation  {
+    text-align: right;
+    font-size: 40px;
+    color: var(--white);
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+#overview-postinformationdescription, #overview-accountstatus, #overview-postdates * {
+    text-align: right;
+    font-size: 15px;
+    color: var(--white);
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px; 
+    text-decoration: none;
+}
+#accountstatus a    {
+    text-decoration: none;
+    color: var(--white);
+    text-align: right;
+    font-size: 15px;
+}
+#overview-postinformation *, #overview-postinformationdescription *   {
+    margin: 0 15px 0 15px;
+    width: 18%;
+}
+#overview-accountstatus {
+    margin-bottom: 5px;
+}
+#piechart-container, #historychart-container, #monthchart-container {
+    width: 100%; 
+    background-color: var(--black);
+}
+#piechart-area, #historychart-area, #monthchart-area  {
+    width: 85%; 
+    margin: auto;
+    padding: 10px;
+}
+#overview-postdates {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+#nowlaugh  {
+    color: var(--white);
+}
+input[type=text], input[type=number]    {
+    height: 1.4em;
+    padding: 8px 0 8px 8px;
+    width: 30%;
+    background-color: var(--black);
+    color: var(--white);
+    border: 0;
+    outline: none;
+}
+button  {
+    height: 3em;
+    padding: 8px;
+    background-color: var(--black);
+    color: var(--white);
+    border: 0;
+}
+#loadingtext    {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    color: var(--white);
+    font-size: 48px;
+    justify-content: center;
+}
+#historySlider  {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+.info   {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
 }

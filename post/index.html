@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf8">
-        <title>Scratch Forum Post Statistics</title>
+        <title>Scratch Forum Leaderboards</title>
         <script src="https://d3js.org/d3.v4.js"></script>
         <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -16,9 +16,10 @@
         </div>
         <div id="container">
             <div id="navigation">
-                <a href="./?category=total">Forum Categories</a>
+                <a href="./?category=total">Leaderboards</a>
                 <a href="user?user=CatsUnited">Users</a>
-                <a href="https://my-ocular.jeffalo.net/login">Customise Profile (myocular)</a>
+                <a href="history?user=CatsUnited">History</a>
+                <a href="https://my-ocular.jeffalo.net/login">Customise Profile (Ocular)</a>
             </div>
             <form action="" method="get">
                 <select name="category">
@@ -73,28 +74,41 @@
 
                 </select>
                 <input type="submit" value="Go">
+                <button name="page" id="previouspagebutton">Previous Page</button>
+                <button name="page" id="nextpagebutton" style="display: none;">Next Page</button>
             </form>
-            <div id="footer">
-                <div>The full dataset for <a href="tfhgraph.mp4">The Forum Helpers Post Count History</a> is available <a href="postleaderboard.csv">here (CSV file)</a>.</a></div>
-            </div>
-            <div id="footer">
-                <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
-                <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
+            <form onsubmit="checkCode()" method="POST" name="code">
+                <input type="number" placeholder="Secret Code" id="secretcodeinput" name="secretcode">
+                <input type="submit" value="Go">
+            </form>
+            <div id="activated-modes">
+
             </div>
             <div id="loadingtext">Loading</div>
             <div id="content">
             </div>
+            <div style="display: flex; justify-content: center;"><button onclick="window.location.href='#top_text'" style="margin: auto;">Return to Top</button></div>
+            <div id="footer">
+                <div>Made by <a href="https://scratch.mit.edu/users/CatsUnited">CatsUnited</a></div>
+                <div>Data from <a href="https://scratchdb.lefty.one/">ScratchDB</a> by <a href="https://scratch.mit.edu/users/DatOneLefty">DatOneLefty</a></div>
+                <div>More links<br>
+                <a href="tfhgraph.mp4">TFH Post Count History</a><br>
+                <a href="postleaderboard.csv">TFH Post Count CSV file</a>
+                </div>
+            </div>
         </div>
         <script>
             const urlparams = new URLSearchParams(window.location.search);
-            let selectedCategory = urlparams.get("category");
-            var currentpage = 0;
-
-            if (selectedCategory == "Dustbin")  {
+            const info = {category: 0, page: 0}
+            info.category = urlparams.get("category")
+            info.page = urlparams.get("page")
+            if (info.page == null)  { info.page = 0 }
+            if (info.category == null)   { info.category = "total" }
+            if (info.category == "Dustbin")  {
                 window.location.href = "https://scratch.mit.edu/discuss/youtube/nSW6scUfnFw/";
             }
-            if (selectedCategory == null)   {
-                selectedCategory = "total";
+            if (info.category != "total") {
+                document.title = `${info.category}: Scratch Forum Leaderboards`;
             }
             function HSVtoRGB(h, s, v) {
                 var r, g, b, i, f, p, q, t;
@@ -120,95 +134,120 @@
                     b: Math.round(b * 255)
                 };
             }
-            dectoHex = (num) => {
-                return num.toString(16);
+            dectoHex = (num) => { return num.toString(16) }
+            checkCode = () => {
+                code = document.forms.code.secretcode.value
+                if (code == 228786483)   {
+                    localStorage.setItem("comicsans", "yes")
+                } else if (code == 74650853)    {
+                    localStorage.setItem("theme", "jeffalo")
+                }
+            }
+            if (localStorage.getItem("theme") == "jeffalo")    {
+                document.documentElement.style.setProperty("--black", "#f2f2f2")
+                document.documentElement.style.setProperty("--body", "#fff")
+                document.documentElement.style.setProperty("--white", "#575e75")
+                document.documentElement.style.setProperty("--highlight", "#0fbd8c")
+
+                const aprilfools = document.createElement("div")
+                aprilfools.appendChild(document.createTextNode("Jeffalo Mode Activated"))
+                aprilfools.setAttribute("id", `jeffalomodetext`);
+                const aprilfools2 = document.createElement("a")
+                aprilfools2.appendChild(document.createTextNode(" (Click to Disable)"))
+                aprilfools2.setAttribute("href", `javascript:localStorage.clear();location.reload()`)
+                document.getElementById("activated-modes").appendChild(aprilfools)
+                document.getElementById("jeffalomodetext").appendChild(aprilfools2)
             }
             titletext = document.createElement("div");
             titletext.setAttribute("id", "titletext");
-            if (selectedCategory != "total")    {
-                titletext.appendChild(document.createTextNode("The Top Posters in " + selectedCategory));
+            if (info.category != "total")    {
+                titletext.appendChild(document.createTextNode("The Top Posters in " + info.category));
             } else  {
                 titletext.appendChild(document.createTextNode("The Top Posters of the Scratch Forums"));
             }
             document.getElementById("heading").appendChild(titletext);
-            loadUserPosts(0);
-            
-            function loadUserPosts(page)    {
-                fetch(`https://scratchdb.lefty.one/v2/forum/category/rank/${selectedCategory}/${page}`)
+
+            document.querySelector(`option[value="${info.category}"]`).setAttribute("selected", true)
+            if (info.page == 0 || info.page == null)    {
+                document.getElementById("previouspagebutton").style.display = "none"
+            } else  {
+                document.getElementById("previouspagebutton").value = info.page - 1
+            }
+            document.getElementById("nextpagebutton").value = Number(info.page) + 1
+
+            fetch(`https://scratchdb.lefty.one/v2/forum/category/rank/${info.category}/${info.page}`)
                 .then(res => res.json())
                 .then(data => {
                     /* modify webpage title */
-                    if (selectedCategory != "total") {document.title = `${selectedCategory}: Scratch Forums Statistics`;}
+                    if (info.category != "total") {document.title = `${info.category}: Scratch Forums Statistics`;}
                     /* delete loading text */
                     document.getElementById("loadingtext").remove();
-                    let responsedata = data.users;
+                    let responsedata = data.users;                    
                     for (let j in responsedata)   {
                         if (responsedata[j].count == 0) {
                             break;
                         }
-                        if (page == 0)  {
-                            k = j;
-                        } else  {
-                            k = (100 * page) + Number(j);
+                        if (j == responsedata.length - 1)   {
+                            document.getElementById("nextpagebutton").style.display = "block"
                         }
                         console.log(responsedata[j]);
                         /* create div for user */
-                        user = document.createElement("div");
-                        user.setAttribute("id", `user${k}`);
-                        user.setAttribute("class", "userbox");
-                        var randomColor = HSVtoRGB(Math.random(), 0.5, 0.35);
-                        user.setAttribute("style", "width: 0%;");
-                        document.getElementById("content").appendChild(user);
+                        const userbox = document.createElement("div");
+                        userbox.setAttribute("id", `user${j}`);
+                        userbox.setAttribute("class", "userbox");
+                        userbox.setAttribute("style", "width: 0%;");
+                        document.getElementById("content").appendChild(userbox);
+                        
                         /* create div for left located info */
-                        info = document.createElement("div");
-                        info.setAttribute("id", `info${k}`);
-                        info.setAttribute("class", "info");
-                        document.getElementById(`user${k}`).appendChild(info);
+                        const mainInfo = document.createElement("div");
+                        mainInfo.setAttribute("id", `info${j}`);
+                        mainInfo.setAttribute("class", "info");
+                        document.getElementById(`user${j}`).appendChild(mainInfo);
+                        /* create div for right located info */
+                        const extrainfo = document.createElement("div");
+                        extrainfo.setAttribute("id", `extrainfo${j}`);
+                        extrainfo.setAttribute("class", "extrainfo");
+                        document.getElementById(`user${j}`).appendChild(extrainfo);
                         /* position */
-                        categoryranking = document.createElement("div");
-                        categoryranking.setAttribute("id", `categoryranking${k}`);
+                        const categoryranking = document.createElement("div");
+                        categoryranking.setAttribute("id", `categoryranking${j}`);
                         categoryranking.setAttribute("class", "categoryranking");
                         categoryranking.appendChild(document.createTextNode(responsedata[j].rank));
-                        document.getElementById(`info${k}`).appendChild(categoryranking);
+                        document.getElementById(`info${j}`).appendChild(categoryranking);
                         /* username */
-                        username = document.createElement("a");
-                        username.setAttribute("id", `username${k}`);
+                        const username = document.createElement("a");
+                        username.setAttribute("id", `username${j}`);
                         username.setAttribute("class", "username");
-                        username.setAttribute("href", `user.html?user=${responsedata[j].username}`);
+                        username.setAttribute("href", `user?user=${responsedata[j].username}`);
                         username.appendChild(document.createTextNode(responsedata[j].username));
-                        document.getElementById(`info${k}`).appendChild(username);
-                        /* create div for right located info */
-                        extrainfo = document.createElement("div");
-                        extrainfo.setAttribute("id", `extrainfo${k}`);
-                        extrainfo.setAttribute("class", "extrainfo");
-                        document.getElementById(`user${k}`).appendChild(extrainfo);
+                        document.getElementById(`info${j}`).appendChild(username);
                         /* post count */
-                        postcount = document.createElement("div");
-                        postcount.setAttribute("id", `posts${k}`);
+                        const postcount = document.createElement("div");
+                        postcount.setAttribute("id", `posts${j}`);
                         postcount.setAttribute("class", "userposts");
                         postcount.appendChild(document.createTextNode(responsedata[j].count));
-                        document.getElementById(`extrainfo${k}`).appendChild(postcount);
+                        document.getElementById(`info${j}`).appendChild(postcount);
                     }
                 })
-                .catch(function(){
-                });
-            }
+            .catch(function(){
+                alert("Unable to load :(")
+            });
             setInterval(animation => {
                 for (j = 0; j < document.getElementsByClassName("userbox").length; j++)    {
-                    var randomColor = "#1C1C1C";
                     document.getElementById(`user${j}`).style.transition = "width 1s";
                     document.getElementById(`user${j}`).style.width = `${document.getElementById(`posts${j}`).innerHTML / document.getElementById("posts0").innerHTML * 100}%`;
-                    document.getElementById(`user${j}`).style.backgroundColor = `${randomColor}`;
                     document.getElementById(`user${j}`).style.padding = `5px ${window.innerWidth/50}px 5px ${window.innerWidth/50}px`;
                 }
-            },500);
-            window.onscroll = () => {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                    currentpage++;
-                    console.log("load page");
-                    loadUserPosts(currentpage);
+            },200);
+            document.addEventListener('click', function (event) {
+                if (localStorage.getItem("comicsans") == "yes") {
+                    event.target.style.fontFamily = "Comic Sans MS"
+                    var randomColor = HSVtoRGB(Math.random(), Math.random(), Math.random());
+                    event.target.style.color = `rgb(${randomColor.r},${randomColor.g},${randomColor.b})`
+                    randomColor = HSVtoRGB(Math.random(), Math.random(), Math.random());
+                    event.target.style.backgroundColor = `rgb(${randomColor.r},${randomColor.g},${randomColor.b})`
                 }
-            };
+            }, false);
         </script>
     </body>
 </html>

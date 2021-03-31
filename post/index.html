@@ -143,14 +143,16 @@
                     localStorage.setItem("theme", "jeffalo")
                 }
             }
-            if (localStorage.getItem("theme") == "jeffalo")    {
-                document.documentElement.style.setProperty("--black", "#f2f2f2")
-                document.documentElement.style.setProperty("--body", "#fff")
-                document.documentElement.style.setProperty("--white", "#575e75")
-                document.documentElement.style.setProperty("--highlight", "#0fbd8c")
+            if (localStorage.getItem("theme") == "jeffalo" || localStorage.getItem("comicsans") == "yes")    {
+                if (localStorage.getItem("theme") == "jeffalo") {
+                    document.documentElement.style.setProperty("--black", "#f2f2f2")
+                    document.documentElement.style.setProperty("--body", "#fff")
+                    document.documentElement.style.setProperty("--white", "#575e75")
+                    document.documentElement.style.setProperty("--highlight", "#0fbd8c")
+                }
 
                 const aprilfools = document.createElement("div")
-                aprilfools.appendChild(document.createTextNode("Jeffalo Mode Activated"))
+                aprilfools.appendChild(document.createTextNode("April Fools Enabled"))
                 aprilfools.setAttribute("id", `jeffalomodetext`);
                 const aprilfools2 = document.createElement("a")
                 aprilfools2.appendChild(document.createTextNode(" (Click to Disable)"))

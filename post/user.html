@@ -78,15 +78,52 @@
         </div>
         <div id="nowlaugh"></div>
         <div style="color: #FFF; text-align: center; font-family: 'Comic Sans MS', Comic Sans;">bottom text</div>
-        <script src="themes.js"></script>
         <script>
-            /* april fools */
-            if (localStorage.getItem("theme") == "jeffalo")    {
-                document.documentElement.style.setProperty("--black", "#f2f2f2")
-                document.documentElement.style.setProperty("--body", "#fff")
-                document.documentElement.style.setProperty("--white", "#575e75")
-                document.documentElement.style.setProperty("--highlight", "#0fbd8c")
+            if (localStorage.getItem("theme") == null)  {
+                var theme = 0
             }
+            let defaulttheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+            themeupdate = () => {
+                if (localStorage.getItem("theme") == 0) {
+                    document.getElementById("themeindicator").innerText = "Default"
+                    if (defaulttheme == true)   {
+                        document.documentElement.style.setProperty("--black", "#1c1c1c")
+                        document.documentElement.style.setProperty("--body", "#333")
+                        document.documentElement.style.setProperty("--white", "#fff")
+                        document.documentElement.style.setProperty("--highlight", "#f54260")
+                    } else  {
+                        document.documentElement.style.setProperty("--black", "#f2f2f2")
+                        document.documentElement.style.setProperty("--body", "#fff")
+                        document.documentElement.style.setProperty("--white", "#575e75")
+                        document.documentElement.style.setProperty("--highlight", "#0fbd8c")
+                    }
+                }
+                if (localStorage.getItem("theme") == 1) {
+                    document.getElementById("themeindicator").innerText = "Dark Mode"
+                    document.documentElement.style.setProperty("--black", "#1c1c1c")
+                    document.documentElement.style.setProperty("--body", "#333")
+                    document.documentElement.style.setProperty("--white", "#fff")
+                    document.documentElement.style.setProperty("--highlight", "#f54260")
+                }
+                if (localStorage.getItem("theme") == 2) {
+                    document.getElementById("themeindicator").innerText = "Light Mode"
+                    document.documentElement.style.setProperty("--black", "#f2f2f2")
+                    document.documentElement.style.setProperty("--body", "#fff")
+                    document.documentElement.style.setProperty("--white", "#575e75")
+                    document.documentElement.style.setProperty("--highlight", "#0fbd8c")
+                }
+                
+            }
+            themeswitch = () =>  {
+                if (theme == 0 || theme == 1) {
+                    theme++
+                } else  {
+                    theme = 0
+                }
+                localStorage.setItem("theme", theme)
+                themeupdate()
+            }
+            themeupdate()
             var chartCategories = [];
             var chartCounts = [];
             var chartColors = [];
@@ -221,7 +258,6 @@
                                 user = document.createElement("div");
                                 user.setAttribute("id", i);
                                 user.setAttribute("class", "category");
-                                /* april fools */
                                 if (localStorage.getItem("theme") == 2)   {
                                     var randomColor = HSVtoRGB(Math.random(), 0.1, Math.random() * 0.1 + 0.9);
                                 } else  {

@@ -19,6 +19,7 @@
                 <a href="./?category=total">Leaderboards</a>
                 <a href="user?user=CatsUnited">Users</a>
                 <a href="history?user=CatsUnited">History</a>
+                <a href="javascript:themeswitch()" id="themeindicator"></a>
                 <a href="https://my-ocular.jeffalo.net/login">Customise Profile (Ocular)</a>
             </div>
             <form action="" method="get">
@@ -77,10 +78,6 @@
                 <button name="page" id="previouspagebutton">Previous Page</button>
                 <button name="page" id="nextpagebutton" style="display: none;">Next Page</button>
             </form>
-            <form onsubmit="checkCode()" method="POST" name="code">
-                <input type="number" placeholder="Secret Code" id="secretcodeinput" name="secretcode">
-                <input type="submit" value="Go">
-            </form>
             <div id="activated-modes">
 
             </div>
@@ -97,6 +94,7 @@
                 </div>
             </div>
         </div>
+        <script src="themes.js"></script>
         <script>
             const urlparams = new URLSearchParams(window.location.search);
             const info = {category: 0, page: 0}
@@ -143,22 +141,11 @@
                     localStorage.setItem("theme", "jeffalo")
                 }
             }
-            if (localStorage.getItem("theme") == "jeffalo" || localStorage.getItem("comicsans") == "yes")    {
-                if (localStorage.getItem("theme") == "jeffalo") {
-                    document.documentElement.style.setProperty("--black", "#f2f2f2")
-                    document.documentElement.style.setProperty("--body", "#fff")
-                    document.documentElement.style.setProperty("--white", "#575e75")
-                    document.documentElement.style.setProperty("--highlight", "#0fbd8c")
-                }
-
-                const aprilfools = document.createElement("div")
-                aprilfools.appendChild(document.createTextNode("April Fools Enabled"))
-                aprilfools.setAttribute("id", `jeffalomodetext`);
-                const aprilfools2 = document.createElement("a")
-                aprilfools2.appendChild(document.createTextNode(" (Click to Disable)"))
-                aprilfools2.setAttribute("href", `javascript:localStorage.clear();location.reload()`)
-                document.getElementById("activated-modes").appendChild(aprilfools)
-                document.getElementById("jeffalomodetext").appendChild(aprilfools2)
+            if (localStorage.getItem("theme") == "jeffalo")    {
+                document.documentElement.style.setProperty("--black", "#f2f2f2")
+                document.documentElement.style.setProperty("--body", "#fff")
+                document.documentElement.style.setProperty("--white", "#575e75")
+                document.documentElement.style.setProperty("--highlight", "#0fbd8c")
             }
             titletext = document.createElement("div");
             titletext.setAttribute("id", "titletext");
@@ -241,15 +228,6 @@
                     document.getElementById(`user${j}`).style.padding = `5px ${window.innerWidth/50}px 5px ${window.innerWidth/50}px`;
                 }
             },200);
-            document.addEventListener('click', function (event) {
-                if (localStorage.getItem("comicsans") == "yes") {
-                    event.target.style.fontFamily = "Comic Sans MS"
-                    var randomColor = HSVtoRGB(Math.random(), Math.random(), Math.random());
-                    event.target.style.color = `rgb(${randomColor.r},${randomColor.g},${randomColor.b})`
-                    randomColor = HSVtoRGB(Math.random(), Math.random(), Math.random());
-                    event.target.style.backgroundColor = `rgb(${randomColor.r},${randomColor.g},${randomColor.b})`
-                }
-            }, false);
         </script>
     </body>
 </html>

@@ -16,6 +16,7 @@
                 <a href="./?category=total">Leaderboards</a>
                 <a href="user?user=CatsUnited">Users</a>
                 <a href="history?user=CatsUnited">History</a>
+                <a href="javascript:themeswitch()" id="themeindicator"></a>
                 <a href="https://my-ocular.jeffalo.net/login">Customise Profile (Ocular)</a>
             </div>
         </div>
@@ -45,15 +46,8 @@
             <div id="content">
             </div>
         </div>
+        <script src="themes.js"></script>
         <script>
-
-        /* april fools */
-        if (localStorage.getItem("theme") == "jeffalo")    {
-            document.documentElement.style.setProperty("--black", "#f2f2f2")
-            document.documentElement.style.setProperty("--body", "#fff")
-            document.documentElement.style.setProperty("--white", "#575e75")
-            document.documentElement.style.setProperty("--highlight", "#0fbd8c")
-        }
 
         function HSVtoRGB(h, s, v) {
             var r, g, b, i, f, p, q, t;
@@ -362,15 +356,6 @@
                         alert(`https://scratchdb.lefty.one/v3/forum/user/info/${user.username} failed to load D:`);
                     });
                 })
-                document.addEventListener('click', function (event) {
-                if (localStorage.getItem("comicsans") == "yes") {
-                    event.target.style.fontFamily = "Comic Sans MS"
-                    var randomColor = HSVtoRGB(Math.random(), Math.random(), Math.random());
-                    event.target.style.color = `rgb(${randomColor.r},${randomColor.g},${randomColor.b})`
-                    randomColor = HSVtoRGB(Math.random(), Math.random(), Math.random());
-                    event.target.style.backgroundColor = `rgb(${randomColor.r},${randomColor.g},${randomColor.b})`
-                }
-            }, false);
         </script>
     </body>
 </html>

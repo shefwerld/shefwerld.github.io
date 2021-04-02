@@ -79,8 +79,10 @@
         <div id="nowlaugh"></div>
         <div style="color: #FFF; text-align: center; font-family: 'Comic Sans MS', Comic Sans;">bottom text</div>
         <script>
-            if (localStorage.getItem("theme") == null)  {
-                var theme = 0
+            var theme;
+            if (localStorage.getItem("theme") === null)  {
+                theme = 0
+                localStorage.setItem("theme", theme)
             }
             let defaulttheme = window.matchMedia('(prefers-color-scheme: dark)').matches
             themeupdate = () => {

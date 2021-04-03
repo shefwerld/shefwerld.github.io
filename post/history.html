@@ -55,7 +55,7 @@
         let defaulttheme = window.matchMedia('(prefers-color-scheme: dark)').matches
         themeupdate = () => {
             if (localStorage.getItem("theme") == 0) {
-                document.getElementById("themeindicator").innerText = "Default"
+                document.getElementById("themeindicator").innerText = "System"
                 if (defaulttheme == true)   {
                     document.documentElement.style.setProperty("--black", "#1c1c1c")
                     document.documentElement.style.setProperty("--body", "#333")
@@ -80,12 +80,19 @@
                 document.documentElement.style.setProperty("--black", "#f2f2f2")
                 document.documentElement.style.setProperty("--body", "#fff")
                 document.documentElement.style.setProperty("--white", "#575e75")
+                document.documentElement.style.setProperty("--highlight", "#f54260")
+            }
+            if (localStorage.getItem("theme") == 3  ) {
+                document.getElementById("themeindicator").innerText = "Jeffalo"
+                document.documentElement.style.setProperty("--black", "#f2f2f2")
+                document.documentElement.style.setProperty("--body", "#fff")
+                document.documentElement.style.setProperty("--white", "#575e75")
                 document.documentElement.style.setProperty("--highlight", "#0fbd8c")
             }
             
         }
         themeswitch = () =>  {
-            if (theme == 0 || theme == 1) {
+            if (theme == 0 || theme == 1 || theme == 2) {
                 theme++
             } else  {
                 theme = 0
